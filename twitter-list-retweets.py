@@ -12,17 +12,13 @@ user = "ideoforms"
 #-----------------------------------------------------------------------
 # load our API credentials 
 #-----------------------------------------------------------------------
-consumer_key = ""
-consumer_secret =""
-access_key = ""
-access_secret = ""
-
-
-oauth = OAuth(access_key,access_secret,consumer_key,consumer_secret)
+config = {}
+execfile("config.py", config)
 #-----------------------------------------------------------------------
 # create twitter API object
 #-----------------------------------------------------------------------
-twitter = TwitterStream(oauth)
+twitter = Twitter(
+auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key"], config["consumer_secret"]))
 
 #-----------------------------------------------------------------------
 # perform a basic search 
