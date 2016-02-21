@@ -6,8 +6,12 @@
 #-----------------------------------------------------------------------
 
 from twitter import *
-
-user = "ideoforms"
+from datetime import datetime
+import re
+from email.utils import parsedate
+#sets the dates to filter
+startdate = datetime(2000,1,1)
+enddate = datetime(2016,3,29)
 
 #-----------------------------------------------------------------------
 # load our API credentials 
@@ -32,7 +36,12 @@ results = twitter.search.tweets(q = "Gangnam Style")
 count = 0
 countretweets = 0
 for result in results["statuses"]:
-	count+=1
+	timestamp = parsedate(result["created_at"])
+	timestamp2 = datetime(timestamp[0],timestamp[1],timestamp[2])
+	print timestamp2>=startdate
+	print timestamp2<=enddate
+	if(timestamp2>=startdate and timestamp2<=enddate):
+		count+=1
 
 	#-----------------------------------------------------------------------
 	# do a new query: who has RT'd this tweet?
