@@ -24,17 +24,17 @@ auth = OAuth(config["access_key"], config["access_secret"], config["consumer_key
 # perform a basic search 
 # twitter API docs: https://dev.twitter.com/docs/api/1/get/search
 #-----------------------------------------------------------------------
-results = twitter.statuses.user_timeline(screen_name = user)
+results = twitter.search.tweets(q = "Gangnum Style")
 
 #-----------------------------------------------------------------------
 # loop through each of my statuses, and print its content
 #-----------------------------------------------------------------------
-for status in results:
-	print ("@%s %s" % (user, status["text"]))
+for result in results["statuses"]:
+	print ("Search result %s" % ( result["text"]))
 
 	#-----------------------------------------------------------------------
 	# do a new query: who has RT'd this tweet?
 	#-----------------------------------------------------------------------
-	retweets = twitter.statuses.retweets._id(_id = status["id"])
-	for retweet in retweets:
-		print (" - retweeted by %s" % (retweet["user"]["screen_name"]))
+#	retweets = twitter.statuses.retweets._id(_id = status["id"])
+#	for retweet in retweets:
+#		print (" - retweeted by %s" % (retweet["user"]["screen_name"]))
