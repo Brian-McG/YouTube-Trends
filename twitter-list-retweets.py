@@ -12,10 +12,10 @@ user = "ideoforms"
 #-----------------------------------------------------------------------
 # load our API credentials 
 #-----------------------------------------------------------------------
-consumer_key = " UYfEFhbvL1KjRwbEJui7seAgt"
-consumer_secret ="9hjAXqlOxqftUbIZIcVtyuDSpdYAxq6K11x2yiWax2XtlpbFZA"
-access_key = " 2517247723-O9nY8k2ExGNqSN2u1GIGy2pUR8SAVgNUc0iBcTg"
-access_secret = " eBYu6Rof7UrkXCLK6uOlhULYSJLN0Wl6POUFFx1SnXX0E"
+consumer_key = ""
+consumer_secret =""
+access_key = ""
+access_secret = ""
 
 
 oauth = OAuth(access_key,access_secret,consumer_key,consumer_secret)
