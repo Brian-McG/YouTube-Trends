@@ -75,6 +75,7 @@ for item in videos_list_response["items"]:
 comments = []
 next_page_token = None
 counter = 0
+filename = "Comments_{0}.txt".format(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))
 while next_page_token is not None or counter == 0:
     counter += 1
     comment_list_response = None
@@ -94,10 +95,8 @@ while next_page_token is not None or counter == 0:
             print("Exception occurred: {0}".format(str(e)))
 
     next_page_token = comment_list_response.get("nextPageToken")
-    comments.extend(comment_list_response["items"])
+    with open(filename, 'a') as outfile:
+        for item in comment_list_response["items"]:
+            json.dump(item, outfile)
+            outfile.write(",")
     print(len(comments))
-
-filename = "Comments_{0}.txt".format(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))
-print("Writing comments to {0}".format(filename))
-with open(filename, 'wb') as outfile:
-    json.dump(comments, outfile)
