@@ -91,9 +91,7 @@ while next_page_token is not None or counter == 0:
             ).execute()
             keep_trying = False
         except Exception as e:
-            sys.stdout.write("Exception occurred: ")
-            sys.stdout.flush()
-            print(e)
+            print("Exception occurred: {0}".format(str(e)))
 
     next_page_token = comment_list_response.get("nextPageToken")
     comments.extend(comment_list_response["items"])
