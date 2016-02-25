@@ -1,7 +1,11 @@
 from googleapiclient.discovery import build  # pip install google-api-python-client
 from googleapiclient.errors import HttpError  # pip install google-api-python-client
 from oauth2client.tools import argparser  # pip install oauth2client
+import time
 import pprint
+import sys
+import json
+import datetime
 
 # Set DEVELOPER_KEY to the API key value from the APIs & auth > Registered apps
 # tab of
@@ -41,7 +45,6 @@ categories = youtube.videoCategories().list(
     part="id,snippet",
     regionCode=REGION,
 ).execute()
-# pp.pprint(categories)
 
 videos = {}
 # Add each result to the appropriate list, and then display the lists of
@@ -51,9 +54,10 @@ for search_result in search_response.get("items", []):
     if search_result["id"]["kind"] == "youtube#video":
         videos[search_result["id"]["videoId"]] = search_result["snippet"]["title"]
 
-s = ','.join(videos.keys())
+# Fetches video metadata
+video_id = ','.join(videos.keys())
 videos_list_response = youtube.videos().list(
-    id=s,
+    id=video_id,
     regionCode=REGION,
     part='contentDetails, id, liveStreamingDetails, localizations, player, recordingDetails, snippet, statistics, status, topicDetails'
 ).execute()
@@ -65,4 +69,37 @@ for item in videos_list_response["items"]:
             item["snippet"]["categoryId"] = category["snippet"]["title"]
             break
 
-pp.pprint(videos_list_response)
+#pp.pprint(videos_list_response)
+
+# Fetch all the comments for a given video
+comments = []
+next_page_token = None
+counter = 0
+while next_page_token is not None or counter == 0:
+    counter += 1
+    comment_list_response = None
+    keep_trying = True
+    while keep_trying:
+        try:
+            comment_list_response = youtube.commentThreads().list(
+                part="id, snippet",
+                videoId=video_id,
+                pageToken=next_page_token,
+                maxResults=100,
+                order="time",
+                textFormat="plainText"
+            ).execute()
+            keep_trying = False
+        except Exception as e:
+            sys.stdout.write("Exception occurred: ")
+            sys.stdout.flush()
+            print(e)
+
+    next_page_token = comment_list_response.get("nextPageToken")
+    comments.extend(comment_list_response["items"])
+    print(len(comments))
+
+filename = "Comments_{0}.txt".format(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))
+print("Writing comments to {0}".format(filename))
+with open(filename, 'wb') as outfile:
+    json.dump(comments, outfile)
