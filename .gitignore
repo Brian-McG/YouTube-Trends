@@ -1,5 +1,6 @@
 # Project specific ignores
 google_api_key.txt
+database_password.txt
 config.py
 Comments_*
 
