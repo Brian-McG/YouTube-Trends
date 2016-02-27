@@ -6,8 +6,8 @@ import pprint
 import sys
 import json
 import datetime
-import MySQLdb
-import iso8601
+import MySQLdb # pip install mysqlclient
+import iso8601 # pip install iso8601
 
 # Set DEVELOPER_KEY to the API key value from the APIs & auth > Registered apps
 # tab of
@@ -159,7 +159,6 @@ while next_page_token is not None or counter == 0:
                         print("Exception occurred getting replies: {0}".format(str(e)))
 
                 next_reply_token = comment_reply_response.get("nextPageToken")
-                print(next_reply_token)
 
                 # Add reply to database
                 replies = comment_reply_response["items"]
