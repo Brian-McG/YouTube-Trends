@@ -89,7 +89,7 @@ db = MySQLdb.connect("localhost", "root", DATABASE_PASSWORD, "visualisation")
 cursor = db.cursor()
 
 # Hardcode for testing
-video_id = "vDlMLqdvHzI"
+# video_id = "vDlMLqdvHzI"
 
 # Keep polling until all results have been obtained
 while next_page_token is not None or counter == 0:
