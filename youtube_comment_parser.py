@@ -36,22 +36,24 @@ publish_date = datetime.date(publish_date.year, publish_date.month, publish_date
 filename = "parsed_video_{0}_{1}.csv".format(args.video_id, time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))
 sql_count_statement = """SELECT COUNT(id) from youtube_comments WHERE video_id = %s AND date_published BETWEEN %s AND %s"""
 max_count = -1;
-current_date = datetime.date(START_DATE)
+current_date = datetime.date(START_DATE.year, START_DATE.month, START_DATE.day)
 
 while current_date >= publish_date:
     cursor.execute(sql_count_statement, (args.video_id, datetime.date.strftime(current_date, DATE_FORMAT+" 00:00:00"), datetime.date.strftime(current_date, DATE_FORMAT+" 23:59:59")))
     count = cursor.fetchone()[0]
+    current_date = current_date - datetime.timedelta(days=1)
     if count > max_count:
         max_count = count
 
-current_date = datetime.date(START_DATE)
+print("Max count: {0}".format(max_count))
+current_date = datetime.date(START_DATE.year, START_DATE.month, START_DATE.day)
 with open(filename, 'w') as outfile:
     outfile.write("date_published,comment_count,popularity_index\n")
 
     while current_date >= publish_date:
         cursor.execute(sql_count_statement, (args.video_id, datetime.date.strftime(current_date, DATE_FORMAT+" 00:00:00"), datetime.date.strftime(current_date, DATE_FORMAT+" 23:59:59")))
         count = cursor.fetchone()[0]
-        outfile.write("{0},{1},{2}\n".format(datetime.date.strftime(current_date, DATE_FORMAT), count, (count/max_count)*100) if max_count > 0 else 0)
+        outfile.write("{0},{1},{2}\n".format(datetime.date.strftime(current_date, DATE_FORMAT), count, (count/(max_count*1.0))*100.0) if max_count > 0 else 0)
         current_date = current_date - datetime.timedelta(days=1)
         print(current_date)
 
