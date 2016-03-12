@@ -1,9 +1,39 @@
-.chart rect {
-  fill: steelblue;
+#line_graph_1 {
+    width: 700px;
 }
 
-.chart text {
-  fill: white;
-  font: 10px sans-serif;
-  text-anchor: end;
+#line_graph_1 .c3-line-data2 {
+    stroke-width: 5px;
+}
+
+.rangeslider {
+    width: 730px !important;
+    margin-left: 180px !important;
+    height: 10px;
+}
+
+.rangeslider__fill {
+    background: #FA9150 !important;
+}
+
+.rangeslider__handle {
+    top: -5px !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.c3 {
+    font: 10px Helvetica;
+ }
+
+.line_graph_legend {
+    width: 700px;
+}
+
+.legend span {
+    width: 33.333333%;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    color: white;
 }
