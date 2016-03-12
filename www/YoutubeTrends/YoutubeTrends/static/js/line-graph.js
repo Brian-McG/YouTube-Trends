@@ -9,7 +9,7 @@ function generate_line_graph() {
     chart = c3.generate({
         bindto: '#line_graph_1',
         data: {
-            url: 'gangnam.csv',
+            url: 'data/gangnam.csv',
             colors: {
                 google: '#1F77B4',
                 youtube: '#EF5656',
@@ -66,7 +66,7 @@ function generate_line_graph() {
         })
         .html(function (id) {
             if(id == 'google') {
-                return '<div><img src="google-icon.png" alt="Test Image" width="20" height="20"/></div><div>Google</div>';
+                return '<div><img src="images/google-icon.png" alt="Test Image" width="20" height="20"/></div><div>Google</div>';
             } else if (id == 'youtube') {
                 return 'Youtube';
             } else if (id == 'youtubeComments') {
