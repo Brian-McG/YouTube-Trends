@@ -80,3 +80,7 @@
 #merge_container {
     display: none;
 }
+
+#line_graph_merged_header {
+    margin-top: 20px;
+}

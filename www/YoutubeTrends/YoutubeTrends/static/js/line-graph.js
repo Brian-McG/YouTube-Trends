@@ -23,33 +23,32 @@ function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, 
                 return [+d["google"], +d["youtube"], +d["youtubeComments"]];
             }
             var datasetOne = rows.map(mapFuntion);
-            datasetOne.unshift(["Google " + displayNameOne, "Youtube " + displayNameOne,  "Youtube Comments " + displayNameOne]);
+            datasetOne.unshift([displayNameOne + " Google", displayNameOne + " Youtube", displayNameOne + " Youtube Comments"]);
             var datasetTwo = otherRows.map(mapFuntion);
-            datasetTwo.unshift(["Google " + displayNameTwo, "Youtube " + displayNameTwo, "Youtube Comments " + displayNameTwo]);
+            datasetTwo.unshift([displayNameTwo + " Google", displayNameTwo + " Youtube", displayNameTwo + " Youtube Comments"]);
             for (var i = 0; i < datasetOne.length; ++i) {
                 datasetOne[i] = datasetOne[i].concat(datasetTwo[i]);
             }
             generate_line_graph(index, bindDom, datasetOne)
 
             // Set the styling on each pair of lines
-            var googleLines = $("path[class*='c3-line-Google-']");
+            var googleLines = $('path[class*="c3-line-"][class$="-Google"]');
             for(var i = 0; i < googleLines.length; ++i) {
                 googleLines[i].style.strokeDasharray = "5, 5, 5, 5, 5, 5, 10, 5, 10, 5, 10, 5";
                 googleLines[i].style.strokeWidth = "2px";
             }
 
-            var youtubeLines = $("path[class*='c3-line-Youtube-']");
+            var youtubeLines = $('path[class*="c3-line-"][class$="-Youtube"]');
             for(var i = 0; i < youtubeLines.length; ++i) {
                 youtubeLines[i].style.strokeDasharray = "1,1";
                 youtubeLines[i].style.strokeWidth = "4px";
             }
 
-            var youtubeCommentsLines = $("path[class*='c3-line-Youtube-Comments-']");
+            var youtubeCommentsLines = $('path[class*="c3-line-"][class$="-Youtube-Comments"]');
             for(var i = 0; i < youtubeCommentsLines.length; ++i) {
                 youtubeCommentsLines[i].style.strokeDasharray = "";
                 youtubeCommentsLines[i].style.strokeWidth = "1px";
             }
-            console.log($("path[class*='c3-line-Google-']")[0].style.strokeDasharray);
         });
     });
 
