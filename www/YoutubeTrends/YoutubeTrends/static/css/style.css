@@ -2,15 +2,18 @@
     width: 100%;
 }
 
-#line_graph_1 .c3-line-google {
+.c3-line-google {
     stroke-width: 2px;
+    stroke-dasharray: 5, 5, 5, 5, 5, 5, 10, 5, 10, 5, 10, 5;
+
 }
 
-#line_graph_1 .c3-line-youtube {
-    stroke-width: 3px;
+.c3-line-youtube {
+    stroke-width: 4px;
+    stroke-dasharray: 1,1;
 }
 
-#line_graph_1 .c3-line-youtubeComments {
+.c3-line-youtubeComments {
     stroke-width: 1px;
 }
 
@@ -72,4 +75,8 @@
     padding-right: 10px;
     cursor: pointer;
     color: black;
+}
+
+#merge_container {
+    display: none;
 }
