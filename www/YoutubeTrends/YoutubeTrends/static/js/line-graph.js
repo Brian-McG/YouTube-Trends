@@ -66,17 +66,17 @@ function generate_line_graph() {
         })
         .html(function (id) {
             if(id == 'google') {
-                return '<div><img src="images/google-icon.png" alt="Test Image" width="20" height="20"/></div><div>Google</div>';
+                return '<img  src="images/google-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: text-top;"> Google';
             } else if (id == 'youtube') {
-                return 'Youtube';
+                return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: text-top;"> Youtube';
             } else if (id == 'youtubeComments') {
-                return 'Youtube Comments';
+                return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: text-top;"> Youtube Comments';
             } else {
                 return id;
             }
         })
         .each(function (id) {
-            d3.select(this).style('background-color', chart.color(id));
+            //d3.select(this).style('background-color', chart.color(id));
         })
         .on('mouseover', function (id) {
             chart.focus(id);
@@ -86,8 +86,14 @@ function generate_line_graph() {
         })
         .on('click', function (id) {
             chart.toggle(id);
+            if(d3.select(this).style()[0][0].style.opacity == null || d3.select(this).style()[0][0].style.opacity == '' || d3.select(this).style()[0][0].style.opacity == 1) {
+                d3.select(this).style({opacity: 0.5});
+                chart.revert();
+            } else {
+                d3.select(this).style({opacity: 1});
+                chart.focus(id);
+            }
         });
-    console.log(chart.data.colors());
 }
 
 function setAxisGrid(value) {

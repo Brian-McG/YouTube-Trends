@@ -30,10 +30,11 @@
     width: 700px;
 }
 
-.legend span {
-    width: 33.333333%;
-    display: inline-block;
+.legend {
     text-align: center;
+}
+.legend span {
+    margin-right: 10px;
     cursor: pointer;
-    color: white;
+    color: black;
 }
