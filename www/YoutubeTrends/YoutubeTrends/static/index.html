@@ -27,9 +27,13 @@
     <script src="js_dependents/jquery-2.2.1.min.js"></script>
     <script src="js_dependents/bootstrap.min.js"></script>
     <script src="js_dependents/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js_dependents/topojson.min.js"></script>
+    <script src="js_dependents/datamaps.world.min.js"></script>
     <script src="js_dependents/c3.min.js"></script>
     <script src="js_dependents/rangeslider.min.js"></script>
     <script src="js/line-graph.js"></script>
+    <script type="text/javascript" src="data/all.json"></script>
+
 
     <style>
         img {
@@ -46,11 +50,33 @@
             color: black;
         }
 
+        #maps{
+            margin-left: 30px;
+            margin-right: 60px;
+            width: 100%;
+            height: 22vw;
+        }
 
+        #leftmap{
+            float: left;
+            width: 48%;
+            height: 20vw;
+            border:1px solid grey;
+            overflow: hidden;
+        }
+
+        #rightmap{
+            float: right;
+            margin-right: 35px;
+            width: 48%;
+            height: 20vw;
+            border:1px solid grey;
+            overflow: hidden;
+        }
     </style>
 
 </head>
-<body onload="changeVariableLeft(); changeVariableRight()">
+<body onload="changeVariable('');changeVariableRight()">
 <div id="Top_Container">
     <div id="Container_Top_Left">
     <div id="pic">
@@ -58,8 +84,7 @@
     </div>
     <div id="box">
         <div id = "lefttop">
-
-            <select id="file_type" name="file_type" onchange="changeVariableLeft()">
+            <select id="file_type" name="file_type" onchange="changeVariable('')">
                 <option value="GangnamStyle">Gangnam Style</option>
                 <option value="BlankSpaces">Blank Spaces</option>
             </select>
@@ -68,7 +93,7 @@
             <img src="images/Youtube.png" alt="Symbol" id = "Symbol" style="float:right;width:60px;height:40px;">
         </div>
         <div id="righttop">
-            <select id="trend_type" name="trend_type" onchange="changeVariableLeft()" style="float:right">
+            <select id="trend_type" name="trend_type" onchange="changeVariable('')" style="float:right">
                 <option value="Youtube">Youtube Trends</option>
                 <option value="Google">Google Trends</option>
             </select>
@@ -114,7 +139,7 @@
     </div>
     <div id="box_right">
         <div id = "lefttop_right">
-            <select id="file_type_right" name="file_type" onchange="changeVariableRight()">
+            <select id="file_type_right" name="file_type" onchange="changeVariable('_right')">
                 <option value="GangnamStyle">Gangnam Style</option>
                 <option value="BlankSpaces">Blank Spaces</option>
             </select>
@@ -123,7 +148,7 @@
             <img src="images/Youtube.png" alt="Symbol" id = "Symbol_right" style="float:right;width:60px;height:40px;">
         </div>
         <div id="righttop_right">
-            <select id="trend_type_right" name="trend_type" onchange="changeVariableRight()" style="float:right">
+            <select id="trend_type_right" name="trend_type" onchange="changeVariable('_right')" style="float:right">
                 <option value="Youtube">Youtube Trends</option>
                 <option value="Google">Google Trends</option>
             </select>
@@ -163,6 +188,10 @@
         </div>
     </div>
 </div>
+</div>
+<div id='maps'>
+    <div id='leftmap'></div>
+    <div id='rightmap'></div>
 </div>
 <div id='slider_container' class='container'>
     <h3 id="week_slider_header" class="output">Week (1)</h3>
@@ -212,7 +241,8 @@
         // Callback function
         onSlide: function (position, value) {
             $(".output").text("Week (" + value + ")");
-            setAxisGrid(value)
+            setAxisGrid(value);
+            setWeek(value);
         },
 
         // Callback function
@@ -228,6 +258,7 @@
     });
 </script>
 </body>
+<script src="js/maps.js"></script>
 <script src="js/left-top.js"></script>
 <script src="js/right-top.js"></script>
 </html>
