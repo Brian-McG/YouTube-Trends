@@ -16,21 +16,40 @@ function fetchRows(index, bindDom, dataFileName) {
     });
 }
 
-function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, dataFileNameTwo) {
+function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, dataFileNameTwo, displayNameTwo) {
     d3.csv("data/" + dataFileNameOne, function (rows) {
         d3.csv("data/" + dataFileNameTwo, function (otherRows) {
             var mapFuntion = function (d) {
                 return [+d["google"], +d["youtube"], +d["youtubeComments"]];
             }
             var datasetOne = rows.map(mapFuntion);
-            datasetOne.unshift(["google_"+dataFileNameOne, "youtube_"+dataFileNameOne, "youtubeComments_"+dataFileNameOne]);
+            datasetOne.unshift(["Google " + displayNameOne, "Youtube " + displayNameOne,  "Youtube Comments " + displayNameOne]);
             var datasetTwo = otherRows.map(mapFuntion);
-            datasetTwo.unshift(["google_"+dataFileNameTwo, "youtube_"+dataFileNameTwo, "youtubeComments_"+dataFileNameTwo]);
+            datasetTwo.unshift(["Google " + displayNameTwo, "Youtube " + displayNameTwo, "Youtube Comments " + displayNameTwo]);
             for (var i = 0; i < datasetOne.length; ++i) {
                 datasetOne[i] = datasetOne[i].concat(datasetTwo[i]);
             }
             generate_line_graph(index, bindDom, datasetOne)
-            console.log(datasetOne);
+
+            // Set the styling on each pair of lines
+            var googleLines = $("path[class*='c3-line-Google-']");
+            for(var i = 0; i < googleLines.length; ++i) {
+                googleLines[i].style.strokeDasharray = "5, 5, 5, 5, 5, 5, 10, 5, 10, 5, 10, 5";
+                googleLines[i].style.strokeWidth = "2px";
+            }
+
+            var youtubeLines = $("path[class*='c3-line-Youtube-']");
+            for(var i = 0; i < youtubeLines.length; ++i) {
+                youtubeLines[i].style.strokeDasharray = "1,1";
+                youtubeLines[i].style.strokeWidth = "4px";
+            }
+
+            var youtubeCommentsLines = $("path[class*='c3-line-Youtube-Comments-']");
+            for(var i = 0; i < youtubeCommentsLines.length; ++i) {
+                youtubeCommentsLines[i].style.strokeDasharray = "";
+                youtubeCommentsLines[i].style.strokeWidth = "1px";
+            }
+            console.log($("path[class*='c3-line-Google-']")[0].style.strokeDasharray);
         });
     });
 
@@ -51,6 +70,9 @@ function generate_line_graph(index, bindDom, rows) {
                 youtube: 'Youtube',
                 youtubeComments: 'Youtube Comments'
             }
+        },
+        color: {
+            pattern: ['#6a51a3', '#807dba', '#4a1486', '#e6550d', '#8c2d04', '#fd8d3c']
         },
         axis: {
             x: {
