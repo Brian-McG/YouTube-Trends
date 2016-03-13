@@ -1,9 +1,9 @@
-#Top_Container{z-index:999; display:block; margin:0; padding-top:10px; width:1100px; height:500px;}
-#Container_Top_Left {float:left; display:block; margin:0; padding-top:10px; width:550px; height:400px;}
+#Top_Container{z-index:999; display:block; margin:0; padding-top:10px; width:100%;}
+#Container_Top_Left {float:left; display:block; margin:0; padding-top:10px; width:50%;}
 #middletop{float:left; display:block; margin:0; padding-left: 15px; width:70px; height:30px;}
 #righttop{float:right; display:block; margin:0; padding-left: 10px; width:70px; height:60px;}
 #lefttop{float:left; display:block; margin:0; padding-left: 10px; width:170px; height:40px;}
-#Container_Top_Right {float: right; display:block; margin:0; padding-top:10px; width:550px; height:400px;}
+#Container_Top_Right {float: right; display:block; margin:0; padding-top:10px; width:50%;}
 #middletop_right{float:left; display:block; margin:0; padding-left: 15px; width:70px; height:30px;}
 #righttop_right{float:right; display:block; margin:0; padding-left: 20px; width:90px; height:50px;}
 #lefttop_right{float:left; display:block; margin:0; padding-left: 10px; width:170px; height:40px;}
@@ -11,7 +11,7 @@
 #WritingYoutube{display:block; padding-top:20px;}
 #WritingGoogle_right{display:block; padding-top:20px;}
 #WritingYoutube_right{display:block; padding-top:20px;}
-#pic { float:right; display:block; margin:0; padding-top: 50px; padding-right: 50px; width:100px; height:400px;}
-#box { float:left; display:block; margin:0; padding:0; width:400px; height:400px; }
-#pic_right{ float:right; display:block; margin:0; padding-top: 50px; padding-right: 50px; width:100px; height:400px;}
-#box_right { float:left; display:block; margin:0; padding:0; width:400px; height:400px; }
+#pic { float:right; display:block; margin:0; padding-top: 50px; padding-right: 50px; width:100px;}
+#box { float:left; display:block; margin:0; padding:0; width:400px; height:300px}
+#pic_right{ float:right; display:block; margin:0; padding-top: 50px; padding-right: 50px; width:100px;}
+#box_right { float:left; display:block; margin:0; padding:0; width:400px;height:300px}
