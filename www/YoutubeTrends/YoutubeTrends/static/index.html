@@ -50,8 +50,24 @@
             color: black;
         }
 
-        #leftmap{
+        #maps{
             margin-left: 30px;
+            margin-right: 60px;
+            width: 100%;
+            height: 22vw;
+        }
+
+        #leftmap{
+            float: left;
+            width: 48%;
+            height: 20vw;
+            border:1px solid grey;
+            overflow: hidden;
+        }
+
+        #rightmap{
+            float: right;
+            margin-right: 35px;
             width: 48%;
             height: 20vw;
             border:1px solid grey;
@@ -174,8 +190,10 @@
     </div>
 </div>
 </div>
-<div id="leftmap"></div>
-
+<div id='maps'>
+    <div id='leftmap'></div>
+    <div id='rightmap'></div>
+</div>
 <div id='slider_container' class='container'>
     <h3 id="week_slider_header" class="output">Week (1)</h3>
     <input id="slide" type="range" min=1 max=52 step=1 value=1>

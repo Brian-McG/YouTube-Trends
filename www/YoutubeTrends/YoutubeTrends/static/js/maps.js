@@ -22,11 +22,28 @@ fill = {
     UNKNOWN: 'rgb(0,0,0)',
     defaultFill: 'grey'
 };
-var map = new Datamap({
+var lmap = new Datamap({
     element: document.getElementById('leftmap'),
     fills: fill,
 
     data: alldata["Gangnam Style"]["youtube"][0],
+    geographyConfig: {
+        borderColor: 'black',
+        borderOpacity: 0.5,
+        popupTemplate: function(geo, data) {
+            return ['<div class="hoverinfo"><strong>',
+                'Popularity in ' + geo.properties.name,
+                ': ' + data.popularity,
+                '</strong></div>'].join('');
+        }
+    }
+});
+
+var rmap = new Datamap({
+    element: document.getElementById('rightmap'),
+    fills: fill,
+
+    data: alldata["See you Again"]["youtube"][0],
     geographyConfig: {
         borderColor: 'black',
         borderOpacity: 0.5,
@@ -47,8 +64,11 @@ var curr = 0;
 //}, 2000);
 
 function setWeek(value){
-    map.updateChoropleth(
+    lmap.updateChoropleth(
         alldata["Gangnam Style"]["youtube"][value]
+    );
+    rmap.updateChoropleth(
+        alldata["See you Again"]["youtube"][value]
     );
 }
 
