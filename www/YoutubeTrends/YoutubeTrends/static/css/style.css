@@ -73,3 +73,7 @@
     cursor: pointer;
     color: black;
 }
+
+#merge_container {
+    display: none;
+}

@@ -170,7 +170,7 @@
 </div>
 <div id="line_graphs">
     <div id='merge_button'>
-        <button id="merge_line_graph" class="btn btn-primary">Merge graphs</button>
+        <button id="merge_line_graph_button" class="btn btn-primary" onclick="mergeClick()">Merge graphs</button>
     </div>
     <div id='left_container' class='container left_container'>
         <h2 id="line_graph_1_header" class="line_graph_header">Global Popularity Trends</h2>
@@ -183,12 +183,14 @@
         <div id="line_graph_2_legend" class="line_graph_legend"></div>
     </div>
     <div id="merge_container">
-
+        <h2 id="line_graph_merged_header" class="line_graph_header">Merged Global Popularity Trends</h2>
+        <div id="line_graph_merged" class="graph"></div>
     </div>
 </div>
 <script>
-    generate_line_graph(0, '#line_graph_1', 'gangnam.csv');
-    generate_line_graph(1, '#line_graph_2', 'gangnam.csv');
+    fetchRows(0, '#line_graph_1', 'gangnam.csv');
+    fetchRows(1, '#line_graph_2', 'blankSpace.csv');
+    fetchRowsFromTwoFiles(2, '#line_graph_merged', 'gangnam.csv', 'blankSpace.csv')
 
     $('input[type="range"]').rangeslider({
 
