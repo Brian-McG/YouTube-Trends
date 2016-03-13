@@ -107,19 +107,19 @@ function generate_line_graph(index, bindDom, dataFileName) {
             //d3.select(this).style('background-color', chart.color(id));
         })
         .on('mouseover', function (id) {
-            chart.focus(id);
+            chart[index].focus(id);
         })
         .on('mouseout', function (id) {
-            chart.revert();
+            chart[index].revert();
         })
         .on('click', function (id) {
-            chart.toggle(id);
+            chart[index].toggle(id);
             if(d3.select(this).style()[0][0].style.opacity == null || d3.select(this).style()[0][0].style.opacity == '' || d3.select(this).style()[0][0].style.opacity == 1) {
                 d3.select(this).style({opacity: 0.5});
-                chart.revert();
+                chart[index].revert();
             } else {
                 d3.select(this).style({opacity: 1});
-                chart.focus(id);
+                chart[index].focus(id);
             }
         });
 }
