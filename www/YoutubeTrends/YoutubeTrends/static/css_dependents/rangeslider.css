@@ -109,12 +109,3 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
   -webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
   box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
 }
-
-.rangeslider {
-  width: 750px !important;
-  margin-left: 180px !important;
-}
-
-.rangeslider__fill {
-  background: #FA6900 !important;
-}

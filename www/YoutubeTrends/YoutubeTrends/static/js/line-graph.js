@@ -26,12 +26,20 @@ function generate_line_graph() {
                 max: 52,
                 min: 1,
                 padding: {top: 0, bottom: 0},
-                ticks: 1
+                ticks: 1,
+                label: {
+                    text: 'Week',
+                    position: 'outer-center'
+                }
             },
             y: {
                 max: 100,
                 min: 0,
-                padding: {top: 20, bottom: 0}
+                padding: {top: 20, bottom: 0},
+                label: {
+                    text: 'Popularity Index (%)',
+                    position: 'outer-middle'
+                }
             }
         },
         grid: {
@@ -66,11 +74,11 @@ function generate_line_graph() {
         })
         .html(function (id) {
             if(id == 'google') {
-                return '<img  src="images/google-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: text-top;"> Google';
+                return '<img  src="images/google-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
             } else if (id == 'youtube') {
-                return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: text-top;"> Youtube';
+                return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
             } else if (id == 'youtubeComments') {
-                return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: text-top;"> Youtube Comments';
+                return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
             } else {
                 return id;
             }

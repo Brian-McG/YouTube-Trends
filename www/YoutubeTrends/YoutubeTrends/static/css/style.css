@@ -1,5 +1,5 @@
 #line_graph_1 {
-    width: 700px;
+    width: 100%;
 }
 
 #line_graph_1 .c3-line-data2 {
@@ -7,8 +7,7 @@
 }
 
 .rangeslider {
-    width: 730px !important;
-    margin-left: 180px !important;
+    width: 100%;
     height: 10px;
 }
 
@@ -27,7 +26,19 @@
  }
 
 .line_graph_legend {
-    width: 700px;
+    width: 100%;
+}
+
+#week_slider_header {
+    text-align: center;
+}
+
+#line_graph_header {
+    text-align: center;
+}
+
+#container {
+    width: 50%;
 }
 
 .legend {
