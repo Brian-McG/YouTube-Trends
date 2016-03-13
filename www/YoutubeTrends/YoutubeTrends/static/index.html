@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css_dependents/c3.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/rangeslider.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/top-style.css" type="text/css">
 
     <script src="js_dependents/jquery-2.2.1.min.js"></script>
     <script src="js_dependents/bootstrap.min.js"></script>
@@ -45,26 +46,20 @@
             color: black;
         }
 
-        #top {z-index:999; display:block; margin:0; padding-top:10px; width:550px; height:400px;}
-        #middletop{float:left; display:block; margin:0; padding-left: 10px; width:70px; height:30px;}
-        #righttop{float:right; display:block; margin:0; padding-left: 10px; width:70px; height:40px;}
-        #lefttop{float:left; display:block; margin:0; padding-left: 10px; width:150px; height:40px;}
-        #WritingGoogle{display:block; padding-top:20px;}
-        #WritingYoutube{display:block; padding-top:20px;}
-        #pic { float:right; display:block; margin:0; padding-top: 50px; padding-right: 50px; width:100px; height:400px;}
-        #box { float:left; display:block; margin:0; padding:0; width:400px; height:400px; }
-        #container {float: left; clear: left;}
+
     </style>
 
 </head>
-<body onload="changeVariable()">
-<div id="top">
+<body onload="changeVariableLeft(); changeVariableRight()">
+<div id="Top_Container">
+    <div id="Container_Top_Left">
     <div id="pic">
         <img id="Icon" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;">
     </div>
     <div id="box">
         <div id = "lefttop">
-            <select id="file_type" name="file_type" onchange="changeVariable()">
+
+            <select id="file_type" name="file_type" onchange="changeVariableLeft()">
                 <option value="GangnamStyle">Gangnam Style</option>
                 <option value="BlankSpaces">Blank Spaces</option>
             </select>
@@ -73,13 +68,14 @@
             <img src="images/Youtube.png" alt="Symbol" id = "Symbol" style="float:right;width:60px;height:40px;">
         </div>
         <div id="righttop">
-            <select id="trend_type" name="trend_type" onchange="changeVariable()" style="float:right">
+            <select id="trend_type" name="trend_type" onchange="changeVariableLeft()" style="float:right">
                 <option value="Youtube">Youtube Trends</option>
                 <option value="Google">Google Trends</option>
             </select>
         </div>
 
         <div id="WritingYoutube">
+            <br>
             <p><span id ="Name"></span></p>
             <p>
                 <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
@@ -99,6 +95,7 @@
             </p>
         </div>
         <div id="WritingGoogle">
+            <br>
             <p><span id ="NameGoogle"></span></p>
             <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
@@ -110,6 +107,62 @@
             </p>
         </div>
     </div>
+</div>
+    <div id="Container_Top_Right">
+    <div id="pic_right">
+        <img id="Icon_right" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;">
+    </div>
+    <div id="box_right">
+        <div id = "lefttop_right">
+            <select id="file_type_right" name="file_type" onchange="changeVariableRight()">
+                <option value="GangnamStyle">Gangnam Style</option>
+                <option value="BlankSpaces">Blank Spaces</option>
+            </select>
+        </div>
+        <div id = middletop_right>
+            <img src="images/Youtube.png" alt="Symbol" id = "Symbol_right" style="float:right;width:60px;height:40px;">
+        </div>
+        <div id="righttop_right">
+            <select id="trend_type_right" name="trend_type" onchange="changeVariableRight()" style="float:right">
+                <option value="Youtube">Youtube Trends</option>
+                <option value="Google">Google Trends</option>
+            </select>
+        </div>
+
+        <div id="WritingYoutube_right">
+            <br>
+            <p><span id ="Name_right"></span></p>
+            <p>
+                <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="Likes_right"></span>
+            </p>
+            <p>
+                <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="Dislikes_right"></span>
+            </p>
+            <p>
+                <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
+                :<span id ="Views_right"></span>
+            </p>
+            <p>
+                <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="Date_right"></span>
+            </p>
+        </div>
+        <div id="WritingGoogle_right">
+            <br>
+            <p><span id ="NameGoogle_right"></span></p>
+            <p>
+                <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
+                :<span id ="ViewGoogle_right"></span>
+            </p>
+            <p>
+                <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="DatePub_right"></span>
+            </p>
+        </div>
+    </div>
+</div>
 </div>
 <div id = 'slider_container' class='container'>
     <h3 id="week_slider_header" class="output">Week (1)</h3>
@@ -165,5 +218,6 @@
     });
 </script>
 </body>
-<script src="js/index.js"></script>
+<script src="js/left-top.js"></script>
+<script src="js/right-top.js"></script>
 </html>

@@ -2,17 +2,17 @@
  * Created by Bryce on 2016/03/08.
  */
 //Gets info when a video is selected and changes the pic accordingly
-function changeVariable() {
+function changeVariableLeft() {
 
     //console.log(selectedItem.text);
     d3.tsv("data/example.tsv", function (rows) {
-        assignValues(rows);
+        assignValuesLeft(rows);
     });
 }
 
 //Assigns a value to the various data points
-function assignValues(rows) {
-    index = rows.findIndex(match)
+function assignValuesLeft(rows) {
+    index = rows.findIndex(matchLeft)
     var selectCtrl = document.getElementById("trend_type");
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
@@ -27,11 +27,11 @@ function assignValues(rows) {
         $('#Views').text(rows[index].Views);
         $('#Date').text(rows[index].DatePublished);
     }
-    changePic()
-    changeIcon()
+    changePicLeft()
+    changeIconLeft()
 }
 //Matches the names selected to get the correct data
-function match(element){
+function matchLeft(element){
     var selectCtrl = document.getElementById("file_type");
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     return element.Name == selectedItem.text
@@ -39,7 +39,7 @@ function match(element){
 
 
 //Changes the icon for google trends or youtube
-function changeIcon() {
+function changeIconLeft() {
     var selectCtrl = document.getElementById("trend_type");
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
@@ -60,7 +60,7 @@ function changeIcon() {
 
 }
 //Changes the picture of the video
-function changePic() {
+function changePicLeft() {
     var selectCtrl = document.getElementById("file_type");
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
