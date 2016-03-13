@@ -2,8 +2,16 @@
     width: 100%;
 }
 
-#line_graph_1 .c3-line-data2 {
-    stroke-width: 5px;
+#line_graph_1 .c3-line-google {
+    stroke-width: 2px;
+}
+
+#line_graph_1 .c3-line-youtube {
+    stroke-width: 3px;
+}
+
+#line_graph_1 .c3-line-youtubeComments {
+    stroke-width: 1px;
 }
 
 .rangeslider {
@@ -33,11 +41,18 @@
     text-align: center;
 }
 
-#line_graph_header {
+.line_graph_header {
     text-align: center;
 }
 
-#container {
+#left_container {
+    float: left;
+}
+#right_container {
+    float: right;
+}
+
+.container {
     width: 50%;
 }
 

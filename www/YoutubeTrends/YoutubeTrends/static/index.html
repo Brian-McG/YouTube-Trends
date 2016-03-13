@@ -17,14 +17,14 @@
     <meta charset="UTF-8">
     <title>Interactive Line Graph</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="css_dependents/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css_dependents/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/c3.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/rangeslider.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
     <script src="js_dependents/jquery-2.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js_dependents/bootstrap.min.js"></script>
     <script src="js_dependents/d3.v3.min.js" charset="utf-8"></script>
     <script src="js_dependents/c3.min.js"></script>
     <script src="js_dependents/rangeslider.min.js"></script>
@@ -111,15 +111,23 @@
         </div>
     </div>
 </div>
-<div id = 'container' class='container'>
+<div id = 'slider_container' class='container'>
     <h3 id="week_slider_header" class="output">Week (1)</h3>
     <input id="slide" type="range" min=1 max=52 step=1 value=1>
-    <h2 id="line_graph_header">Global Popularity Trends</h2>
+</div>
+<div id = 'left_container' class='container'>
+    <h2 id="line_graph_1_header" class="line_graph_header">Global Popularity Trends</h2>
     <div id="line_graph_1" class="graph"></div>
     <div id="line_graph_1_legend" class = "line_graph_legend"></div>
 </div>
+<div id = 'right_container' class='container'>
+    <h2 id="line_graph_2_header" class="line_graph_header">Global Popularity Trends</h2>
+    <div id="line_graph_2" class="graph"></div>
+    <div id="line_graph_2_legend" class = "line_graph_legend"></div>
+</div>
 <script>
-    generate_line_graph();
+    generate_line_graph(0, '#line_graph_1', 'gangnam.csv');
+    generate_line_graph(1, '#line_graph_2', 'gangnam.csv');
 
     $('input[type="range"]').rangeslider({
 
@@ -157,6 +165,5 @@
     });
 </script>
 </body>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="js/index.js"></script>
 </html>
