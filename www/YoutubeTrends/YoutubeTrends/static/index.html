@@ -27,9 +27,13 @@
     <script src="js_dependents/jquery-2.2.1.min.js"></script>
     <script src="js_dependents/bootstrap.min.js"></script>
     <script src="js_dependents/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js_dependents/topojson.min.js"></script>
+    <script src="js_dependents/datamaps.world.min.js"></script>
     <script src="js_dependents/c3.min.js"></script>
     <script src="js_dependents/rangeslider.min.js"></script>
     <script src="js/line-graph.js"></script>
+    <script type="text/javascript" src="data/all.json"></script>
+
 
     <style>
         img {
@@ -46,7 +50,13 @@
             color: black;
         }
 
-
+        #leftmap{
+            margin-left: 30px;
+            width: 48%;
+            height: 20vw;
+            border:1px solid grey;
+            overflow: hidden;
+        }
     </style>
 
 </head>
@@ -164,6 +174,8 @@
     </div>
 </div>
 </div>
+<div id="leftmap"></div>
+
 <div id='slider_container' class='container'>
     <h3 id="week_slider_header" class="output">Week (1)</h3>
     <input id="slide" type="range" min=1 max=52 step=1 value=1>
@@ -210,7 +222,8 @@
         // Callback function
         onSlide: function (position, value) {
             $(".output").text("Week (" + value + ")");
-            setAxisGrid(value)
+            setAxisGrid(value);
+            setWeek(value);
         },
 
         // Callback function
@@ -226,6 +239,7 @@
     });
 </script>
 </body>
+<script src="js/maps.js"></script>
 <script src="js/left-top.js"></script>
 <script src="js/right-top.js"></script>
 </html>
