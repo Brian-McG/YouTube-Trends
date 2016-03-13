@@ -31,7 +31,7 @@
 
 .c3 {
     font: 10px Helvetica;
- }
+}
 
 .line_graph_legend {
     width: 100%;
@@ -43,24 +43,33 @@
 
 .line_graph_header {
     text-align: center;
+    margin-top: 0px;
 }
 
-#left_container {
+.left_container {
     float: left;
 }
-#right_container {
+
+.right_container {
     float: right;
 }
 
 .container {
     width: 50%;
+    margin-bottom: 20px;
 }
 
 .legend {
     text-align: center;
 }
+
+#merge_button {
+    width: 100%;
+    text-align: center;
+}
+
 .legend span {
-    margin-right: 10px;
+    padding-right: 10px;
     cursor: pointer;
     color: black;
 }

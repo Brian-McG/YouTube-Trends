@@ -164,19 +164,27 @@
     </div>
 </div>
 </div>
-<div id = 'slider_container' class='container'>
+<div id='slider_container' class='container'>
     <h3 id="week_slider_header" class="output">Week (1)</h3>
     <input id="slide" type="range" min=1 max=52 step=1 value=1>
 </div>
-<div id = 'left_container' class='container'>
-    <h2 id="line_graph_1_header" class="line_graph_header">Global Popularity Trends</h2>
-    <div id="line_graph_1" class="graph"></div>
-    <div id="line_graph_1_legend" class = "line_graph_legend"></div>
-</div>
-<div id = 'right_container' class='container'>
-    <h2 id="line_graph_2_header" class="line_graph_header">Global Popularity Trends</h2>
-    <div id="line_graph_2" class="graph"></div>
-    <div id="line_graph_2_legend" class = "line_graph_legend"></div>
+<div id="line_graphs">
+    <div id='merge_button'>
+        <button id="merge_line_graph" class="btn btn-primary">Merge graphs</button>
+    </div>
+    <div id='left_container' class='container left_container'>
+        <h2 id="line_graph_1_header" class="line_graph_header">Global Popularity Trends</h2>
+        <div id="line_graph_1" class="graph"></div>
+        <div id="line_graph_1_legend" class="line_graph_legend"></div>
+    </div>
+    <div id='right_container' class='container right_container'>
+        <h2 id="line_graph_2_header" class="line_graph_header">Global Popularity Trends</h2>
+        <div id="line_graph_2" class="graph"></div>
+        <div id="line_graph_2_legend" class="line_graph_legend"></div>
+    </div>
+    <div id="merge_container">
+
+    </div>
 </div>
 <script>
     generate_line_graph(0, '#line_graph_1', 'gangnam.csv');
