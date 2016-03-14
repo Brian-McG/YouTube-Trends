@@ -87,45 +87,46 @@
         <div id="pic">
             <img id="Icon" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;">
         </div>
-        <div id = "lefttop" class="col-xs-5 selectContainer">
-            <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('')">
-                <option value="GangnamStyle">Gangnam Style</option>
-                <option value="BlankSpaces">Blank Space</option>
-                <option value="SeeYouAgain">See You Again</option>
-            </select>
-        </div>
-        <div id = middletop>
-            <img src="images/Youtube.png" alt="Symbol" id = "Symbol" style="float:right;width:60px;height:40px;">
-        </div>
-        <div id="righttop" class="col-xs-5 selectContainer">
-            <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('')" style="float:right">
-                <option value="Youtube">Youtube Trends</option>
-                <option value="Google">Google Trends</option>
-            </select>
-        </div>
-
+        <div id="topbar">
+          <div id = "lefttop" class="col-xs-5 selectContainer">
+              <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('')">
+                  <option value="GangnamStyle">Gangnam Style</option>
+                  <option value="BlankSpaces">Blank Space</option>
+                  <option value="SeeYouAgain">See You Again</option>
+              </select>
+          </div>
+          <div id = middletop>
+              <img src="images/Youtube.png" alt="Symbol" id = "Symbol" style="float:right;width:60px;height:40px;">
+          </div>
+          <div id="righttop" class="col-xs-5 selectContainer">
+              <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('')" style="float:right">
+                  <option value="Youtube">Youtube Trends</option>
+                  <option value="Google">Google Trends</option>
+              </select>
+          </div>
+      </div>
         <div id="WritingYoutube">
             <br>
             <p><span id ="Name"></span></p>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Artist"></span>
+                Artist: <span id ="Artist"></span>
             </p>
             <p>
                 <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Likes"></span>
+                Likes: <span id ="Likes"></span>
             </p>
             <p>
                 <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Dislikes"></span>
+                Dislikes: <span id ="Dislikes"></span>
             </p>
             <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
-                :<span id ="Views"></span>
+                Views: <span id ="Views"></span>
             </p>
             <p>
                 <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Date"></span>
+                Date: <span id ="Date"></span>
             </p>
         </div>
         <div id="WritingGoogle">
@@ -151,6 +152,7 @@
         <div id="pic_right">
             <img id="Icon_right" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;">
         </div>
+        <div id="topbar_right">
         <div id = "lefttop_right" class="col-xs-5 selectContainer">
             <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right')">
                 <option value="GangnamStyle">Gangnam Style</option>
@@ -167,29 +169,29 @@
                 <option value="Google">Google Trends</option>
             </select>
         </div>
-
+      </div>
         <div id="WritingYoutube_right">
             <br>
             <p><span id ="Name_right"></span></p>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Artist_right"></span>
+                Artist :<span id ="Artist_right"></span>
             </p>
             <p>
                 <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Likes_right"></span>
+                Likes :<span id ="Likes_right"></span>
             </p>
             <p>
                 <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Dislikes_right"></span>
+                Dislikes :<span id ="Dislikes_right"></span>
             </p>
             <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
-                :<span id ="Views_right"></span>
+                Views :<span id ="Views_right"></span>
             </p>
             <p>
                 <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="Date_right"></span>
+                Date Published:<span id ="Date_right"></span>
             </p>
         </div>
         <div id="WritingGoogle_right">
@@ -197,7 +199,7 @@
             <p><span id ="NameGoogle_right"></span></p>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                :<span id ="ArtistGoogle_right"></span>
+                Artist:<span id ="ArtistGoogle_right"></span>
             </p>
             <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
@@ -239,6 +241,24 @@
     </div>
 </div>
 <script>
+
+$(document).ready(function() {
+  var l = $("#topbar");
+  var r= $("#topbar_right");
+  var posl = l.position();
+  var posr = r.position();
+  $(window).scroll(function() {
+        var windowpos = $(window).scrollTop();
+        if (windowpos >= posl.top && windowpos>=posr.top) {
+            r.addClass("stick");
+            l.addClass("stick");
+        } else {
+            r.removeClass("stick");
+            l.removeClass("stick");
+        }
+    });
+  });
+
     $('input[type="range"]').rangeslider({
 
         // Feature detection the default is `true`.
