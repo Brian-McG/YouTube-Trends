@@ -70,6 +70,6 @@ function changePic() {
     var selectCtrl = document.getElementById("file_type"+exstention);
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
-    var src = $('#Icon'+exstention).attr("src","Images/"+name+".png");
+    var src = $('#Icon'+exstention).attr("src","images/"+name+".png");
     $(this).attr("src", src);
 }
