@@ -148,7 +148,7 @@ function generate_line_graph(index, bindDom, rows) {
             })
             .html(function (id) {
                 if (id == 'google') {
-                    return '<img  src="images/google-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
+                    return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
                 } else if (id == 'youtube') {
                     return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
                 } else if (id == 'youtubeComments') {
