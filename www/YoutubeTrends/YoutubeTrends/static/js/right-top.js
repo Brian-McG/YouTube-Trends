@@ -64,6 +64,6 @@ function changePicRight() {
     var selectCtrl = document.getElementById("file_type_right");
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
-    var src = $('#Icon_right').attr("src","Images/"+name+".png");
+    var src = $('#Icon_right').attr("src","images/"+name+".png");
     $(this).attr("src", src);
 }
