@@ -15,7 +15,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Interactive Line Graph</title>
+    <title>Youtube Trends</title>
 
     <link rel="stylesheet" href="css_dependents/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/bootstrap-theme.min.css" type="text/css">
@@ -87,7 +87,8 @@
         <div id = "lefttop">
             <select id="file_type" name="file_type" onchange="changeVariable('')">
                 <option value="GangnamStyle">Gangnam Style</option>
-                <option value="BlankSpaces">Blank Spaces</option>
+                <option value="BlankSpaces">Blank Space</option>
+                <option value="SeeYouAgain">See You Again</option>
             </select>
         </div>
         <div id = middletop>
@@ -103,6 +104,10 @@
         <div id="WritingYoutube">
             <br>
             <p><span id ="Name"></span></p>
+            <p>
+                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="Artist"></span>
+            </p>
             <p>
                 <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
                 :<span id ="Likes"></span>
@@ -124,6 +129,10 @@
             <br>
             <p><span id ="NameGoogle"></span></p>
             <p>
+                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="ArtistGoogle"></span>
+            </p>
+            <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
                 :<span id ="ViewGoogle"></span>
             </p>
@@ -142,7 +151,8 @@
         <div id = "lefttop_right">
             <select id="file_type_right" name="file_type" onchange="changeVariable('_right')">
                 <option value="GangnamStyle">Gangnam Style</option>
-                <option value="BlankSpaces">Blank Spaces</option>
+                <option value="BlankSpaces">Blank Space</option>
+                <option value="SeeYouAgain">See You Again</option>
             </select>
         </div>
         <div id = middletop_right>
@@ -158,6 +168,10 @@
         <div id="WritingYoutube_right">
             <br>
             <p><span id ="Name_right"></span></p>
+            <p>
+                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="Artist_right"></span>
+            </p>
             <p>
                 <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
                 :<span id ="Likes_right"></span>
@@ -178,6 +192,10 @@
         <div id="WritingGoogle_right">
             <br>
             <p><span id ="NameGoogle_right"></span></p>
+            <p>
+                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                :<span id ="ArtistGoogle_right"></span>
+            </p>
             <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
                 :<span id ="ViewGoogle_right"></span>

@@ -21,12 +21,15 @@ function assignValues(rows) {
     var selectCtrl = document.getElementById("trend_type"+exstention);
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
+    console.log(rows[index].Name);
     if(name == "Google"){
         $('#NameGoogle'+exstention).text(rows[index].Name);
+        $('#Artist'+exstention).text(rows[index].Artist);
         $('#ViewGoogle'+exstention).text(rows[index].Views);
         $('#DatePub'+exstention).text(rows[index].DatePublished);
     }else {
         $('#Name'+exstention).text(rows[index].Name);
+        $('#Artist'+exstention).text(rows[index].Artist);
         $('#Likes'+exstention).text(rows[index].Likes);
         $('#Dislikes'+exstention).text(rows[index].Dislikes);
         $('#Views'+exstention).text(rows[index].Views);
@@ -57,7 +60,7 @@ function changeIcon() {
         $('#WritingGoogle'+exstention).show();
 
     }else{
-        $('#Symbol'+exstention).attr("src","images/Youtube.png");
+        $('#Symbol'+exstention).attr("src","images/youtubeLegendIcon.png");
         $('#Symbol'+exstention).height(40);
         $('#Symbol'+exstention).width(60);
         $('#WritingGoogle'+exstention).hide();

@@ -17,15 +17,17 @@ function assignValuesRight(rows) {
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
     if(name == "Google"){
-        $('#NameGoogle_right').text(rows[index].Name);
-        $('#ViewGoogle_right').text(rows[index].Views);
-        $('#DatePub_right').text(rows[index].DatePublished);
+        $('#NameGoogle_right'+exstention).text(rows[index].Name);
+        $('#Artist_right'+exstention).text(rows[index].Artist);
+        $('#ViewGoogle_right'+exstention).text(rows[index].Views);
+        $('#DatePub_right'+exstention).text(rows[index].DatePublished);
     }else {
-        $('#Name_right').text(rows[index].Name);
-        $('#Likes_right').text(rows[index].Likes);
-        $('#Dislikes_right').text(rows[index].Dislikes);
-        $('#Views_right').text(rows[index].Views);
-        $('#Date_right').text(rows[index].DatePublished);
+        $('#Name_right'+exstention).text(rows[index].Name);
+        $('#Artist_right'+exstention).text(rows[index].Artist);
+        $('#Likes_right'+exstention).text(rows[index].Likes);
+        $('#Dislikes_right'+exstention).text(rows[index].Dislikes);
+        $('#Views_right'+exstention).text(rows[index].Views);
+        $('#Date_right'+exstention).text(rows[index].DatePublished);
     }
     changePicRight()
     changeIconRight()
@@ -51,7 +53,7 @@ function changeIconRight() {
         $('#WritingGoogle_right').show();
 
     }else{
-        $('#Symbol_right').attr("src","images/Youtube.png");
+        $('#Symbol_right').attr("src","images/youtubeLegendIcon.png");
         $('#Symbol_right').height(40);
         $('#Symbol_right').width(60);
         $('#WritingGoogle_right').hide();
