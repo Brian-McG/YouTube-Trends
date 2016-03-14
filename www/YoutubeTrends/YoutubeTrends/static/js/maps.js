@@ -4,7 +4,7 @@ d3.json("data/all.json", function(error, json) {
     if (error) return console.warn(error);
     alldata = json;
 });
-console.log(alldata["Gangnam Style"]["youtube"][0]);
+console.log(alldata["Gangnam Style"]["Youtube"][0]);
 rfill = ['#fef0d9','#fdcc8a','#fc8d59','#e34a33','#b30000'];
 bfill = ['#ca0020','#f4a582','#ffffff','#bababa','#404040'];
 yfill = ['#ffffb2','#fecc5c','#fd8d3c','#f03b20','#bd0026'];
@@ -26,7 +26,7 @@ var lmap = new Datamap({
     element: document.getElementById('leftmap'),
     fills: fill,
 
-    data: alldata["Gangnam Style"]["youtube"][0],
+    data: alldata["Gangnam Style"]["Youtube"][0],
     geographyConfig: {
         borderColor: 'black',
         borderOpacity: 0.5,
@@ -54,7 +54,7 @@ var rmap = new Datamap({
     element: document.getElementById('rightmap'),
     fills: fill,
 
-    data: alldata["See you Again"]["youtube"][0],
+    data: alldata["See You Again"]["Youtube"][0],
     geographyConfig: {
         borderColor: 'black',
         borderOpacity: 0.5,
@@ -70,16 +70,16 @@ var curr = 0;
 //window.setInterval(function() {
 //    curr = curr + 1;
 //    map.updateChoropleth(
-//        alldata["Gangnam Style"]["youtube"][curr]
+//        alldata["Gangnam Style"]["Youtube"][curr]
 //    );
 //}, 2000);
 
 function setWeek(value){
     lmap.updateChoropleth(
-        alldata["Gangnam Style"]["youtube"][value]
+        alldata["Gangnam Style"]["Youtube"][value]
     );
     rmap.updateChoropleth(
-        alldata["See you Again"]["youtube"][value]
+        alldata["See You Again"]["Youtube"][value]
     );
 }
 
