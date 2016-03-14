@@ -1,8 +1,8 @@
 #Top_Container{z-index:999; display:block; margin:0; padding-top:10px; width:100%;}
 #Container_Top_Left {float:left; display:block; margin:0; padding-top:10px; width:50%;}
-#middletop{float:left; display:block; margin:0; padding-left: 15px; width:70px; height:30px;}
-#righttop{float:right; display:block; margin:0; padding-left: 10px; width:70px; height:60px;}
-#lefttop{float:left; display:block; margin:0; padding-left: 10px; width:170px; height:40px;}
+#middletop{float:left; display:block; margin:0; padding-left: 15px; width:20%; height:30px;}
+#righttop{float:right; display:block; margin:0; padding-left: 10px; width:20%; height:60px;}
+#lefttop{float:left; display:block; margin:0; padding-left: 10px; width:40%; height:40px;}
 #Container_Top_Right {float: right; display:block; margin:0; padding-top:10px; width:50%;}
 #middletop_right{float:left; display:block; margin:0; padding-left: 15px; width:70px; height:30px;}
 #righttop_right{float:right; display:block; margin:0; padding-left: 20px; width:90px; height:50px;}
