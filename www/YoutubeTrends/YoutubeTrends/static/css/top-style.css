@@ -16,3 +16,7 @@
 #pic_right{ float:right; display:block; margin:0; padding-top: 50px; padding-right: 50px; width:100px;}
 #box_right { float:left; display:block; margin:0; padding:0; width:100%;height:300px}
 #Heading{text-align: center;}
+.form-control {
+    cursor: hand;
+    width: auto;
+}
