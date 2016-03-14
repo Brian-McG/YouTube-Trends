@@ -5,7 +5,7 @@
 function changeVariable() {
 
     //console.log(selectedItem.text);
-    d3.tsv("example.tsv", function (rows) {
+    d3.tsv("song_data.tsv", function (rows) {
         assignValues(rows);
     });
 }

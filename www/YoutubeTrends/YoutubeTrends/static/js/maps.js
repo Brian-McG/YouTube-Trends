@@ -38,6 +38,11 @@ var lmap = new Datamap({
         }
     },
     done: function(datamap) {
+        // Zoom - Make this linked
+        datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
+        function redraw() {
+            datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+        }
         datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
             // This will be used to set graphs based on click
             alert(geography.properties.name);

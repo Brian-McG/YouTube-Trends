@@ -43,6 +43,7 @@
             margin-left: 30px;
             font-size: 20px;
             color: black;
+
         }
         select{
             margin-left: 30px;
@@ -73,6 +74,10 @@
             border:1px solid grey;
             overflow: hidden;
         }
+
+        g.datamaps-subunits {
+            cursor: hand;
+        }
     </style>
 
 </head>
@@ -93,6 +98,8 @@
                   <option value="GangnamStyle">Gangnam Style</option>
                   <option value="BlankSpaces">Blank Space</option>
                   <option value="SeeYouAgain">See You Again</option>
+                  <option value="SeeYouAgain">Uptown Funk</option>
+                  <option value="SeeYouAgain">Shake It Off</option>
               </select>
           </div>
           <div id = middletop>
@@ -110,27 +117,27 @@
             <p><span id ="Name"></span></p>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Artist: <span id ="Artist"></span>
+                <span class="Label">Artist:</span><span id ="Artist"></span>
             </p>
             <p>
                 <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Likes: <span id ="Likes"></span>
+                <span class="Label">Likes:</span><span id ="Likes"></span>
             </p>
             <p>
                 <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Dislikes: <span id ="Dislikes"></span>
+                <span class="Label">Dislikes:</span><span id ="Dislikes"></span>
             </p>
             <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
-                Views: <span id ="Views"></span>
+                <span class="Label">Views:</span><span id ="Views"></span>
             </p>
             <p>
                 <img src="images/comment.png" alt="Like" style="float:left;width:20px;height:25px;">
-                Comments: <span id ="Comments_right"></span>
+                <span class="Label">Comments:</span><span id ="Comments"></span>
             </p>
             <p>
                 <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Date Published: <span id ="Date"></span>
+                <span class="Label">Date Published:</span><span id ="Date"></span>
             </p>
         </div>
         <div id="WritingGoogle">
@@ -138,15 +145,15 @@
             <p><span id ="NameGoogle"></span></p>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Artist: <span id ="ArtistGoogle"></span>
+                <span class="Label">Artist:</span><span id ="ArtistGoogle"></span>
             </p>
             <p>
                 <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
-                Hits: <span id ="ViewGoogle"></span>
+                <span class="Label">Hits:</span><span id ="ViewGoogle"></span>
             </p>
             <p>
                 <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Released: <span id ="DatePub"></span>
+                <span class="Label">Released:</span><span id ="DatePub"></span>
             </p>
         </div>
     </div>
@@ -162,6 +169,8 @@
                 <option value="GangnamStyle">Gangnam Style</option>
                 <option value="BlankSpaces">Blank Space</option>
                 <option value="SeeYouAgain">See You Again</option>
+                <option value="SeeYouAgain">Uptown Funk</option>
+                <option value="SeeYouAgain">Shake It Off</option>
             </select>
         </div>
         <div id = middletop_right>
@@ -179,27 +188,27 @@
             <p><span id ="Name_right"></span></p>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Artist: <span id ="Artist_right"></span>
+                <span class="Label" >Artist:</span><span id ="Artist_right"></span>
             </p>
             <p>
                 <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Likes: <span id ="Likes_right"></span>
+                <span class="Label">Likes:</span><span id ="Likes_right"></span>
             </p>
             <p>
                 <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Dislikes: <span id ="Dislikes_right"></span>
+                <span class="Label">Dislikes:</span><span id ="Dislikes_right"></span>
             </p>
             <p>
                 <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
-                Views: <span id ="Views_right"></span>
+                <span class="Label">Views:</span><span id ="Views_right"></span>
             </p>
             <p>
                 <img src="images/comment.png" alt="Like" style="float:left;width:20px;height:25px;">
-                Comments: <span id ="Comments_right"></span>
+                <span class="Label">Comments:</span><span id ="Comments_right"></span>
             </p>
             <p>
                 <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Date Published: <span id ="Date_right"></span>
+                <span class="Label">Date Published:</span><span id ="Date_right"></span>
             </p>
         </div>
         <div id="WritingGoogle_right">
@@ -207,15 +216,15 @@
             <p><span id ="NameGoogle_right"></span></p>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Artist: <span id ="ArtistGoogle_right"></span>
+                <span class="Label">Artist:</span><span id ="ArtistGoogle_right"></span>
             </p>
             <p>
                 <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
-                Hits: <span id ="ViewGoogle_right"></span>
+                <span class="Label">Hits:</span><span id ="ViewGoogle_right"></span>
             </p>
             <p>
                 <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                Released: <span id ="DatePub_right"></span>
+                <span class="Label">Released:</span><span id ="DatePub_right"></span>
             </p>
         </div>
     </div>
@@ -267,7 +276,8 @@ $(document).ready(function() {
     });
   });
 
-    $('input[type="range"]').rangeslider({
+var $r = $('input[type="range"]');
+$r.rangeslider({
 
         // Feature detection the default is `true`.
         // Set this to `false` if you want to use

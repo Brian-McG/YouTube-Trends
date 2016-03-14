@@ -10,7 +10,7 @@ var selectedItems = ['gangnam.csv', 'Gangnam Style', 'gangnam.csv', 'Gangnam Sty
 
 function changeVariable(side) {
     extension = side;
-    d3.tsv("data/example.tsv", function (rows) {
+    d3.tsv("data/song_data.tsv", function (rows) {
         assignValues(rows);
     });
 }
@@ -23,7 +23,7 @@ function assignValues(rows) {
     var name = selectedItem.value;
     if (name == "Google") {
         $('#NameGoogle' + extension).text(rows[index].Name);
-        $('#Artist' + extension).text(rows[index].Artist);
+        $('#ArtistGoogle' + extension).text(rows[index].Artist);
         $('#ViewGoogle' + extension).text(rows[index].Hits);
         $('#DatePub' + extension).text(rows[index].DateReleased);
     } else {
