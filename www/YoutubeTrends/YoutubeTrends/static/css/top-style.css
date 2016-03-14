@@ -1,11 +1,11 @@
 #Top_Container{z-index:999; display:block; margin:0; padding-top:10px; width:100%;}
 #Container_Top_Left {float:left; display:block; margin:0; padding-top:0px; width:50%;}
 #middletop{float:left; display:block; margin:0; padding-left: 15px; width:20%;}
-#righttop{float:right; display:block; margin:0; padding-right: 30px; padding-top: 0px;width:20%;}
+#righttop{float:right; display:block; margin:0; padding-right: 30px; padding-top: 0px;width:40%;}
 #lefttop{float:left; display:block; margin:0; padding-left: 10px; width:40%;padding-top: 0px;}
 #Container_Top_Right {float: right; display:block; margin:0; padding-top:0px; width:50%;}
 #middletop_right{float:left; display:block; margin:0; padding-left: 15px; width:20%;}
-#righttop_right{float:right; display:block; margin:0; padding-right: 30px; width:20%;padding-top: 0px;}
+#righttop_right{float:right; display:block; margin:0; padding-right: 30px; width:40%;padding-top: 0px;}
 #lefttop_right{float:left; display:block; margin:0; padding-right: 10px; width:40%; height:40px;padding-top: 0px;}
 #WritingGoogle{display:block; padding-top:20px;}
 #WritingYoutube{display:block; padding-top:20px;}
@@ -18,7 +18,8 @@
 #Heading{text-align: center;}
 .form-control {
     cursor: hand;
-    width: auto;
+    width: 100% !important;
+
 }
 
 #topbar{background-color: white;width:50%;position:fixed}
