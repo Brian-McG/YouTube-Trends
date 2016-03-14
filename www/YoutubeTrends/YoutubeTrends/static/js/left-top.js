@@ -2,45 +2,61 @@
  * Created by Bryce on 2016/03/08.
  */
 //Gets info when a video is selected and changes the pic accordingly
-var exstention = ''
+var extension = '';
+var assigned = false;
 
-function initialLoad(){
-  changeVariable('');
-}
+// Set default items
+var selectedItems = ['gangnam.csv', 'Gangnam Style', 'gangnam.csv', 'Gangnam Style'];
 
 function changeVariable(side) {
-      exstention = side;
-      d3.tsv("data/example.tsv", function (rows) {
-          assignValues(rows);
-      });
+    extension = side;
+    d3.tsv("data/example.tsv", function (rows) {
+        assignValues(rows);
+    });
 }
 
 //Assigns a value to the various data points
 function assignValues(rows) {
     index = rows.findIndex(match)
-    var selectCtrl = document.getElementById("trend_type"+exstention);
+    var selectCtrl = document.getElementById("trend_type" + extension);
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
-    console.log(rows[index].Name);
-    if(name == "Google"){
-        $('#NameGoogle'+exstention).text(rows[index].Name);
-        $('#Artist'+exstention).text(rows[index].Artist);
-        $('#ViewGoogle'+exstention).text(rows[index].Views);
-        $('#DatePub'+exstention).text(rows[index].DatePublished);
-    }else {
-        $('#Name'+exstention).text(rows[index].Name);
-        $('#Artist'+exstention).text(rows[index].Artist);
-        $('#Likes'+exstention).text(rows[index].Likes);
-        $('#Dislikes'+exstention).text(rows[index].Dislikes);
-        $('#Views'+exstention).text(rows[index].Views);
-        $('#Date'+exstention).text(rows[index].DatePublished);
+    if (name == "Google") {
+        $('#NameGoogle' + extension).text(rows[index].Name);
+        $('#Artist' + extension).text(rows[index].Artist);
+        $('#ViewGoogle' + extension).text(rows[index].Views);
+        $('#DatePub' + extension).text(rows[index].DatePublished);
+    } else {
+        $('#Name' + extension).text(rows[index].Name);
+        $('#Artist' + extension).text(rows[index].Artist);
+        $('#Likes' + extension).text(rows[index].Likes);
+        $('#Dislikes' + extension).text(rows[index].Dislikes);
+        $('#Views' + extension).text(rows[index].Views);
+        $('#Date' + extension).text(rows[index].DatePublished);
     }
-    changePic()
-    changeIcon()
+    changePic();
+    changeIcon();
+    if(assigned == false) {
+        fetchRows(0, '#line_graph_1', selectedItems[0]);
+        fetchRows(1, '#line_graph_2', selectedItems[2]);
+        fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
+        assigned = true;
+    }
+
+    if(extension == '') {
+        selectedItems[0] = rows[index].Identifier + '.csv';
+        selectedItems[1] = rows[index].Name;
+        fetchRows(0, '#line_graph_1', selectedItems[0]);
+    } else {
+        selectedItems[2] = rows[index].Identifier + '.csv';
+        selectedItems[3] = rows[index].Name;
+        fetchRows(1, '#line_graph_2', selectedItems[2]);
+    }
+    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
 }
 //Matches the names selected to get the correct data
-function match(element){
-    var id = "file_type"+exstention
+function match(element) {
+    var id = "file_type" + extension
     var selectCtrl = document.getElementById(id);
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     return element.Name == selectedItem.text
@@ -49,30 +65,30 @@ function match(element){
 
 //Changes the icon for google trends or youtube
 function changeIcon() {
-    var selectCtrl = document.getElementById("trend_type"+exstention);
+    var selectCtrl = document.getElementById("trend_type" + extension);
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
-    if(name=="Google"){
-        $('#Symbol'+exstention).attr("src","images/Google.png");
-        $('#Symbol'+exstention).height(50);
-        $('#Symbol'+exstention).width(50);
-        $('#WritingYoutube'+exstention).hide();
-        $('#WritingGoogle'+exstention).show();
+    if (name == "Google") {
+        $('#Symbol' + extension).attr("src", "images/Google.png");
+        $('#Symbol' + extension).height(50);
+        $('#Symbol' + extension).width(50);
+        $('#WritingYoutube' + extension).hide();
+        $('#WritingGoogle' + extension).show();
 
-    }else{
-        $('#Symbol'+exstention).attr("src","images/youtubeLegendIcon.png");
-        $('#Symbol'+exstention).height(40);
-        $('#Symbol'+exstention).width(60);
-        $('#WritingGoogle'+exstention).hide();
-        $('#WritingYoutube'+exstention).show();
+    } else {
+        $('#Symbol' + extension).attr("src", "images/youtubeLegendIcon.png");
+        $('#Symbol' + extension).height(40);
+        $('#Symbol' + extension).width(60);
+        $('#WritingGoogle' + extension).hide();
+        $('#WritingYoutube' + extension).show();
     }
 
 }
 //Changes the picture of the video
 function changePic() {
-    var selectCtrl = document.getElementById("file_type"+exstention);
+    var selectCtrl = document.getElementById("file_type" + extension);
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
-    var src = $('#Icon'+exstention).attr("src","images/"+name+".png");
+    var src = $('#Icon' + extension).attr("src", "images/" + name + ".png");
     $(this).attr("src", src);
 }

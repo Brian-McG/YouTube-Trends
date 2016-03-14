@@ -5,6 +5,7 @@
 var chart = [null, null, null];
 var colors = ['#1F77B4', '#EF5656', '#EF5656'];
 var isMerged = false;
+var legendGenerated = [false, false];
 
 function fetchRows(index, bindDom, dataFileName) {
     d3.csv("data/" + dataFileName, function (rows) {
@@ -33,19 +34,19 @@ function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, 
 
             // Set the styling on each pair of lines
             var googleLines = $('path[class*="c3-line-"][class$="-Google"]');
-            for(var i = 0; i < googleLines.length; ++i) {
+            for (var i = 0; i < googleLines.length; ++i) {
                 googleLines[i].style.strokeDasharray = "5, 5, 5, 5, 5, 5, 10, 5, 10, 5, 10, 5";
                 googleLines[i].style.strokeWidth = "2px";
             }
 
             var youtubeLines = $('path[class*="c3-line-"][class$="-Youtube"]');
-            for(var i = 0; i < youtubeLines.length; ++i) {
+            for (var i = 0; i < youtubeLines.length; ++i) {
                 youtubeLines[i].style.strokeDasharray = "1,1";
                 youtubeLines[i].style.strokeWidth = "4px";
             }
 
             var youtubeCommentsLines = $('path[class*="c3-line-"][class$="-Youtube-Comments"]');
-            for(var i = 0; i < youtubeCommentsLines.length; ++i) {
+            for (var i = 0; i < youtubeCommentsLines.length; ++i) {
                 youtubeCommentsLines[i].style.strokeDasharray = "";
                 youtubeCommentsLines[i].style.strokeWidth = "1px";
             }
@@ -138,7 +139,7 @@ function generate_line_graph(index, bindDom, rows) {
      */
 
     // Add a custom legend
-    if(index != 3) {
+    if (index != 3 && !legendGenerated[index]) {
         d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
             .data(['google', 'youtube', 'youtubeComments'])
             .enter().append('span')
@@ -175,6 +176,7 @@ function generate_line_graph(index, bindDom, rows) {
                     chart[index].focus(id);
                 }
             });
+        legendGenerated[index] = true;
     }
 }
 
@@ -202,7 +204,7 @@ function setAxisGrid(value) {
 }
 
 function mergeClick() {
-    if(isMerged) {
+    if (isMerged) {
         $("#merge_line_graph_button").text("Merge Graph");
         $("#merge_container").hide();
         $("#left_container").show();

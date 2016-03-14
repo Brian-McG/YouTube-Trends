@@ -36,6 +36,12 @@ var lmap = new Datamap({
                 ': ' + data.popularity,
                 '</strong></div>'].join('');
         }
+    },
+    done: function(datamap) {
+        datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+            // This will be used to set graphs based on click
+            alert(geography.properties.name);
+        });
     }
 });
 

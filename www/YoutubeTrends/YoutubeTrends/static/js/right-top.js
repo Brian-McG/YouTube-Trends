@@ -17,20 +17,24 @@ function assignValuesRight(rows) {
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
     if(name == "Google"){
-        $('#NameGoogle_right'+exstention).text(rows[index].Name);
-        $('#Artist_right'+exstention).text(rows[index].Artist);
-        $('#ViewGoogle_right'+exstention).text(rows[index].Views);
-        $('#DatePub_right'+exstention).text(rows[index].DatePublished);
+        $('#NameGoogle_right'+extension).text(rows[index].Name);
+        $('#Artist_right'+extension).text(rows[index].Artist);
+        $('#ViewGoogle_right'+extension).text(rows[index].Views);
+        $('#DatePub_right'+extension).text(rows[index].DatePublished);
     }else {
-        $('#Name_right'+exstention).text(rows[index].Name);
-        $('#Artist_right'+exstention).text(rows[index].Artist);
-        $('#Likes_right'+exstention).text(rows[index].Likes);
-        $('#Dislikes_right'+exstention).text(rows[index].Dislikes);
-        $('#Views_right'+exstention).text(rows[index].Views);
-        $('#Date_right'+exstention).text(rows[index].DatePublished);
+        $('#Name_right'+extension).text(rows[index].Name);
+        $('#Artist_right'+extension).text(rows[index].Artist);
+        $('#Likes_right'+extension).text(rows[index].Likes);
+        $('#Dislikes_right'+extension).text(rows[index].Dislikes);
+        $('#Views_right'+extension).text(rows[index].Views);
+        $('#Date_right'+extension).text(rows[index].DatePublished);
     }
-    changePicRight()
-    changeIconRight()
+    changePicRight();
+    changeIconRight();
+    selectedItems[2] = rows[index].Identifier + '.csv';
+    selectedItems[3] = rows[index].Name;
+    fetchRows(1, '#line_graph_2', selectedItems[2]);
+    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
 }
 //Matches the names selected to get the correct data
 function matchRight(element){

@@ -78,7 +78,9 @@
 </head>
 <body onload="changeVariable('');changeVariableRight()">
 <div id="Top_Container">
-    <h1 id="Heading">Youtube Trends</h1>
+    <div class="page-header">
+        <h1 id="Heading">Youtube Trends</h1>
+    </div>
     <div id="Container_Top_Left">
 
     <div id="box">
@@ -237,10 +239,6 @@
     </div>
 </div>
 <script>
-    fetchRows(0, '#line_graph_1', 'gangnam.csv');
-    fetchRows(1, '#line_graph_2', 'blankSpace.csv');
-    fetchRowsFromTwoFiles(2, '#line_graph_merged', 'gangnam.csv', 'Gangnam Style', 'blankSpace.csv', 'Blank Space')
-
     $('input[type="range"]').rangeslider({
 
         // Feature detection the default is `true`.
