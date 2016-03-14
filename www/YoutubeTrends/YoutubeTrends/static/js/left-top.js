@@ -23,7 +23,7 @@ function assignValues(rows) {
     var name = selectedItem.value;
     if (name == "Google") {
         $('#NameGoogle' + extension).text(rows[index].Name);
-        $('#Artist' + extension).text(rows[index].Artist);
+        $('#ArtistGoogle' + extension).text(rows[index].Artist);
         $('#ViewGoogle' + extension).text(rows[index].Hits);
         $('#DatePub' + extension).text(rows[index].DateReleased);
     } else {

@@ -18,7 +18,7 @@ function assignValuesRight(rows) {
     var name = selectedItem.value;
     if(name == "Google"){
         $('#NameGoogle_right'+extension).text(rows[index].Name);
-        $('#Artist_right'+extension).text(rows[index].Artist);
+        $('#ArtistGoogle_right'+extension).text(rows[index].Artist);
         $('#ViewGoogle_right'+extension).text(rows[index].Hits);
         $('#DatePub_right'+extension).text(rows[index].DateReleased);
     }else {
@@ -27,7 +27,7 @@ function assignValuesRight(rows) {
         $('#Likes_right'+extension).text(rows[index].Likes);
         $('#Dislikes_right'+extension).text(rows[index].Dislikes);
         $('#Views_right'+extension).text(rows[index].Views);
-        $('#Comments' + extension).text(rows[index].Comments);
+        $('#Comments_right' + extension).text(rows[index].Comments);
         $('#Date_right'+extension).text(rows[index].DatePublished);
     }
     changePicRight();
