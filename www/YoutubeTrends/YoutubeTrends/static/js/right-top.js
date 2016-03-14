@@ -19,14 +19,15 @@ function assignValuesRight(rows) {
     if(name == "Google"){
         $('#NameGoogle_right'+extension).text(rows[index].Name);
         $('#Artist_right'+extension).text(rows[index].Artist);
-        $('#ViewGoogle_right'+extension).text(rows[index].Views);
-        $('#DatePub_right'+extension).text(rows[index].DatePublished);
+        $('#ViewGoogle_right'+extension).text(rows[index].Hits);
+        $('#DatePub_right'+extension).text(rows[index].DateReleased);
     }else {
         $('#Name_right'+extension).text(rows[index].Name);
         $('#Artist_right'+extension).text(rows[index].Artist);
         $('#Likes_right'+extension).text(rows[index].Likes);
         $('#Dislikes_right'+extension).text(rows[index].Dislikes);
         $('#Views_right'+extension).text(rows[index].Views);
+        $('#Comments' + extension).text(rows[index].Comments);
         $('#Date_right'+extension).text(rows[index].DatePublished);
     }
     changePicRight();
@@ -50,9 +51,9 @@ function changeIconRight() {
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
     if(name=="Google"){
-        $('#Symbol_right').attr("src","images/Google.png");
-        $('#Symbol_right').height(50);
-        $('#Symbol_right').width(50);
+        $('#Symbol_right').attr("src","images/google-icon-2.png");
+        $('#Symbol_right').height(40);
+        $('#Symbol_right').width(40);
         $('#WritingYoutube_right').hide();
         $('#WritingGoogle_right').show();
 
