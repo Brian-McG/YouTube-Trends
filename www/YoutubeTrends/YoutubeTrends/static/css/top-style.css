@@ -22,9 +22,10 @@
     width: 100% !important;
 
 }
-
 #topbar{background-color: white;width:50%;position:fixed}
 #topbar_right{background-color: white;width:50%;position:fixed}
+
+
 .Wrap{
   display: inline-block;
     width:200px;
