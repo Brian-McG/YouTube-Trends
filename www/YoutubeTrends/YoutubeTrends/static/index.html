@@ -82,7 +82,7 @@
     </style>
 
 </head>
-<body onload="changeVariable('');changeVariableRight()">
+<body onload="changeVariable('', true);changeVariableRight()">
 <div id="Top_Container">
     <div class="page-header">
         <h1 id="Heading">Youtube Trends</h1>
@@ -98,7 +98,7 @@
         </div>
         <div id="topbar">
           <div id = "lefttop" class="col-xs-5 selectContainer">
-              <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('')">
+              <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('', true)">
                   <option value="GangnamStyle">Gangnam Style</option>
                   <option value="BlankSpace">Blank Space</option>
                   <option value="SeeYouAgain">See You Again</option>
@@ -110,7 +110,7 @@
               <img src="images/Youtube.png" alt="Symbol" id = "Symbol" style="float:right;width:60px;height:40px;">
           </div>
           <div id="righttop" class="col-xs-5 selectContainer">
-              <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('')" style="float:right">
+              <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('', false)" style="float:right">
                   <option value="Youtube">Youtube Trends</option>
                   <option value="Google">Google Trends</option>
               </select>
@@ -173,7 +173,7 @@
         </div>
         <div id="topbar_right">
         <div id = "lefttop_right" class="col-xs-5 selectContainer">
-            <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right')">
+            <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right', true)">
                 <option value="GangnamStyle">Gangnam Style</option>
                 <option value="BlankSpace">Blank Space</option>
                 <option value="SeeYouAgain">See You Again</option>
@@ -184,7 +184,7 @@
             <img src="images/Youtube.png" alt="Symbol" id = "Symbol_right" style="float:right;width:60px;height:40px;">
         </div>
         <div id="righttop_right" class="col-xs-5 selectContainer">
-            <select id="trend_type_right" class="form-control" name="trend_type" onchange="changeVariable('_right')" style="float:right">
+            <select id="trend_type_right" class="form-control" name="trend_type" onchange="changeVariable('_right', false)" style="float:right">
                 <option value="Youtube">Youtube Trends</option>
                 <option value="Google">Google Trends</option>
             </select>
@@ -248,6 +248,7 @@
 <div id="line_graphs">
     <div id='merge_button'>
         <button id="merge_line_graph_button" class="btn btn-primary" onclick="mergeClick()">Merge graphs</button>
+        <button id="reset_line_graph_button" class="btn btn-primary" onclick="resetGraphs()">Reset Graphs</button>
     </div>
     <div id='left_container' class='container left_container'>
         <h2 id="line_graph_1_header" class="line_graph_header">Global Popularity Trends</h2>
@@ -260,7 +261,7 @@
         <div id="line_graph_2_legend" class="line_graph_legend"></div>
     </div>
     <div id="merge_container">
-        <h2 id="line_graph_merged_header" class="line_graph_header">Merged Global Popularity Trends</h2>
+        <h2 id="line_graph_merged_header" class="line_graph_header">Merged Popularity Trends</h2>
         <div id="line_graph_merged" class="graph"></div>
     </div>
 </div>

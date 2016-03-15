@@ -8,15 +8,15 @@ var assigned = false;
 // Set default items
 var selectedItems = ['gangnam.csv', 'Gangnam Style', 'gangnam.csv', 'Gangnam Style'];
 
-function changeVariable(side) {
+function changeVariable(side, isSongChange) {
     extension = side;
     d3.tsv("data/song_data.tsv", function (rows) {
-        assignValues(rows);
+        assignValues(rows, isSongChange);
     });
 }
 
 //Assigns a value to the various data points
-function assignValues(rows) {
+function assignValues(rows, isSongChange) {
     index = rows.findIndex(match)
     var selectCtrl = document.getElementById("trend_type" + extension);
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
@@ -44,18 +44,20 @@ function assignValues(rows) {
         assigned = true;
     }
 
-    if(extension == '') {
+    if(extension == '' && isSongChange) {
         selectedItems[0] = rows[index].Identifier + '.csv';
         selectedItems[1] = rows[index].Name;
         fetchRows(0, '#line_graph_1', selectedItems[0]);
         setLData(selectedItems[1], name);
-    } else {
+    } else if(isSongChange) {
         selectedItems[2] = rows[index].Identifier + '.csv';
         selectedItems[3] = rows[index].Name;
         fetchRows(1, '#line_graph_2', selectedItems[2]);
         setRData(selectedItems[3], name);
     }
-    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
+    if(isSongChange) {
+        fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
+    }
 }
 //Matches the names selected to get the correct data
 function match(element) {

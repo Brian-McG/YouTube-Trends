@@ -1,11 +1,14 @@
 
-// Grab data and put it in alldata
-var alldata; // a global
+// Make a deep copy of alldata so that line graph can show the data without alterations
+var lineGraphAllData = jQuery.extend(true, {}, alldata);
 
+// This isn't actually used
+/*
 d3.json("data/all.json", function (error, json) {
     if (error) return console.warn(error);
     alldata = json;
 });
+*/
 
 // Some options for colours
 rfill = ['#fef0d9', '#fdcc8a', '#fc8d59', '#e34a33', '#b30000'];
@@ -55,16 +58,17 @@ function mapdone (datamap) {
         // This will be used to set graphs based on click
         var selected_item = $("#file_type option:selected").text();
         var country_code = geography.id;
-        var data_set = new Array(53);
+        var data_set = new Array(54);
         data_set[0] = ["google", "youtube"];
+        data_set[1] = [0, 0];
         for (var i = 0; i < 52; ++i) {
             // Currently has minimal error checking or handling
             // Fill throw an error in the log if the country is greyed out
             var google_value = null;
             var youtube_value = null;
             var selected_item_data = null;
-            if ((selected_item in alldata)) {
-                selected_item_data = alldata[selected_item];
+            if ((selected_item in lineGraphAllData)) {
+                selected_item_data = lineGraphAllData[selected_item];
                 if (("Google" in selected_item_data) && country_code in selected_item_data["Google"][i]) {
                     google_value = selected_item_data["Google"][i][country_code].popularity;
                 }
@@ -72,10 +76,16 @@ function mapdone (datamap) {
                     youtube_value = selected_item_data["Youtube"][i][country_code].popularity;
                 }
             }
-            data_set[i + 1] = [google_value, youtube_value]
+            data_set[i + 2] = [google_value, youtube_value]
         }
         if (data_set[1][0] != null || data_set[1][1] != null) {
-            generate_line_graph(0, '#line_graph_1', data_set);
+            if(datamap.options.element.id == "leftmap") {
+                $("#line_graph_1_header").text(geography.properties.name + " Trends");
+                generate_line_graph(0, '#line_graph_1', data_set);
+            } else {
+                $("#line_graph_2_header").text(geography.properties.name + " Trends");
+                generate_line_graph(1, '#line_graph_2', data_set);
+            }
         }
     });
 }
