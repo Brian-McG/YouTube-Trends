@@ -91,3 +91,6 @@
 #reset_line_graph_button {
     width: 134px;
 }
+#slider_container {
+    margin-top: 10px;
+}
