@@ -71,6 +71,19 @@ function changePicRight() {
     var selectCtrl = document.getElementById("file_type_right");
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
-    var src = $('#Icon_right').attr("src","images/"+name+".png");
-    $(this).attr("src", src);
+    var link = getLink(name);
+    console.log('https://www.youtube.com/embed/'+link+'?autoplay=0');
+    $('#Icon_right'+extension).attr('src','https://www.youtube.com/embed/'+link+'?autoplay=0');
+}
+
+function getLink(name){
+  if(name == "GangnamStyle"){
+    return "9bZkp7q19f0";
+  }if(name == "BlankSpace"){
+    return "e-ORhEE9VVg";
+  }if(name == "SeeYouAgain"){
+    return "RgKAFK5djSk";
+  }if(name == "UptownFunk"){
+    return "OPf0YbXqDm0";
+  }
 }
