@@ -17,6 +17,31 @@ mfill = ['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'];
 // Change this to change the colourscheme
 c_fil = yfill;
 
+// Generate a legend
+var linear = d3.scale.quantize()
+  .domain([0,100])
+  .range(c_fil);
+
+var svg = d3.select("#legendsvg");
+var container =  document.getElementById('pop');
+var lwidth = pop.getBoundingClientRect().width;
+console.log(lwidth);
+lwidth = (lwidth * 0.4) / 6;
+
+svg.append("g")
+  .attr("class", "legendLinear")
+  .attr("transform", "translate(20,20)");
+
+var legendLinear = d3.legend.color()
+  .shapeWidth(lwidth)
+  .orient('horizontal')
+  .scale(linear)
+  .labels(["least","","","","most"]);
+
+svg.select(".legendLinear")
+  .call(legendLinear);
+
+
 fill = {
     L: c_fil[0],
     LM: c_fil[1],
