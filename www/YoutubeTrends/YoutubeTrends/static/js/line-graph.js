@@ -31,6 +31,7 @@ function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, 
             for (var i = 0; i < datasetOne.length; ++i) {
                 datasetOne[i] = datasetOne[i].concat(datasetTwo[i]);
             }
+
             generate_line_graph(index, bindDom, datasetOne)
 
             // Set the styling on each pair of lines
@@ -57,7 +58,7 @@ function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, 
 }
 
 function generate_line_graph(index, bindDom, rows) {
-    if (chart[index] != null) {
+    if (chart[index] != null && index != 2) {
         var loadRows = [null, null, null];
         var unloadRows = [null, null, null];
         if(rows[2][0] == null) {

@@ -80,8 +80,13 @@ function mapdone (datamap) {
 
     // Populate line graph with selected country information
     datamap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
-        // This will be used to set graphs based on click
-        var selected_item = $("#file_type option:selected").text();
+        // This will be used to set graphs based on click\
+        var selected_item;
+        if(datamap.options.element.id == "leftmap") {
+            selected_item = $("#file_type option:selected").text();
+        } else {
+            selected_item = $("#file_type_right option:selected").text();
+        }
         var country_code = geography.id;
         var data_set = new Array(54);
         data_set[0] = ["google", "youtube"];
