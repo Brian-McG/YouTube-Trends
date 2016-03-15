@@ -1,12 +1,12 @@
 #Top_Container{z-index:999; display:block; margin:0; padding-top:10px; width:100%;height: 500px}
 #Container_Top_Left {float:left; display:block; margin:0; padding-top:0px; width:50%;}
-#middletop{float:left; display:block; margin:0; padding-left: 15px; width:20%;}
-#righttop{float:right; display:block; margin:0; padding-right: 30px; padding-top: 0px;width:40%;}
-#lefttop{float:left; display:block; margin:0; padding-left: 10px; width:40%;padding-top: 0px;}
-#Container_Top_Right {float: right; display:block; margin:0; padding-top:0px; width:50%;}
-#middletop_right{float:left; display:block; margin:0; padding-left: 15px; width:20%;}
-#righttop_right{float:right; display:block; margin:0; padding-right: 30px; width:40%;padding-top: 0px;}
-#lefttop_right{float:left; display:block; margin:0; padding-right: 10px; width:40%; height:40px;padding-top: 0px;}
+#middletop{float:left; display:block; margin:0; padding-left: 0px; width:20%;}
+#righttop{float:right; display:block; margin:0; padding-right: 50px; padding-top: 0px;width:40%;}
+#lefttop{float:left; display:block; margin:0; padding-left: 0px; width:40%;padding-top: 0px;}
+#Container_Top_Right {float: right; display:block; width:50%;}
+#middletop_right{float:left; display:block; margin:0; padding-left: 0px; width:20%;}
+#righttop_right{float:right; display:block; margin:0; padding-right: 50px; width:40%;padding-top: 0px;}
+#lefttop_right{float:left; display:block; margin:0; padding-left: 0px; width:40%; height:40px;padding-top: 0px;}
 #WritingGoogle{display:block; padding-top:20px;}
 #WritingYoutube{display:block; padding-top:20px;}
 #WritingGoogle_right{display:block; padding-top:20px;}
@@ -17,9 +17,9 @@
 #box_right { float:left; display:block; margin:0; padding:0; width:100%;height:300px}
 #Heading{text-align: center;font-family: "Times New Roman", Times, serif; font-size: 60}
 .form-control {
-
     cursor: hand;
-    width: 100% !important;
+    width: 105% !important;
+    height: 40px !important;
 
 }
 #topbar{background-color: white;width:50%;position:absolute}
