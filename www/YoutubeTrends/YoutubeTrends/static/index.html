@@ -28,7 +28,7 @@
     <script src="js_dependents/bootstrap.min.js"></script>
     <script src="js_dependents/d3.v3.min.js" charset="utf-8"></script>
     <script src="js_dependents/topojson.min.js"></script>
-    <script src="js_dependents/datamaps.world.min.js"></script>
+    <script src="js_dependents/datamaps.world.js"></script>
     <script src="js_dependents/c3.min.js"></script>
     <script src="js_dependents/rangeslider.min.js"></script>
     <script src="js/line-graph.js"></script>
@@ -46,7 +46,7 @@
 
         }
         h3{
-          margin-top:3px; 
+          margin-top:3px;
           margin-left: 30px;
           font-size: 25px;
           color: black;
@@ -242,6 +242,12 @@
     </div>
 </div>
 </div>
+<div id="pop">
+    <h2 >Popularity by Region</h2>
+    <h4>
+        Normalized between 1-100
+    </h4>
+</div>
 <div id='maps'>
     <div id='leftmap'></div>
     <div id='rightmap'></div>
@@ -330,7 +336,7 @@ $r.rangeslider({
     });
 </script>
 </body>
-<script src="js/maps.js"></script>
 <script src="js/left-top.js"></script>
 <script src="js/right-top.js"></script>
+<script src="js/maps.js"></script>
 </html>
