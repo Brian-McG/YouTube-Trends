@@ -38,47 +38,50 @@
 
     <style>
         img {
-            width:100%;
+            width: 100%;
         }
+
         p {
             margin-left: 30px;
             font-size: 20px;
             color: black;
 
         }
-        h3{
-          margin-top:3px;
-          margin-left: 30px;
-          font-size: 25px;
-          color: black;
+
+        h3 {
+            margin-top: 3px;
+            margin-left: 30px;
+            font-size: 25px;
+            color: black;
         }
-        select{
+
+        select {
             margin-left: 30px;
             font-size: 20px;
             color: black;
         }
 
-        #maps{
+        #maps {
             margin-left: 30px;
             margin-right: 60px;
             width: 100%;
             height: 22vw;
         }
 
-        #leftmap{
+        #leftmap {
             float: left;
             width: 48%;
             height: 20vw;
-            border:1px solid grey;
+            border: 1px solid grey;
             overflow: hidden;
         }
 
-        #rightmap{
+        #rightmap {
             float: right;
             margin-right: 35px;
             width: 48%;
             height: 20vw;
-            border:1px solid grey;
+            border: 1px solid grey;
             overflow: hidden;
         }
 
@@ -95,160 +98,160 @@
     </div>
     <div id="Container_Top_Left">
 
-    <div id="box">
-        <div id="pic">
-            <!-- <img id="Icon" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
-            <iframe id="Icon" alt="Icon" style="float:right;width:270px;height:180px;"
-              src="">
-            </iframe>
-        </div>
-        <div id="topbar">
-          <div id = "lefttop" class="col-xs-5 selectContainer">
-              <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('', true)">
-                  <option value="GangnamStyle">Gangnam Style</option>
-                  <option value="BlankSpace">Blank Space</option>
-                  <option value="SeeYouAgain">See You Again</option>
-                  <option value="UptownFunk">Uptown Funk</option>
+        <div id="box">
+            <div id="pic">
+                <!-- <img id="Icon" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
+                <iframe id="Icon" alt="Icon" style="float:right;width:270px;height:180px;"
+                        src="">
+                </iframe>
+            </div>
+            <div id="topbar">
+                <div id="lefttop" class="col-xs-5 selectContainer">
+                    <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('', true)">
+                        <option value="GangnamStyle">Gangnam Style</option>
+                        <option value="BlankSpace">Blank Space</option>
+                        <option value="SeeYouAgain">See You Again</option>
+                        <option value="UptownFunk">Uptown Funk</option>
 
-              </select>
-          </div>
-          <div id = middletop>
-              <img src="images/Youtube.png" alt="Symbol" id = "Symbol" style="float:right;width:60px;height:40px;">
-          </div>
-          <div id="righttop" class="col-xs-5 selectContainer">
-              <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('', false)" style="float:right">
-                  <option value="Youtube">Youtube Trends</option>
-                  <option value="Google">Google Trends</option>
-              </select>
-          </div>
-      </div>
-        <div id="WritingYoutube">
-            <br>
-            <h2><span id ="Name"></span></h2>
+                    </select>
+                </div>
+                <div id=middletop>
+                    <img src="images/Youtube.png" alt="Symbol" id="Symbol" style="float:right;width:60px;height:40px;">
+                </div>
+                <div id="righttop" class="col-xs-5 selectContainer">
+                    <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('', false)" style="float:right">
+                        <option value="Youtube">Youtube Trends</option>
+                        <option value="Google">Google Trends</option>
+                    </select>
+                </div>
+            </div>
+            <div id="WritingYoutube">
+                <br>
+                <h2><span id="Name"></span></h2>
 
-            <p>
-                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Wrap"><span class="Label">Artist:</span><span id ="Artist"></span></span>
-            </p>
-            <p>
-                <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Likes:</span><span id ="Likes"></span>
-            </p>
-            <p>
-                <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Dislikes:</span><span id ="Dislikes"></span>
-            </p>
-            <p>
-                <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
-                <span class="Label">Views:</span><span id ="Views"></span>
-            </p>
-            <p>
-                <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
-                <span class="Label">Comments:</span><span id ="Comments"></span>
-            </p>
-            <p>
-                <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Date Published:</span><span id ="Date"></span>
-            </p>
-        </div>
-        <div id="WritingGoogle">
-            <br>
-            <h2><span id ="NameGoogle"></span></h2>
-            <p>
-                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Wrap"><span class="Label">Artist:</span><span id ="ArtistGoogle"></span></span>
-            </p>
-            <p>
-                <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
-                <span class="Label">Hits:</span><span id ="ViewGoogle"></span>
-            </p>
-            <p>
-                <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Released:</span><span id ="DatePub"></span>
-            </p>
+                <p>
+                    <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Wrap"><span class="Label">Artist:</span><span id="Artist"></span></span>
+                </p>
+                <p>
+                    <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Likes:</span><span id="Likes"></span>
+                </p>
+                <p>
+                    <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Dislikes:</span><span id="Dislikes"></span>
+                </p>
+                <p>
+                    <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <span class="Label">Views:</span><span id="Views"></span>
+                </p>
+                <p>
+                    <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <span class="Label">Comments:</span><span id="Comments"></span>
+                </p>
+                <p>
+                    <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Date Published:</span><span id="Date"></span>
+                </p>
+            </div>
+            <div id="WritingGoogle">
+                <br>
+                <h2><span id="NameGoogle"></span></h2>
+                <p>
+                    <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Wrap"><span class="Label">Artist:</span><span id="ArtistGoogle"></span></span>
+                </p>
+                <p>
+                    <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <span class="Label">Hits:</span><span id="ViewGoogle"></span>
+                </p>
+                <p>
+                    <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Released:</span><span id="DatePub"></span>
+                </p>
+            </div>
         </div>
     </div>
-</div>
     <div id="Container_Top_Right">
-    <div id="box_right">
-        <div id="pic_right">
-            <!-- <img id="Icon_right" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
-            <iframe id="Icon_right" alt="Icon" style="float:right;width:270px;height:180px;"
-              src="">
-            </iframe>
-        </div>
-        <div id="topbar_right">
-        <div id = "lefttop_right" class="col-xs-5 selectContainer">
-            <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right', true)">
-                <option value="GangnamStyle">Gangnam Style</option>
-                <option selected = "selected" value="BlankSpace">Blank Space</option>
-                <option value="SeeYouAgain">See You Again</option>
-                <option value="UptownFunk">Uptown Funk</option>
-            </select>
-        </div>
-        <div id = middletop_right>
-            <img src="images/Youtube.png" alt="Symbol" id = "Symbol_right" style="float:right;width:60px;height:40px;">
-        </div>
-        <div id="righttop_right" class="col-xs-5 selectContainer">
-            <select id="trend_type_right" class="form-control" name="trend_type" onchange="changeVariable('_right', false)" style="float:right">
-                <option value="Youtube">Youtube Trends</option>
-                <option value="Google">Google Trends</option>
-            </select>
-        </div>
-      </div>
-        <div id="WritingYoutube_right">
-            <br>
-            <h2><span id ="Name_right"></span></h2>
-            <p>
-                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Wrap"><span class="Label" >Artist:</span><span id ="Artist_right"></span></span>
-            </p>
-            <p>
-                <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Likes:</span><span id ="Likes_right"></span>
-            </p>
-            <p>
-                <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Dislikes:</span><span id ="Dislikes_right"></span>
-            </p>
-            <p>
-                <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
-                <span class="Label">Views:</span><span id ="Views_right"></span>
-            </p>
-            <p>
-                <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
-                <span class="Label">Comments:</span><span id ="Comments_right"></span>
-            </p>
-            <p>
-                <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Date Published:</span><span id ="Date_right"></span>
-            </p>
-        </div>
-        <div id="WritingGoogle_right">
-            <br>
-            <h2><span id ="NameGoogle_right"></span></h2>
-            <p>
-                <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Wrap"><span class="Label">Artist:</span><span id ="ArtistGoogle_right"></span></span>
-            </p>
-            <p>
-                <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
-                <span class="Label">Hits:</span><span id ="ViewGoogle_right"></span>
-            </p>
-            <p>
-                <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
-                <span class="Label">Released:</span><span id ="DatePub_right"></span>
-            </p>
+        <div id="box_right">
+            <div id="pic_right">
+                <!-- <img id="Icon_right" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
+                <iframe id="Icon_right" alt="Icon" style="float:right;width:270px;height:180px;"
+                        src="">
+                </iframe>
+            </div>
+            <div id="topbar_right">
+                <div id="lefttop_right" class="col-xs-5 selectContainer">
+                    <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right', true)">
+                        <option value="GangnamStyle">Gangnam Style</option>
+                        <option selected="selected" value="BlankSpace">Blank Space</option>
+                        <option value="SeeYouAgain">See You Again</option>
+                        <option value="UptownFunk">Uptown Funk</option>
+                    </select>
+                </div>
+                <div id=middletop_right>
+                    <img src="images/Youtube.png" alt="Symbol" id="Symbol_right" style="float:right;width:60px;height:40px;">
+                </div>
+                <div id="righttop_right" class="col-xs-5 selectContainer">
+                    <select id="trend_type_right" class="form-control" name="trend_type" onchange="changeVariable('_right', false)" style="float:right">
+                        <option value="Youtube">Youtube Trends</option>
+                        <option value="Google">Google Trends</option>
+                    </select>
+                </div>
+            </div>
+            <div id="WritingYoutube_right">
+                <br>
+                <h2><span id="Name_right"></span></h2>
+                <p>
+                    <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Wrap"><span class="Label">Artist:</span><span id="Artist_right"></span></span>
+                </p>
+                <p>
+                    <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Likes:</span><span id="Likes_right"></span>
+                </p>
+                <p>
+                    <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Dislikes:</span><span id="Dislikes_right"></span>
+                </p>
+                <p>
+                    <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <span class="Label">Views:</span><span id="Views_right"></span>
+                </p>
+                <p>
+                    <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <span class="Label">Comments:</span><span id="Comments_right"></span>
+                </p>
+                <p>
+                    <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Date Published:</span><span id="Date_right"></span>
+                </p>
+            </div>
+            <div id="WritingGoogle_right">
+                <br>
+                <h2><span id="NameGoogle_right"></span></h2>
+                <p>
+                    <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Wrap"><span class="Label">Artist:</span><span id="ArtistGoogle_right"></span></span>
+                </p>
+                <p>
+                    <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <span class="Label">Hits:</span><span id="ViewGoogle_right"></span>
+                </p>
+                <p>
+                    <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <span class="Label">Released:</span><span id="DatePub_right"></span>
+                </p>
+            </div>
         </div>
     </div>
-</div>
 </div>
 <div id="pop">
-    <h2 >Popularity by Region</h2>
+    <h2>Popularity by Region</h2>
     <h4>
         Normalized between 1-100
     </h4>
-    <svg id="legendsvg" style="width:40%;height:10%;display:block;margin:0 auto;"> </svg>
+    <svg id="legendsvg" style="width:40%;height:10%;display:block;margin:0 auto;"></svg>
 </div>
 <div id='maps'>
     <div id='leftmap'></div>
@@ -280,29 +283,30 @@
 </div>
 <script>
 
-$(document).ready(function() {
-  var l = $("#topbar");
-  var r= $("#topbar_right");
-  var posl = l.position();
-  var posr = r.position();
-  $(window).scroll(function() {
-        var windowpos = $(window).scrollTop();
-        if (windowpos >= posl.top && windowpos>=posr.top) {
-            $('#topbar').css({position: 'fixed'});
-            $('#topbar_right').css({position: 'fixed'});
-            r.addClass("stick");
-            l.addClass("stick");
-        } else {
-            $('#topbar').css({position: 'absolute'});
-            $('#topbar_right').css({position: 'absolute'});
-            r.removeClass("stick");
-            l.removeClass("stick");
-        }
+    $(document).ready(function () {
+        var l = $("#topbar");
+        var r = $("#topbar_right");
+        var posl = l.position();
+        var posr = r.position();
+        $(window).scroll(function () {
+            var windowpos = $(window).scrollTop();
+            if (windowpos >= posl.top && windowpos >= posr.top) {
+                $('#topbar').css({position: 'fixed'});
+                $('#topbar_right').css({position: 'fixed'});
+                r.addClass("stick");
+                l.addClass("stick");
+            } else {
+                $('#topbar').css({position: 'absolute'});
+                $('#topbar_right').css({position: 'absolute'});
+                r.removeClass("stick");
+                l.removeClass("stick");
+            }
+        });
     });
-  });
 
-var $r = $('input[type="range"]');
-$r.rangeslider({
+    var $r = $('input[type="range"]');
+    var $ruler = $('<div class="rangeslider__ruler" />');
+    $r.rangeslider({
 
         // Feature detection the default is `true`.
         // Set this to `false` if you want to use
@@ -317,6 +321,8 @@ $r.rangeslider({
 
         // Callback function
         onInit: function () {
+            $ruler[0].innerHTML = getRulerRange(this.min, this.max, this.step);
+            $("#slider_container").append($ruler);
         },
 
         // Callback function
@@ -337,6 +343,17 @@ $r.rangeslider({
              */
         }
     });
+    function getRulerRange(min, max, step) {
+        var range = '&nbsp1';
+        var i = 1;
+
+        while (i <= Math.round($("#js-rangeslider-0").width() / 4.196)) {
+            range += '&nbsp';
+            i = i + step;
+        }
+        range += 52;
+        return range;
+    }
 </script>
 </body>
 <script src="js/left-top.js"></script>

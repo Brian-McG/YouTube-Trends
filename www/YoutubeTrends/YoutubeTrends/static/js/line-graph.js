@@ -136,7 +136,7 @@ function generate_line_graph(index, bindDom, rows) {
                 }
             },
             color: {
-                pattern: ['#6a51a3', '#807dba', '#4a1486', '#e6550d', '#8c2d04', '#fd8d3c']
+                pattern: ['#7a0177', '#c51b8a', '#f768a1', '#014636', '#02818a', '#67a9cf']
             },
             axis: {
                 x: {

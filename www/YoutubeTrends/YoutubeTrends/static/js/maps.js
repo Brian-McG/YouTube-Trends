@@ -39,7 +39,7 @@ var legendLinear = d3.legend.color()
   .shapeWidth(lwidth)
   .orient('horizontal')
   .scale(linear)
-  .labels(["least","","","","most"]);
+  .labels(["0-20","20-40","40-60","60-80","80-100"]);
 
 svg.select(".legendLinear")
   .call(legendLinear);
