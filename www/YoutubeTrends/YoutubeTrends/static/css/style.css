@@ -84,3 +84,13 @@
 #line_graph_merged_header {
     margin-top: 20px;
 }
+
+#merge_line_graph_button {
+    width: 134px;
+}
+#reset_line_graph_button {
+    width: 134px;
+}
+#slider_container {
+    margin-top: 10px;
+}

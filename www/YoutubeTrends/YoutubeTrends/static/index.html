@@ -88,7 +88,7 @@
     </style>
 
 </head>
-<body onload="changeVariable('');changeVariableRight()">
+<body onload="changeVariable('', true);changeVariableRight()">
 <div id="Top_Container">
     <div class="page-header">
         <h1 id="Heading">Youtube Trends</h1>
@@ -104,7 +104,7 @@
         </div>
         <div id="topbar">
           <div id = "lefttop" class="col-xs-5 selectContainer">
-              <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('')">
+              <select id="file_type" class="form-control" name="file_type" onchange="changeVariable('', true)">
                   <option value="GangnamStyle">Gangnam Style</option>
                   <option value="BlankSpace">Blank Space</option>
                   <option value="SeeYouAgain">See You Again</option>
@@ -116,7 +116,7 @@
               <img src="images/Youtube.png" alt="Symbol" id = "Symbol" style="float:right;width:60px;height:40px;">
           </div>
           <div id="righttop" class="col-xs-5 selectContainer">
-              <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('')" style="float:right">
+              <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('', false)" style="float:right">
                   <option value="Youtube">Youtube Trends</option>
                   <option value="Google">Google Trends</option>
               </select>
@@ -124,7 +124,7 @@
       </div>
         <div id="WritingYoutube">
             <br>
-            <h3><span id ="Name"></span></h3>
+            <h2><span id ="Name"></span></h2>
 
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
@@ -143,7 +143,7 @@
                 <span class="Label">Views:</span><span id ="Views"></span>
             </p>
             <p>
-                <img src="images/comment.png" alt="Like" style="float:left;width:20px;height:25px;">
+                <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
                 <span class="Label">Comments:</span><span id ="Comments"></span>
             </p>
             <p>
@@ -153,7 +153,7 @@
         </div>
         <div id="WritingGoogle">
             <br>
-            <p><span id ="NameGoogle"></span></p>
+            <h2><span id ="NameGoogle"></span></h2>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                 <span class="Wrap"><span class="Label">Artist:</span><span id ="ArtistGoogle"></span></span>
@@ -179,7 +179,7 @@
         </div>
         <div id="topbar_right">
         <div id = "lefttop_right" class="col-xs-5 selectContainer">
-            <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right')">
+            <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right', true)">
                 <option value="GangnamStyle">Gangnam Style</option>
                 <option selected = "selected" value="BlankSpace">Blank Space</option>
                 <option value="SeeYouAgain">See You Again</option>
@@ -190,7 +190,7 @@
             <img src="images/Youtube.png" alt="Symbol" id = "Symbol_right" style="float:right;width:60px;height:40px;">
         </div>
         <div id="righttop_right" class="col-xs-5 selectContainer">
-            <select id="trend_type_right" class="form-control" name="trend_type" onchange="changeVariable('_right')" style="float:right">
+            <select id="trend_type_right" class="form-control" name="trend_type" onchange="changeVariable('_right', false)" style="float:right">
                 <option value="Youtube">Youtube Trends</option>
                 <option value="Google">Google Trends</option>
             </select>
@@ -198,7 +198,7 @@
       </div>
         <div id="WritingYoutube_right">
             <br>
-            <h3><span id ="Name_right"></span></h3>
+            <h2><span id ="Name_right"></span></h2>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                 <span class="Wrap"><span class="Label" >Artist:</span><span id ="Artist_right"></span></span>
@@ -216,7 +216,7 @@
                 <span class="Label">Views:</span><span id ="Views_right"></span>
             </p>
             <p>
-                <img src="images/comment.png" alt="Like" style="float:left;width:20px;height:25px;">
+                <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
                 <span class="Label">Comments:</span><span id ="Comments_right"></span>
             </p>
             <p>
@@ -226,7 +226,7 @@
         </div>
         <div id="WritingGoogle_right">
             <br>
-            <p><span id ="NameGoogle_right"></span></p>
+            <h2><span id ="NameGoogle_right"></span></h2>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                 <span class="Wrap"><span class="Label">Artist:</span><span id ="ArtistGoogle_right"></span></span>
@@ -255,12 +255,13 @@
     <div id='rightmap'></div>
 </div>
 <div id='slider_container' class='container'>
-    <h3 id="week_slider_header" class="output">Week (1)</h3>
+    <h3 id="week_slider_header" class="output">Week 1 from release</h3>
     <input id="slide" type="range" min=1 max=52 step=1 value=1>
 </div>
 <div id="line_graphs">
     <div id='merge_button'>
         <button id="merge_line_graph_button" class="btn btn-primary" onclick="mergeClick()">Merge graphs</button>
+        <button id="reset_line_graph_button" class="btn btn-primary" onclick="resetGraphs()">Reset Graphs</button>
     </div>
     <div id='left_container' class='container left_container'>
         <h2 id="line_graph_1_header" class="line_graph_header">Global Popularity Trends</h2>
@@ -273,7 +274,7 @@
         <div id="line_graph_2_legend" class="line_graph_legend"></div>
     </div>
     <div id="merge_container">
-        <h2 id="line_graph_merged_header" class="line_graph_header">Merged Global Popularity Trends</h2>
+        <h2 id="line_graph_merged_header" class="line_graph_header">Merged Popularity Trends</h2>
         <div id="line_graph_merged" class="graph"></div>
     </div>
 </div>
@@ -320,7 +321,7 @@ $r.rangeslider({
 
         // Callback function
         onSlide: function (position, value) {
-            $(".output").text("Week (" + value + ")");
+            $(".output").text("Week " + value + " from release");
             setAxisGrid(value);
             setWeek(value);
         },

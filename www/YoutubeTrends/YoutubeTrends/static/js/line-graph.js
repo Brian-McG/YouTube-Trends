@@ -6,6 +6,7 @@ var chart = [null, null, null];
 var colors = ['#1F77B4', '#EF5656', '#EF5656'];
 var isMerged = false;
 var legendGenerated = [false, false];
+var currentWeek = 1;
 
 function fetchRows(index, bindDom, dataFileName) {
     d3.csv("data/" + dataFileName, function (rows) {
@@ -56,92 +57,34 @@ function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, 
 }
 
 function generate_line_graph(index, bindDom, rows) {
-    chart[index] = c3.generate({
-        bindto: bindDom,
-        data: {
-            rows: rows,
-            colors: {
-                google: '#1F77B4',
-                youtube: '#EF5656',
-                youtubeComments: '#2CA02C'
-            },
-            names: {
-                google: 'Google',
-                youtube: 'Youtube',
-                youtubeComments: 'Youtube Comments'
-            }
-        },
-        color: {
-            pattern: ['#6a51a3', '#807dba', '#4a1486', '#e6550d', '#8c2d04', '#fd8d3c']
-        },
-        axis: {
-            x: {
-                max: 52,
-                min: 1,
-                padding: {top: 0, bottom: 0},
-                tick: {
-                    culling: {
-                        max: 24
-                    }
-                },
-                label: {
-                    text: 'Week',
-                    position: 'outer-center'
-                }
-            },
-            y: {
-                max: 100,
-                min: 0,
-                padding: {top: 20, bottom: 0},
-                label: {
-                    text: 'Popularity Index (%)',
-                    position: 'outer-middle'
-                }
-            }
-        },
-        grid: {
-            x: {
-                lines: [
-                    {value: 1},
-                ]
-            }
-        },
-        zoom: {
-            enabled: true
-        },
-        tooltip: {
-            format: {
-                title: function (d) {
-                    return 'Week ' + d;
-                },
-                value: function (value, ratio, id) {
-                    return value + "%";
-                }
-            }
-        },
-        legend: {
-            show: index == 2
+    if (chart[index] != null) {
+        var loadRows = [null, null, null];
+        var unloadRows = [null, null, null];
+        if(rows[2][0] == null) {
+            unloadRows[0] = "google";
+        } else {
+            loadRows[0] = "google";
         }
-    });
+        if(rows[2][1] == null) {
+            unloadRows[1] = "youtube";
+        } else {
+            loadRows[1] = "youtube";
+        }
+        if(rows[0].length == 2) {
+            unloadRows[2] = "youtubeComments";
+        } else {
+            loadRows[2] = "youtubeComments";
+        }
+        chart[index].load(
+            {
+                rows: rows,
+                unload: unloadRows
+            });
 
-    // Not working at the moment
-    /*
-     var line = d3.svg.line()
-     .tension(0) // Catmull–Rom
-     .interpolate("cardinal-closed");
+        $(bindDom + "_legend").empty();
 
-     // Set line to dashed
-     d3.select('#line_graph_1, .c3-line-google')
-     .style("stroke-width", "10px")
-     .style("stroke", "#ddd")
-     .style("stroke-dasharray", "4,4")
-     .attr("d", line);
-     */
-
-    // Add a custom legend
-    if (index != 3 && !legendGenerated[index]) {
         d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
-            .data(['google', 'youtube', 'youtubeComments'])
+            .data(loadRows)
             .enter().append('span')
             .attr('data-id', function (id) {
                 return id;
@@ -176,11 +119,136 @@ function generate_line_graph(index, bindDom, rows) {
                     chart[index].focus(id);
                 }
             });
-        legendGenerated[index] = true;
+    } else {
+        chart[index] = c3.generate({
+            bindto: bindDom,
+            data: {
+                rows: rows,
+                colors: {
+                    google: '#1F77B4',
+                    youtube: '#EF5656',
+                    youtubeComments: '#2CA02C'
+                },
+                names: {
+                    google: 'Google',
+                    youtube: 'Youtube',
+                    youtubeComments: 'Youtube Comments'
+                }
+            },
+            color: {
+                pattern: ['#6a51a3', '#807dba', '#4a1486', '#e6550d', '#8c2d04', '#fd8d3c']
+            },
+            axis: {
+                x: {
+                    max: 52,
+                    min: 1,
+                    padding: {top: 0, bottom: 0},
+                    tick: {
+                        culling: {
+                            max: 24
+                        }
+                    },
+                    label: {
+                        text: 'Week from release',
+                        position: 'outer-center'
+                    }
+                },
+                y: {
+                    max: 100,
+                    min: 0,
+                    padding: {top: 20, bottom: 0},
+                    label: {
+                        text: 'Popularity Index (%)',
+                        position: 'outer-middle'
+                    }
+                }
+            },
+            grid: {
+                x: {
+                    lines: [
+                        {value: 1},
+                    ]
+                }
+            },
+            zoom: {
+                enabled: true
+            },
+            tooltip: {
+                format: {
+                    title: function (d) {
+                        return 'Week ' + d + ' From Release';
+                    },
+                    value: function (value, ratio, id) {
+                        return value + "%";
+                    }
+                }
+            },
+            legend: {
+                show: index == 2
+            }
+        });
+
+        // Not working at the moment
+        /*
+         var line = d3.svg.line()
+         .tension(0) // Catmull–Rom
+         .interpolate("cardinal-closed");
+
+         // Set line to dashed
+         d3.select('#line_graph_1, .c3-line-google')
+         .style("stroke-width", "10px")
+         .style("stroke", "#ddd")
+         .style("stroke-dasharray", "4,4")
+         .attr("d", line);
+         */
+
+        // Add a custom legend
+        if (index != 3 && !legendGenerated[index]) {
+            d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
+                .data(['google', 'youtube', 'youtubeComments'])
+                .enter().append('span')
+                .attr('data-id', function (id) {
+                    return id;
+                })
+                .html(function (id) {
+                    if (id == 'google') {
+                        return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
+                    } else if (id == 'youtube') {
+                        return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
+                    } else if (id == 'youtubeComments') {
+                        return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
+                    } else {
+                        return id;
+                    }
+                })
+                .each(function (id) {
+                    //d3.select(this).style('background-color', chart.color(id));
+                })
+                .on('mouseover', function (id) {
+                    chart[index].focus(id);
+                })
+                .on('mouseout', function (id) {
+                    chart[index].revert();
+                })
+                .on('click', function (id) {
+                    chart[index].toggle(id);
+                    if (d3.select(this).style()[0][0].style.opacity == null || d3.select(this).style()[0][0].style.opacity == '' || d3.select(this).style()[0][0].style.opacity == 1) {
+                        d3.select(this).style({opacity: 0.5});
+                        chart[index].revert();
+                    } else {
+                        d3.select(this).style({opacity: 1});
+                        chart[index].focus(id);
+                    }
+                });
+            legendGenerated[index] = true;
+        }
+
+        setAxisGrid(currentWeek);
     }
 }
 
 function setAxisGrid(value) {
+    currentWeek = value;
     for (var i = 0; i < chart.length; ++i) {
         if (chart[i] != null) {
             // Disable transition animation
@@ -216,4 +284,12 @@ function mergeClick() {
         $("#merge_container").show();
     }
     isMerged = !isMerged;
+}
+
+function resetGraphs() {
+    fetchRows(0, '#line_graph_1', selectedItems[0]);
+    $("#line_graph_1_header").text("Global Popularity Trends");
+    fetchRows(1, '#line_graph_2', selectedItems[2]);
+    $("#line_graph_2_header").text("Global Popularity Trends");
+    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
 }
