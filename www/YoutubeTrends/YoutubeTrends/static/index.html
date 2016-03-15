@@ -242,7 +242,7 @@
     <div id='rightmap'></div>
 </div>
 <div id='slider_container' class='container'>
-    <h3 id="week_slider_header" class="output">Week (1)</h3>
+    <h3 id="week_slider_header" class="output">Week 1 from release</h3>
     <input id="slide" type="range" min=1 max=52 step=1 value=1>
 </div>
 <div id="line_graphs">
@@ -303,7 +303,7 @@ $r.rangeslider({
 
         // Callback function
         onSlide: function (position, value) {
-            $(".output").text("Week (" + value + ")");
+            $(".output").text("Week " + value + " from release");
             setAxisGrid(value);
             setWeek(value);
         },
