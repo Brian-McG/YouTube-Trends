@@ -113,15 +113,26 @@ function setWeek(value) {
 }
 
 function setLData(song, source){
+    clearMaps();
     current_l_song = song;
     current_l_source = source;
     updateMaps();
 }
 
 function setRData(song, source){
+    clearMaps();
     current_r_song = song;
     current_r_source = source;
     updateMaps();
+}
+
+function clearMaps(){
+    lmap.updateChoropleth(
+        null, {reset: true}
+    );
+    rmap.updateChoropleth(
+        null, {reset: true}
+    );
 }
 
 function updateMaps(){
