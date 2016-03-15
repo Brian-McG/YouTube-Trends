@@ -22,8 +22,8 @@
     width: 100% !important;
 
 }
-#topbar{background-color: white;width:50%;position:fixed}
-#topbar_right{background-color: white;width:50%;position:fixed}
+#topbar{background-color: white;width:50%;position:absolute}
+#topbar_right{background-color: white;width:50%;position:absolute}
 
 
 .Wrap{
@@ -37,6 +37,7 @@
   color: black;
 }
 .stick {
+    width: 50%;
     position: fixed;
     top: 0px;
 }
