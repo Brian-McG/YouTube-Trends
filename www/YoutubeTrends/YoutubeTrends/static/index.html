@@ -274,9 +274,13 @@ $(document).ready(function() {
   $(window).scroll(function() {
         var windowpos = $(window).scrollTop();
         if (windowpos >= posl.top && windowpos>=posr.top) {
+            $('#topbar').css({position: 'fixed'});
+            $('#topbar_right').css({position: 'fixed'});
             r.addClass("stick");
             l.addClass("stick");
         } else {
+            $('#topbar').css({position: 'absolute'});
+            $('#topbar_right').css({position: 'absolute'});
             r.removeClass("stick");
             l.removeClass("stick");
         }
