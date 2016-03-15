@@ -34,16 +34,16 @@ fill = {
 geoConf = {
     borderColor: 'black',
     borderOpacity: 0.5,
-    popupOnHover: false,
+    //popupOnHover: false,
     highlightBorderColor: 'black',
     highlightBorderWidth: 2,
-    highlightBorderOpacity: 0.5
-    //popupTemplate: function (geo, data) {
-    //    return ['<div class="hoverinfo"><strong>',
-    //        'Popularity in ' + geo.properties.name,
-    //        ': ' + data.popularity,
-    //        '</strong></div>'].join('');
-    //}
+    highlightBorderOpacity: 0.5,
+    popupTemplate: function (geo, data) {
+        return ['<div class="hoverinfo">',
+            'Popularity in ' + geo.properties.name,
+            ': ' + data.popularity,
+            '</div>'].join('');
+    }
 };
 
 function mapdone (datamap) {
@@ -123,15 +123,26 @@ function setWeek(value) {
 }
 
 function setLData(song, source){
+    clearMaps();
     current_l_song = song;
     current_l_source = source;
     updateMaps();
 }
 
 function setRData(song, source){
+    clearMaps();
     current_r_song = song;
     current_r_source = source;
     updateMaps();
+}
+
+function clearMaps(){
+    lmap.updateChoropleth(
+        null, {reset: true}
+    );
+    rmap.updateChoropleth(
+        null, {reset: true}
+    );
 }
 
 function updateMaps(){

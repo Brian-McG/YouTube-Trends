@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Youtube Trends</title>
-
+    <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css_dependents/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/c3.min.css" type="text/css">
@@ -28,7 +28,7 @@
     <script src="js_dependents/bootstrap.min.js"></script>
     <script src="js_dependents/d3.v3.min.js" charset="utf-8"></script>
     <script src="js_dependents/topojson.min.js"></script>
-    <script src="js_dependents/datamaps.world.min.js"></script>
+    <script src="js_dependents/datamaps.world.js"></script>
     <script src="js_dependents/c3.min.js"></script>
     <script src="js_dependents/rangeslider.min.js"></script>
     <script src="js/line-graph.js"></script>
@@ -45,7 +45,12 @@
             color: black;
 
         }
-
+        h3{
+          margin-top:3px;
+          margin-left: 30px;
+          font-size: 25px;
+          color: black;
+        }
         select{
             margin-left: 30px;
             font-size: 20px;
@@ -118,7 +123,7 @@
       </div>
         <div id="WritingYoutube">
             <br>
-            <p><span id ="Name"></span></p>
+            <h3><span id ="Name"></span></h3>
 
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
@@ -175,7 +180,7 @@
         <div id = "lefttop_right" class="col-xs-5 selectContainer">
             <select id="file_type_right" class="form-control" name="file_type" onchange="changeVariable('_right', true)">
                 <option value="GangnamStyle">Gangnam Style</option>
-                <option value="BlankSpace">Blank Space</option>
+                <option selected = "selected" value="BlankSpace">Blank Space</option>
                 <option value="SeeYouAgain">See You Again</option>
                 <option value="UptownFunk">Uptown Funk</option>
             </select>
@@ -192,7 +197,7 @@
       </div>
         <div id="WritingYoutube_right">
             <br>
-            <p><span id ="Name_right"></span></p>
+            <h3><span id ="Name_right"></span></h3>
             <p>
                 <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                 <span class="Wrap"><span class="Label" >Artist:</span><span id ="Artist_right"></span></span>
@@ -236,6 +241,12 @@
         </div>
     </div>
 </div>
+</div>
+<div id="pop">
+    <h2 >Popularity by Region</h2>
+    <h4>
+        Normalized between 1-100
+    </h4>
 </div>
 <div id='maps'>
     <div id='leftmap'></div>
@@ -326,7 +337,7 @@ $r.rangeslider({
     });
 </script>
 </body>
-<script src="js/maps.js"></script>
 <script src="js/left-top.js"></script>
 <script src="js/right-top.js"></script>
+<script src="js/maps.js"></script>
 </html>
