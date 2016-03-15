@@ -1,16 +1,20 @@
+
+// Grab data and put it in alldata
 var alldata; // a global
 
 d3.json("data/all.json", function (error, json) {
     if (error) return console.warn(error);
     alldata = json;
 });
-console.log(alldata["Gangnam Style"]["Youtube"][0]);
+
+// Some options for colours
 rfill = ['#fef0d9', '#fdcc8a', '#fc8d59', '#e34a33', '#b30000'];
 bfill = ['#ca0020', '#f4a582', '#ffffff', '#bababa', '#404040'];
 yfill = ['#ffffb2', '#fecc5c', '#fd8d3c', '#f03b20', '#bd0026'];
 gfill = ['#ffffcc', '#c2e699', '#78c679', '#31a354', '#006837'];
 mfill = ['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'];
 
+// Change this to change the colourscheme
 c_fil = yfill;
 
 fill = {
@@ -22,91 +26,109 @@ fill = {
     UNKNOWN: 'rgb(0,0,0)',
     defaultFill: 'grey'
 };
+
+// We want the maps to have the same properties
+geoConf = {
+    borderColor: 'black',
+    borderOpacity: 0.5,
+    popupOnHover: false,
+    highlightBorderColor: 'black',
+    highlightBorderWidth: 2,
+    highlightBorderOpacity: 0.5
+    //popupTemplate: function (geo, data) {
+    //    return ['<div class="hoverinfo"><strong>',
+    //        'Popularity in ' + geo.properties.name,
+    //        ': ' + data.popularity,
+    //        '</strong></div>'].join('');
+    //}
+};
+
+function mapdone (datamap) {
+    // Zoom - Make this linked
+    datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
+    //function redraw() {
+    //    datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    //}
+
+    // Populate line graph with selected country information
+    datamap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
+        // This will be used to set graphs based on click
+        var selected_item = $("#file_type option:selected").text();
+        var country_code = geography.id;
+        var data_set = new Array(53);
+        data_set[0] = ["google", "youtube"];
+        for (var i = 0; i < 52; ++i) {
+            // Currently has minimal error checking or handling
+            // Fill throw an error in the log if the country is greyed out
+            var google_value = null;
+            var youtube_value = null;
+            var selected_item_data = null;
+            if ((selected_item in alldata)) {
+                selected_item_data = alldata[selected_item];
+                if (("Google" in selected_item_data) && country_code in selected_item_data["Google"][i]) {
+                    google_value = selected_item_data["Google"][i][country_code].popularity;
+                }
+                if ("Youtube" in selected_item_data && country_code in selected_item_data["Youtube"][i]) {
+                    youtube_value = selected_item_data["Youtube"][i][country_code].popularity;
+                }
+            }
+            data_set[i + 1] = [google_value, youtube_value]
+        }
+        if (data_set[1][0] != null || data_set[1][1] != null) {
+            generate_line_graph(0, '#line_graph_1', data_set);
+        }
+    });
+}
 var lmap = new Datamap({
     element: document.getElementById('leftmap'),
     fills: fill,
-
     data: alldata["Gangnam Style"]["Youtube"][0],
-    geographyConfig: {
-        borderColor: 'black',
-        borderOpacity: 0.5,
-        popupTemplate: function (geo, data) {
-            return ['<div class="hoverinfo"><strong>',
-                'Popularity in ' + geo.properties.name,
-                ': ' + data.popularity,
-                '</strong></div>'].join('');
-        }
-    },
-    done: function (datamap) {
-        // Zoom - Make this linked
-        datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
-        function redraw() {
-            datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-        }
-
-        // Populate line graph with selected country information
-        datamap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
-            // This will be used to set graphs based on click
-            var selected_item = $("#file_type option:selected").text();
-            var country_code = geography.id;
-            var data_set = new Array(53);
-            data_set[0] = ["google", "youtube"];
-            for (var i = 0; i < 52; ++i) {
-                // Currently has minimal error checking or handling
-                // Fill throw an error in the log if the country is greyed out
-                var google_value = null;
-                var youtube_value = null;
-                var selected_item_data = null;
-                if ((selected_item in alldata)) {
-                    selected_item_data = alldata[selected_item];
-                    if (("Google" in selected_item_data) && country_code in selected_item_data["Google"][i]) {
-                        google_value = selected_item_data["Google"][i][country_code].popularity;
-                    }
-                    if ("Youtube" in selected_item_data && country_code in selected_item_data["Youtube"][i]) {
-                        youtube_value = selected_item_data["Youtube"][i][country_code].popularity;
-                    }
-                }
-                data_set[i + 1] = [google_value, youtube_value]
-            }
-            if (data_set[1][0] != null || data_set[1][1] != null) {
-                generate_line_graph(0, '#line_graph_1', data_set);
-            }
-        });
-    }
+    geographyConfig: geoConf,
+    done: mapdone,
 });
 
 var rmap = new Datamap({
     element: document.getElementById('rightmap'),
     fills: fill,
-
     data: alldata["See You Again"]["Youtube"][0],
-    geographyConfig: {
-        borderColor: 'black',
-        borderOpacity: 0.5,
-        popupTemplate: function (geo, data) {
-            return ['<div class="hoverinfo"><strong>',
-                'Popularity in ' + geo.properties.name,
-                ': ' + data.popularity,
-                '</strong></div>'].join('');
-        }
-    }
+    geographyConfig: geoConf,
+    done: mapdone,
 });
-var curr = 0;
-//window.setInterval(function() {
-//    curr = curr + 1;
-//    map.updateChoropleth(
-//        alldata["Gangnam Style"]["Youtube"][curr]
-//    );
-//}, 2000);
 
-function setWeek(value) {
-    lmap.updateChoropleth(
-        alldata["Gangnam Style"]["Youtube"][value]
-    );
-    rmap.updateChoropleth(
-        alldata["See You Again"]["Youtube"][value]
-    );
+function redraw() {
+    lmap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    rmap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+
 }
 
-// Draw a legend for this map
-//map.legend();
+var current_week = 0;
+var current_l_song = "Gangnam Style";
+var current_r_song = "Blank Space";
+var current_l_source = "Youtube";
+var current_r_source = "Youtube";
+
+function setWeek(value) {
+    current_week = value;
+    updateMaps();
+}
+
+function setLData(song, source){
+    current_l_song = song;
+    current_l_source = source;
+    updateMaps();
+}
+
+function setRData(song, source){
+    current_r_song = song;
+    current_r_source = source;
+    updateMaps();
+}
+
+function updateMaps(){
+    lmap.updateChoropleth(
+        alldata[current_l_song][current_l_source][current_week]
+    );
+    rmap.updateChoropleth(
+        alldata[current_r_song][current_r_source][current_week]
+    );
+}

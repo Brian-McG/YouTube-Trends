@@ -48,10 +48,12 @@ function assignValues(rows) {
         selectedItems[0] = rows[index].Identifier + '.csv';
         selectedItems[1] = rows[index].Name;
         fetchRows(0, '#line_graph_1', selectedItems[0]);
+        setLData(selectedItems[1], name);
     } else {
         selectedItems[2] = rows[index].Identifier + '.csv';
         selectedItems[3] = rows[index].Name;
         fetchRows(1, '#line_graph_2', selectedItems[2]);
+        setRData(selectedItems[3], name);
     }
     fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
 }
