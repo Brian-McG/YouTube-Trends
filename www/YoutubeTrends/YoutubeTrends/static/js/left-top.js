@@ -48,11 +48,16 @@ function assignValues(rows, isSongChange) {
         setRData(selectedItems[3], name);
     }
     if(extension == '' && isSongChange) {
+        $("#line_graph_1_header").text("Global Trends");
+        $("#line_graph_1_subheader").text(rows[index].Name);
         fetchRows(0, '#line_graph_1', selectedItems[0]);
     } else if(isSongChange) {
+        $("#line_graph_2_header").text("Global Trends");
+        $("#line_graph_2_subheader").text(rows[index].Name);
         fetchRows(1, '#line_graph_2', selectedItems[2]);
     }
     if(isSongChange) {
+        $("#line_graph_merge_subheader").text(selectedItems[1] + " " + locations[0] + " vs " + selectedItems[3] + " " + locations[1]);
         if(!assigned) {
             setTimeout(function() {fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);}, 1000);
             assigned = true;

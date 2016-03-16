@@ -8,8 +8,6 @@ var isMerged = false;
 var legendGenerated = [false, false];
 var currentWeek = 1;
 var data_rows = [null, null, null];
-var selection = ["Google", "Youtube", "Youtube Comments"];
-var count = 0;
 
 function fetchRows(index, bindDom, dataFileName) {
     d3.csv("data/" + dataFileName, function (rows) {
@@ -22,20 +20,22 @@ function fetchRows(index, bindDom, dataFileName) {
 }
 
 function fetchRowsFromTwoFiles(index, bindDom, displayNameOne, displayNameTwo) {
-    if(data_rows[0] != null) {
+    if (data_rows[0] != null && data_rows[1] != null) {
         String.prototype.capitalize = function () {
             return this.charAt(0).toUpperCase() + this.slice(1);
         }
+        var colorPatternOne = ['#7a0177', '#c51b8a', '#ce1256'];
+        var colorPatternTwo = ['#014636', '#02818a', '#3690c0'];
         var datasetOne = data_rows[0];
         var datasetTwo = data_rows[1];
         var dataset = new Array(datasetOne.length);
         var header_one = new Array(datasetOne[0].length);
         var header_two = new Array(datasetTwo[0].length);
         for (var i = 0; i < data_rows[0][0].length; ++i) {
-            header_one[i] = displayNameOne + " " + data_rows[0][0][i].capitalize();
+            header_one[i] = displayNameOne + " " + locations[0] + " " + data_rows[0][0][i].capitalize();
         }
         for (var i = 0; i < data_rows[1][0].length; ++i) {
-            header_two[i] = displayNameTwo + " " + data_rows[1][0][i].capitalize();
+            header_two[i] = displayNameTwo + " " + locations[1] + " " + data_rows[1][0][i].capitalize();
         }
         dataset[0] = header_one.concat(header_two);
         for (var i = 1; i < datasetOne.length; ++i) {
@@ -43,10 +43,19 @@ function fetchRowsFromTwoFiles(index, bindDom, displayNameOne, displayNameTwo) {
         }
 
         generate_line_graph(index, bindDom, dataset);
+        var map = chart[index].data.colors();
+        for (var i = 0; i < header_one.length; ++i) {
+            map[header_one[i]] = colorPatternOne[i];
+        }
+        for (var i = 0; i < header_two.length; ++i) {
+            map[header_two[i]] = colorPatternTwo[i];
+        }
+        chart[index].data.colors(map);
 
         // Set the styling on each pair of lines
         // Set a timeout because data is loaded asynchronously and stroke needs to be set after the data is loaded
         setTimeout(function () {
+            // Set Colors
             var googleLines = $('path[class*="c3-line-"][class$="-Google"]');
             for (var i = 0; i < googleLines.length; ++i) {
                 googleLines[i].style.strokeDasharray = "5, 5, 5, 5, 5, 5, 10, 5, 10, 5, 10, 5";
@@ -63,6 +72,10 @@ function fetchRowsFromTwoFiles(index, bindDom, displayNameOne, displayNameTwo) {
             for (var i = 0; i < youtubeCommentsLines.length; ++i) {
                 youtubeCommentsLines[i].style.strokeDasharray = "";
                 youtubeCommentsLines[i].style.strokeWidth = "1px";
+            }
+
+            if (chart[index] != null) {
+
             }
         }, 500);
     }
@@ -89,7 +102,8 @@ function generate_line_graph(index, bindDom, rows) {
             loadRows[2] = "youtubeComments";
         }
         if (index == 2) {
-            unloadRows = chart[index].columns
+            unloadRows = chart[index].columns;
+            loadRows = rows[0];
         }
         chart[index].load(
             {
@@ -97,16 +111,35 @@ function generate_line_graph(index, bindDom, rows) {
                 unload: unloadRows
             });
 
-        if (index != 2) {
-            $(bindDom + "_legend").empty();
+        $(bindDom + "_legend").empty();
 
-            d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
-                .data(loadRows)
-                .enter().append('span')
-                .attr('data-id', function (id) {
-                    return id;
-                })
-                .html(function (id) {
+        d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
+            .data(loadRows)
+            .enter().append('span')
+            .attr('data-id', function (id) {
+                return id;
+            })
+            .html(function (id) {
+                if (index == 2) {
+                    if (id.indexOf(selectedItems[1]) > -1) {
+                        if (id.indexOf("Google") > -1) {
+                            return '<img  src="images/google-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        } else if (id.indexOf("YoutubeComments") > -1) {
+                            return '<img src="images/comment-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        } else {
+                            return '<img src="images/youtubeLegendIcon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        }
+                    } else {
+                        if (id.indexOf("Google") > -1) {
+                            return '<img  src="images/google-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        } else if (id.indexOf("YoutubeComments") > -1) {
+                            return '<img src="images/comment-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        } else {
+                            return '<img src="images/youtubeLegendIcon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        }
+                    }
+
+                } else {
                     if (id == 'google') {
                         return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
                     } else if (id == 'youtube') {
@@ -116,27 +149,27 @@ function generate_line_graph(index, bindDom, rows) {
                     } else {
                         return id;
                     }
-                })
-                .each(function (id) {
-                    //d3.select(this).style('background-color', chart.color(id));
-                })
-                .on('mouseover', function (id) {
-                    chart[index].focus(id);
-                })
-                .on('mouseout', function (id) {
+                }
+            })
+            .each(function (id) {
+                //d3.select(this).style('background-color', chart.color(id));
+            })
+            .on('mouseover', function (id) {
+                chart[index].focus(id);
+            })
+            .on('mouseout', function (id) {
+                chart[index].revert();
+            })
+            .on('click', function (id) {
+                chart[index].toggle(id);
+                if (d3.select(this).style()[0][0].style.opacity == null || d3.select(this).style()[0][0].style.opacity == '' || d3.select(this).style()[0][0].style.opacity == 1) {
+                    d3.select(this).style({opacity: 0.5});
                     chart[index].revert();
-                })
-                .on('click', function (id) {
-                    chart[index].toggle(id);
-                    if (d3.select(this).style()[0][0].style.opacity == null || d3.select(this).style()[0][0].style.opacity == '' || d3.select(this).style()[0][0].style.opacity == 1) {
-                        d3.select(this).style({opacity: 0.5});
-                        chart[index].revert();
-                    } else {
-                        d3.select(this).style({opacity: 1});
-                        chart[index].focus(id);
-                    }
-                });
-        }
+                } else {
+                    d3.select(this).style({opacity: 1});
+                    chart[index].focus(id);
+                }
+            });
     } else {
         chart[index] = c3.generate({
             bindto: bindDom,
@@ -202,41 +235,52 @@ function generate_line_graph(index, bindDom, rows) {
                 }
             },
             legend: {
-                show: index == 2
+                show: false
             }
         });
 
-        // Not working at the moment
-        /*
-         var line = d3.svg.line()
-         .tension(0) // Catmull–Rom
-         .interpolate("cardinal-closed");
-
-         // Set line to dashed
-         d3.select('#line_graph_1, .c3-line-google')
-         .style("stroke-width", "10px")
-         .style("stroke", "#ddd")
-         .style("stroke-dasharray", "4,4")
-         .attr("d", line);
-         */
-
         // Add a custom legend
-        if (index != 3 && !legendGenerated[index]) {
+        if (!legendGenerated[index]) {
+            var data_labels = ['google', 'youtube', 'youtubeComments'];
+            if (index == 2) {
+                data_labels = rows[0];
+            }
             d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
-                .data(['google', 'youtube', 'youtubeComments'])
+                .data(data_labels)
                 .enter().append('span')
                 .attr('data-id', function (id) {
                     return id;
                 })
                 .html(function (id) {
-                    if (id == 'google') {
-                        return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
-                    } else if (id == 'youtube') {
-                        return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
-                    } else if (id == 'youtubeComments') {
-                        return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
+                    if (index == 2) {
+                        if (id.indexOf(selectedItems[1]) > -1) {
+                            if (id.indexOf("Google") > -1) {
+                                return '<img  src="images/google-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            } else if (id.indexOf("YoutubeComments") > -1) {
+                                return '<img src="images/comment-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            } else {
+                                return '<img src="images/youtubeLegendIcon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            }
+                        } else {
+                            if (id.indexOf("Google") > -1) {
+                                return '<img  src="images/google-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            } else if (id.indexOf("YoutubeComments") > -1) {
+                                return '<img src="images/comment-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            } else {
+                                return '<img src="images/youtubeLegendIcon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            }
+                        }
+
                     } else {
-                        return id;
+                        if (id == 'google') {
+                            return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
+                        } else if (id == 'youtube') {
+                            return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
+                        } else if (id == 'youtubeComments') {
+                            return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
+                        } else {
+                            return id;
+                        }
                     }
                 })
                 .each(function (id) {
@@ -309,8 +353,13 @@ function mergeClick() {
 
 function resetGraphs() {
     fetchRows(0, '#line_graph_1', selectedItems[0]);
-    $("#line_graph_1_header").text("Global Popularity Trends");
+    $("#line_graph_1_header").text("Global Trends");
     fetchRows(1, '#line_graph_2', selectedItems[2]);
-    $("#line_graph_2_header").text("Global Popularity Trends");
-    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);
+    $("#line_graph_2_header").text("Global Trends");
+    setTimeout(function () {
+        locations[0] = "Global";
+        locations[1] = "Global";
+        $("#line_graph_merge_subheader").text(selectedItems[1] + " Global" + " vs " + selectedItems[3] + " Global");
+        fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);
+    }, 500);
 }

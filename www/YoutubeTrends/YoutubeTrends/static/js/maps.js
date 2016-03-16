@@ -2,6 +2,9 @@
 // Make a deep copy of alldata so that line graph can show the data without alterations
 var lineGraphAllData = jQuery.extend(true, {}, alldata);
 
+// Store current location selected
+var locations = ['Global', 'Global'];
+
 // This isn't actually used
 /*
 d3.json("data/all.json", function (error, json) {
@@ -111,11 +114,16 @@ function mapdone (datamap) {
         if (data_set[1][0] != null || data_set[1][1] != null) {
             if(datamap.options.element.id == "leftmap") {
                 $("#line_graph_1_header").text(geography.properties.name + " Trends");
+                $("#line_graph_1_merge_header").text(geography.properties.name);
+                locations[0] = geography.properties.name;
                 generate_line_graph(0, '#line_graph_1', data_set);
             } else {
                 $("#line_graph_2_header").text(geography.properties.name + " Trends");
+                $("#line_graph_2_merge_header").text(geography.properties.name);
+                locations[1] = geography.properties.name;
                 generate_line_graph(1, '#line_graph_2', data_set);
             }
+            $("#line_graph_merge_subheader").text(selectedItems[1] + " " + locations[0] + " vs " + selectedItems[3] + " " + locations[1]);
             fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);
         }
     });
