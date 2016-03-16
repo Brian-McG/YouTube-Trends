@@ -116,6 +116,7 @@ function mapdone (datamap) {
                 $("#line_graph_2_header").text(geography.properties.name + " Trends");
                 generate_line_graph(1, '#line_graph_2', data_set);
             }
+            fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);
         }
     });
 }

@@ -7,6 +7,9 @@ var colors = ['#1F77B4', '#EF5656', '#EF5656'];
 var isMerged = false;
 var legendGenerated = [false, false];
 var currentWeek = 1;
+var data_rows = [null, null, null];
+var selection = ["Google", "Youtube", "Youtube Comments"];
+var count = 0;
 
 function fetchRows(index, bindDom, dataFileName) {
     d3.csv("data/" + dataFileName, function (rows) {
@@ -18,23 +21,32 @@ function fetchRows(index, bindDom, dataFileName) {
     });
 }
 
-function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, dataFileNameTwo, displayNameTwo) {
-    d3.csv("data/" + dataFileNameOne, function (rows) {
-        d3.csv("data/" + dataFileNameTwo, function (otherRows) {
-            var mapFuntion = function (d) {
-                return [+d["google"], +d["youtube"], +d["youtubeComments"]];
-            }
-            var datasetOne = rows.map(mapFuntion);
-            datasetOne.unshift([displayNameOne + " Google", displayNameOne + " Youtube", displayNameOne + " Youtube Comments"]);
-            var datasetTwo = otherRows.map(mapFuntion);
-            datasetTwo.unshift([displayNameTwo + " Google", displayNameTwo + " Youtube", displayNameTwo + " Youtube Comments"]);
-            for (var i = 0; i < datasetOne.length; ++i) {
-                datasetOne[i] = datasetOne[i].concat(datasetTwo[i]);
-            }
+function fetchRowsFromTwoFiles(index, bindDom, displayNameOne, displayNameTwo) {
+    if(data_rows[0] != null) {
+        String.prototype.capitalize = function () {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        var datasetOne = data_rows[0];
+        var datasetTwo = data_rows[1];
+        var dataset = new Array(datasetOne.length);
+        var header_one = new Array(datasetOne[0].length);
+        var header_two = new Array(datasetTwo[0].length);
+        for (var i = 0; i < data_rows[0][0].length; ++i) {
+            header_one[i] = displayNameOne + " " + data_rows[0][0][i].capitalize();
+        }
+        for (var i = 0; i < data_rows[1][0].length; ++i) {
+            header_two[i] = displayNameTwo + " " + data_rows[1][0][i].capitalize();
+        }
+        dataset[0] = header_one.concat(header_two);
+        for (var i = 1; i < datasetOne.length; ++i) {
+            dataset[i] = datasetOne[i].concat(datasetTwo[i]);
+        }
 
-            generate_line_graph(index, bindDom, datasetOne)
+        generate_line_graph(index, bindDom, dataset);
 
-            // Set the styling on each pair of lines
+        // Set the styling on each pair of lines
+        // Set a timeout because data is loaded asynchronously and stroke needs to be set after the data is loaded
+        setTimeout(function () {
             var googleLines = $('path[class*="c3-line-"][class$="-Google"]');
             for (var i = 0; i < googleLines.length; ++i) {
                 googleLines[i].style.strokeDasharray = "5, 5, 5, 5, 5, 5, 10, 5, 10, 5, 10, 5";
@@ -52,29 +64,32 @@ function fetchRowsFromTwoFiles(index, bindDom, dataFileNameOne, displayNameOne, 
                 youtubeCommentsLines[i].style.strokeDasharray = "";
                 youtubeCommentsLines[i].style.strokeWidth = "1px";
             }
-        });
-    });
-
+        }, 500);
+    }
 }
 
 function generate_line_graph(index, bindDom, rows) {
-    if (chart[index] != null && index != 2) {
+    data_rows[index] = rows;
+    if (chart[index] != null) {
         var loadRows = [null, null, null];
         var unloadRows = [null, null, null];
-        if(rows[2][0] == null) {
+        if (rows[2][0] == null) {
             unloadRows[0] = "google";
         } else {
             loadRows[0] = "google";
         }
-        if(rows[2][1] == null) {
+        if (rows[2][1] == null) {
             unloadRows[1] = "youtube";
         } else {
             loadRows[1] = "youtube";
         }
-        if(rows[0].length == 2) {
+        if (rows[0].length == 2) {
             unloadRows[2] = "youtubeComments";
         } else {
             loadRows[2] = "youtubeComments";
+        }
+        if (index == 2) {
+            unloadRows = chart[index].columns
         }
         chart[index].load(
             {
@@ -82,44 +97,46 @@ function generate_line_graph(index, bindDom, rows) {
                 unload: unloadRows
             });
 
-        $(bindDom + "_legend").empty();
+        if (index != 2) {
+            $(bindDom + "_legend").empty();
 
-        d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
-            .data(loadRows)
-            .enter().append('span')
-            .attr('data-id', function (id) {
-                return id;
-            })
-            .html(function (id) {
-                if (id == 'google') {
-                    return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
-                } else if (id == 'youtube') {
-                    return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
-                } else if (id == 'youtubeComments') {
-                    return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
-                } else {
+            d3.select(bindDom + '_legend').insert('div').attr('class', 'legend').selectAll('span')
+                .data(loadRows)
+                .enter().append('span')
+                .attr('data-id', function (id) {
                     return id;
-                }
-            })
-            .each(function (id) {
-                //d3.select(this).style('background-color', chart.color(id));
-            })
-            .on('mouseover', function (id) {
-                chart[index].focus(id);
-            })
-            .on('mouseout', function (id) {
-                chart[index].revert();
-            })
-            .on('click', function (id) {
-                chart[index].toggle(id);
-                if (d3.select(this).style()[0][0].style.opacity == null || d3.select(this).style()[0][0].style.opacity == '' || d3.select(this).style()[0][0].style.opacity == 1) {
-                    d3.select(this).style({opacity: 0.5});
-                    chart[index].revert();
-                } else {
-                    d3.select(this).style({opacity: 1});
+                })
+                .html(function (id) {
+                    if (id == 'google') {
+                        return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
+                    } else if (id == 'youtube') {
+                        return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
+                    } else if (id == 'youtubeComments') {
+                        return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
+                    } else {
+                        return id;
+                    }
+                })
+                .each(function (id) {
+                    //d3.select(this).style('background-color', chart.color(id));
+                })
+                .on('mouseover', function (id) {
                     chart[index].focus(id);
-                }
-            });
+                })
+                .on('mouseout', function (id) {
+                    chart[index].revert();
+                })
+                .on('click', function (id) {
+                    chart[index].toggle(id);
+                    if (d3.select(this).style()[0][0].style.opacity == null || d3.select(this).style()[0][0].style.opacity == '' || d3.select(this).style()[0][0].style.opacity == 1) {
+                        d3.select(this).style({opacity: 0.5});
+                        chart[index].revert();
+                    } else {
+                        d3.select(this).style({opacity: 1});
+                        chart[index].focus(id);
+                    }
+                });
+        }
     } else {
         chart[index] = c3.generate({
             bindto: bindDom,
@@ -278,11 +295,14 @@ function mergeClick() {
         $("#merge_container").hide();
         $("#left_container").show();
         $("#right_container").show();
+        chart[0].flush();
+        chart[1].flush();
     } else {
         $("#merge_line_graph_button").text("Un-merge Graph");
         $("#left_container").hide();
         $("#right_container").hide();
         $("#merge_container").show();
+        chart[2].flush();
     }
     isMerged = !isMerged;
 }
@@ -292,5 +312,5 @@ function resetGraphs() {
     $("#line_graph_1_header").text("Global Popularity Trends");
     fetchRows(1, '#line_graph_2', selectedItems[2]);
     $("#line_graph_2_header").text("Global Popularity Trends");
-    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
+    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);
 }

@@ -35,7 +35,7 @@ function assignValuesRight(rows) {
     selectedItems[2] = rows[index].Identifier + '.csv';
     selectedItems[3] = rows[index].Name;
     fetchRows(1, '#line_graph_2', selectedItems[2]);
-    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
+    fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);
 }
 //Matches the names selected to get the correct data
 function matchRight(element){

@@ -37,12 +37,6 @@ function assignValues(rows, isSongChange) {
     }
     changePic();
     changeIcon();
-    if(assigned == false) {
-        fetchRows(0, '#line_graph_1', selectedItems[0]);
-        fetchRows(1, '#line_graph_2', selectedItems[2]);
-        fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
-        assigned = true;
-    }
 
     if(extension == '') {
         selectedItems[0] = rows[index].Identifier + '.csv';
@@ -59,7 +53,12 @@ function assignValues(rows, isSongChange) {
         fetchRows(1, '#line_graph_2', selectedItems[2]);
     }
     if(isSongChange) {
-        fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[0], selectedItems[1], selectedItems[2], selectedItems[3]);
+        if(!assigned) {
+            setTimeout(function() {fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);}, 1000);
+            assigned = true;
+        } else {
+            fetchRowsFromTwoFiles(2, '#line_graph_merged', selectedItems[1], selectedItems[3]);
+        }
     }
 }
 //Matches the names selected to get the correct data
