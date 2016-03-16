@@ -103,7 +103,12 @@ function generate_line_graph(index, bindDom, rows) {
         }
         if (index == 2) {
             unloadRows = chart[index].columns;
-            loadRows = rows[0];
+            loadRows = [];
+            for(var i = 0; i < rows[0].length; ++i) {
+                if(rows[2][i] != null) {
+                    loadRows.push(rows[0][i]);
+                }
+            }
         }
         chart[index].load(
             {
@@ -126,16 +131,20 @@ function generate_line_graph(index, bindDom, rows) {
                             return '<img  src="images/google-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else if (id.indexOf("YoutubeComments") > -1) {
                             return '<img src="images/comment-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
-                        } else {
+                        } else if(id.indexOf("Youtube") > -1) {
                             return '<img src="images/youtubeLegendIcon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        } else {
+                            return id;
                         }
                     } else {
                         if (id.indexOf("Google") > -1) {
                             return '<img  src="images/google-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else if (id.indexOf("YoutubeComments") > -1) {
                             return '<img src="images/comment-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
-                        } else {
+                        } else if(id.indexOf("Youtube") > -1) {
                             return '<img src="images/youtubeLegendIcon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                        } else {
+                            return id;
                         }
                     }
 
