@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="css_dependents/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/c3.min.css" type="text/css">
-    <link rel="stylesheet" href="css_dependents/rangeslider.css" type="text/css">
+    <link rel="stylesheet" href="css_dependents/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css_dependents/ion.rangeSlider.css" type="text/css">
+    <link rel="stylesheet" href="css_dependents/ion.rangeSlider.skinHTML5.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/top-style.css" type="text/css">
 
@@ -31,7 +33,7 @@
     <script src="js_dependents/topojson.min.js"></script>
     <script src="js_dependents/datamaps.world.js"></script>
     <script src="js_dependents/c3.min.js"></script>
-    <script src="js_dependents/rangeslider.min.js"></script>
+    <script src="js_dependents/ion.rangeSlider.min.js"></script>
     <script src="js/line-graph.js"></script>
     <script type="text/javascript" src="data/all.json"></script>
 
@@ -259,7 +261,7 @@
 </div>
 <div id='slider_container' class='container'>
     <h3 id="week_slider_header" class="output">Week 1 from release</h3>
-    <input id="slide" type="range" min=1 max=52 step=1 value=1>
+    <input type="text" id="slider" name="slider" value="" />
 </div>
 <div id="line_graphs">
     <div id='merge_button'>
@@ -308,6 +310,15 @@
         });
     });
 
+    $("#slider").ionRangeSlider({
+        min: 1,
+        max: 52,
+        type: 'int',
+        grid: true,
+        grid_num: 10
+    });
+
+    /*
     var $r = $('input[type="range"]');
     var $ruler = $('<div class="rangeslider__ruler" />');
     $r.rangeslider({
@@ -340,13 +351,9 @@
         onSlideEnd: function (position, value) {
 
             // Here is where the graphs and maps get updated again
-            /*
-             numSchools = value;
-             $("#vis").empty();
-             plot();
-             */
         }
     });
+    */
     function getRulerRange(min, max, step) {
         var range = '&nbsp1';
         var i = 1;
