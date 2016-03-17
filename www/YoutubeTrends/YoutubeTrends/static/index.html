@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css_dependents/c3.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/normalize.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/ion.rangeSlider.css" type="text/css">
-    <link rel="stylesheet" href="css_dependents/ion.rangeSlider.skinHTML5.css" type="text/css">
+    <link rel="stylesheet" href="css_dependents/ion.rangeSlider.skinModern.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/top-style.css" type="text/css">
 
@@ -313,58 +313,8 @@
     $("#slider").ionRangeSlider({
         min: 1,
         max: 52,
-        type: 'int',
-        grid: true,
-        grid_num: 10
+        grid: true
     });
-
-    /*
-    var $r = $('input[type="range"]');
-    var $ruler = $('<div class="rangeslider__ruler" />');
-    $r.rangeslider({
-
-        // Feature detection the default is `true`.
-        // Set this to `false` if you want to use
-        // the polyfill also in Browsers which support
-        // the native <input type="range"> element.
-        polyfill: false,
-
-        // Default CSS classes
-        rangeClass: 'rangeslider',
-        fillClass: 'rangeslider__fill',
-        handleClass: 'rangeslider__handle',
-
-        // Callback function
-        onInit: function () {
-            $ruler[0].innerHTML = getRulerRange(this.min, this.max, this.step);
-            $("#slider_container").append($ruler);
-        },
-
-        // Callback function
-        onSlide: function (position, value) {
-            $(".output").text("Week " + value + " from release");
-            setAxisGrid(value);
-            setWeek(value);
-        },
-
-        // Callback function
-        onSlideEnd: function (position, value) {
-
-            // Here is where the graphs and maps get updated again
-        }
-    });
-    */
-    function getRulerRange(min, max, step) {
-        var range = '&nbsp1';
-        var i = 1;
-
-        while (i <= Math.round($("#js-rangeslider-0").width() / 4.196)) {
-            range += '&nbsp';
-            i = i + step;
-        }
-        range += 52;
-        return range;
-    }
 </script>
 </body>
 <script src="js/left-top.js"></script>
