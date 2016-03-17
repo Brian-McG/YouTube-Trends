@@ -348,14 +348,20 @@ function mergeClick() {
         $("#merge_container").hide();
         $("#left_container").show();
         $("#right_container").show();
-        chart[0].flush();
-        chart[1].flush();
+        setTimeout(function(){
+            chart[0].flush();
+            chart[1].flush();
+        }, 200);
+
     } else {
         $("#merge_line_graph_button").text("Un-merge Graph");
         $("#left_container").hide();
         $("#right_container").hide();
         $("#merge_container").show();
-        chart[2].flush();
+        setTimeout(function(){
+            chart[2].flush();
+        }, 200);
+
     }
     isMerged = !isMerged;
 }
