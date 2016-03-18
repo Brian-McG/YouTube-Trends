@@ -31,7 +31,6 @@ var linear = d3.scale.quantize()
 var svg = d3.select("#legendsvg");
 var container =  document.getElementById('pop');
 var lwidth = pop.getBoundingClientRect().width;
-console.log(lwidth);
 lwidth = (lwidth * 0.4) / 6;
 
 svg.append("g")

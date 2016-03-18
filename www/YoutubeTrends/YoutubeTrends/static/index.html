@@ -28,7 +28,7 @@
 
     <script src="js_dependents/jquery-2.2.1.min.js"></script>
     <script src="js_dependents/bootstrap.min.js"></script>
-    <script src="js_dependents/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js_dependents/d3.min.js" charset="utf-8"></script>
     <script src="js_dependents/d3-legend.min.js"></script>
     <script src="js_dependents/topojson.min.js"></script>
     <script src="js_dependents/datamaps.world.js"></script>
@@ -88,7 +88,7 @@
         }
 
         g.datamaps-subunits {
-            cursor: hand;
+            cursor: pointer;
         }
     </style>
 
@@ -281,8 +281,10 @@
         <div id="line_graph_2_legend" class="line_graph_legend"></div>
     </div>
     <div id="merge_container">
-        <h2 id="line_graph_merged_header" class="line_graph_header">Merged Popularity Trends</h2>
-            <h2 class="line_graph_header"><small id="line_graph_merge_subheader">Gangnam Style Global vs Blank Space Global</small></h2>
+        <h2 class="line_graph_header" id="line_graph_merged_header">Merged Popularity Trends</h2>
+        <h2 class="line_graph_header" ><small id="line_graph_merge_subheader">Gangnam Style Global vs Blank Space Global</small></h2>
+
+
         <div id="line_graph_merged" class="graph"></div>
         <div id="line_graph_merged_legend" class="line_graph_legend"></div>
     </div>

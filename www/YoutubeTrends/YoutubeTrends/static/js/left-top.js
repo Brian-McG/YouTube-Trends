@@ -102,7 +102,6 @@ function changePic() {
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
     var link = getLink(name);
-    console.log('https://www.youtube.com/embed/'+link+'?autoplay=0');
     $('#Icon'+extension).attr('src','https://www.youtube.com/embed/'+link+'?autoplay=0');
 }
 

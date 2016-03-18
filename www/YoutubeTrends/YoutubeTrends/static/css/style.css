@@ -38,6 +38,7 @@
 
 .line_graph_legend {
     width: 100%;
+    margin-top: 5px;
 }
 
 #week_slider_header {
@@ -79,6 +80,7 @@
 
 #merge_container {
     display: none;
+    margin-bottom: 20px;
 }
 
 #line_graph_merged_header {
@@ -101,4 +103,12 @@
     top: 28px;
     width: 20px;
     height: 20px;
+}
+
+.c3-axis-y-label {
+    font-size: 12px;
+}
+
+.c3-axis-x-label {
+    font-size: 12px;
 }

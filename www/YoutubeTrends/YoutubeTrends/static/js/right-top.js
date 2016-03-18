@@ -72,7 +72,6 @@ function changePicRight() {
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
     var link = getLink(name);
-    console.log('https://www.youtube.com/embed/'+link+'?autoplay=0');
     $('#Icon_right'+extension).attr('src','https://www.youtube.com/embed/'+link+'?autoplay=0');
 }
 
