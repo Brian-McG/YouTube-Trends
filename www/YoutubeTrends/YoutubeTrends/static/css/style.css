@@ -1,3 +1,7 @@
+body {
+    background-color: #272525;
+}
+
 #line_graph_1 {
     width: 100%;
 }
@@ -75,7 +79,7 @@
 .legend span {
     padding-right: 10px;
     cursor: pointer;
-    color: black;
+    color: white;
 }
 
 #merge_container {
@@ -111,4 +115,42 @@
 
 .c3-axis-x-label {
     font-size: 12px;
+}
+
+.c3-axis {
+    fill: white;
+}
+.c3-axis line,
+.c3-axis path {
+    stroke: white;
+}
+.c3-legend-item {
+    fill: white;
+}
+
+#line_graph_2_subheader {
+    color: #CCC;
+}
+#line_graph_1_subheader {
+     color: #CCC;
+ }
+
+.irs-max {
+    color:#D0D0D0;
+    background: transparent;
+}
+ .irs-min {
+     color:#D0D0D0;
+     background: transparent;
+ }
+.irs-grid-pol.small {
+    background:white;
+}
+
+.irs-grid-text {
+    color: #D0D0D0;
+}
+
+#line_graph_merge_subheader {
+    color: #CCC;
 }

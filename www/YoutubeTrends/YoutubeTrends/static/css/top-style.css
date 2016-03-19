@@ -21,6 +21,8 @@
     cursor: pointer;
     width: 103% !important;
     height: 40px !important;
+    background-color: #222222;
+    color:white;
 
 }
 #Name {
@@ -35,8 +37,8 @@
 #NameGoogle_right {
     margin-left: 30px;
 }
-#topbar{background-color: white;width:50%;position:absolute}
-#topbar_right{background-color: white;width:50%;position:absolute}
+#topbar{background-color: #222222;width:50%;position:absolute}
+#topbar_right{background-color: #222222;width:50%;position:absolute}
 
 
 .Wrap{
@@ -47,7 +49,7 @@
 .Label{
   font-family: "Times New Roman", Georgia, Serif;
   font-size: 18px;
-  color: black;
+  color: white;
 }
 .stick {
     width: 50%;
@@ -56,4 +58,8 @@
 }
 .page-header {
     margin-top: 20px;
+}
+
+h1, h2, h3, h4 {
+    color: white;
 }
