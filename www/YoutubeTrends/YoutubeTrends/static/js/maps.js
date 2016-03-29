@@ -63,7 +63,8 @@ geoConf = {
     borderOpacity: 0.5,
     //popupOnHover: false,
     highlightBorderColor: 'black',
-    highlightBorderWidth: 2,
+    highlightBorderWidth: 4,
+    highlightFillColor: 'lol not a colour',
     highlightBorderOpacity: 0.5,
     popupTemplate: function (geo, data) {
         return ['<div class="hoverinfo">',
