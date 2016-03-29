@@ -63,7 +63,8 @@ geoConf = {
     borderOpacity: 0.5,
     //popupOnHover: false,
     highlightBorderColor: 'black',
-    highlightBorderWidth: 2,
+    highlightBorderWidth: 4,
+    highlightFillColor: 'lol not a colour',
     highlightBorderOpacity: 0.5,
     popupTemplate: function (geo, data) {
         return ['<div class="hoverinfo">',
@@ -156,7 +157,7 @@ var current_l_source = "Youtube";
 var current_r_source = "Youtube";
 
 function setWeek(value) {
-    current_week = value;
+    current_week = value - 1;
     updateMaps();
 }
 
