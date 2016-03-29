@@ -156,7 +156,7 @@ var current_l_source = "Youtube";
 var current_r_source = "Youtube";
 
 function setWeek(value) {
-    current_week = value;
+    current_week = value - 1;
     updateMaps();
 }
 
