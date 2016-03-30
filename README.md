@@ -5,6 +5,10 @@
   - Brian Mc George
   - Bryce Billing
   - Calvin Brizzi
+
+### Supported Browsers
+  - Google Chrome *(recommended)*
+  - Firefox
   
 ### How to run
 The D3 components need to be served up as HTML, if one just accesses index.html from file, the data cannot be access and the page will not render correctly. <br>
