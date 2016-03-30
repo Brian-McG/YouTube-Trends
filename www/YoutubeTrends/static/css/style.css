@@ -167,3 +167,9 @@
 .popover {
     max-width: 400px;
 }
+
+.popover-content {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    color: white;
+}
