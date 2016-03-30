@@ -322,22 +322,8 @@ function setAxisGrid(value) {
     currentWeek = value;
     for (var i = 0; i < chart.length; ++i) {
         if (chart[i] != null) {
-            // Disable transition animation
-            chart[i].internal.loadConfig({
-                transition: {
-                    duration: 0
-                }
-            });
-
             //Update value
             chart[i].xgrids([{value: value}]);
-
-            // Re-enable transition animation
-            chart[i].internal.loadConfig({
-                transition: {
-                    duration: 350
-                }
-            });
         }
     }
 }

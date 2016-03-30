@@ -1,62 +1,215 @@
-#Top_Container{z-index:999; display:block; margin:0; width:100%;height: 450px}
-#Container_Top_Left {float:left; display:block; margin:0; padding-top:0px; width:50%;}
-#middletop{float:left; display:block; margin:0; padding-left: 0px; width:20%;}
-#righttop{float:right; display:block; margin:0; padding-right: 50px; padding-top: 0px;width:40%;}
-#lefttop{float:left; display:block; margin:0; padding-left: 0px; width:40%;padding-top: 0px;}
-#Container_Top_Right {float: right; display:block; width:50%;}
-#middletop_right{float:left; display:block; margin:0; padding-left: 0px; width:20%;}
-#righttop_right{float:right; display:block; margin:0; padding-right: 50px; width:40%;padding-top: 0px;}
-#lefttop_right{float:left; display:block; margin:0; padding-left: 0px; width:40%; height:40px;padding-top: 0px;}
-#WritingGoogle{display:block; padding-top:20px;}
-#WritingYoutube{display:block; padding-top:20px;}
-#WritingGoogle_right{display:block; padding-top:20px;}
-#WritingYoutube_right{display:block; padding-top:20px;}
-#pic { float:right; display:block; margin:0; padding-top: 70px; padding-right: 50px; width:100px;}
-#box { float:left; display:block; margin:0; padding:0; width:100%; height:300px}
-#pic_right{ float:right; display:block; margin:0; padding-top: 70px; padding-right: 50px; width:100px;}
-#box_right { float:left; display:block; margin:0; padding:0; width:100%;height:300px}
-#Heading{text-align: center; font-size: 60px}
-#pop{text-align: center;}
+#Top_Container {
+    z-index: 999;
+    display: block;
+    margin: 0;
+    width: 100%;
+    height: 565px;
+}
+
+#Container_Top_Left {
+    float: left;
+    display: block;
+    margin: 0;
+    width: 48%;
+    margin-top: 15px;
+    margin-left: 15px;
+    padding-bottom: 0px;
+}
+
+#middletop {
+    float: left;
+    display: block;
+    margin: 0;
+    padding-left: 0px;
+    width: 20%;
+}
+
+#righttop {
+    float: right;
+    display: block;
+    margin: 0;
+    padding-right: 50px;
+    padding-top: 0px;
+    width: 40%;
+}
+
+#lefttop {
+    float: left;
+    display: block;
+    margin: 0;
+    padding-left: 0px;
+    width: 40%;
+    padding-top: 0px;
+}
+
+#Container_Top_Right {
+    float: right;
+    margin-right:15px;
+    display: block;
+    width: 48%;
+    margin-top: 15px;
+    padding-bottom: 0px;
+}
+
+#middletop_right {
+    float: left;
+    display: block;
+    margin: 0;
+    padding-left: 0px;
+    width: 20%;
+}
+
+#righttop_right {
+    float: right;
+    display: block;
+    margin: 0;
+    padding-right: 50px;
+    width: 40%;
+    padding-top: 0px;
+}
+
+#lefttop_right {
+    float: left;
+    display: block;
+    margin: 0;
+    padding-left: 0px;
+    width: 40%;
+    height: 40px;
+    padding-top: 0px;
+}
+
+#WritingGoogle {
+    display: block;
+    padding-top: 20px;
+}
+
+#WritingYoutube {
+    display: block;
+    padding-top: 0px;
+}
+
+#WritingGoogle_right {
+    display: block;
+    padding-top: 20px;
+}
+
+#WritingYoutube_right {
+    display: block;
+    padding-top: 0px;
+}
+
+#pic {
+
+}
+
+#box {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 300px
+}
+
+#pic_right {
+
+}
+
+#box_right {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 300px
+}
+
+#Heading {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 0px
+}
+
+#pop {
+    text-align: center;
+}
+
 .form-control {
     cursor: pointer;
     width: 103% !important;
     height: 40px !important;
 
 }
+
 #Name {
     margin-left: 30px;
 }
+
 #NameGoogle {
     margin-left: 30px;
 }
+
 #Name_right {
     margin-left: 30px;
 }
+
 #NameGoogle_right {
     margin-left: 30px;
 }
-#topbar{background-color: white;width:50%;position:absolute}
-#topbar_right{background-color: white;width:50%;position:absolute}
 
+#topbar {
+    width: 48%;
+    position: absolute
+}
 
-.Wrap{
-  display: inline-block;
-    width:200px;
-    word-wrap:break-word;
+#topbar_right {
+    right: 15px;
+    width: 48%;
+    position: absolute
 }
-.Label{
-  font-family: "Times New Roman", Georgia, Serif;
-  font-size: 18px;
-  color: black;
+
+.Wrap {
+    display: inline-block;
+    width: 200px;
+    word-wrap: break-word;
 }
+
+.Label {
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 18px;
+    color: black;
+}
+
 .stick {
     width: 50%;
     position: fixed;
     top: 0px;
 }
+
 .page-header {
     margin-top: 20px;
 }
+
 .verticalLine {
     border-left: thick solid #ff0000;
+}
+
+.right {
+    float: left;
+    margin-left: 20px
+}
+
+.left {
+    float: left;
+    margin-left: 15px;
+}
+
+#page-header {
+    margin-top: 5px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+#top_bar {
+    height: 75px;
 }
