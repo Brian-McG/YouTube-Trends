@@ -187,7 +187,6 @@
                 </p>
             </div>
             <div id="WritingGoogle">
-                <br>
                 <h2 style="margin-top: 0px;"><span id="NameGoogle"></span></h2>
                 <p>
                     <img src="img/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
@@ -241,7 +240,6 @@
                     </p>
                 </div>
                 <div id="WritingGoogle_right">
-                    <br>
                     <h2 style="margin-top: 0px;"><span id="NameGoogle_right"></span></h2>
                     <p>
                         <img src="img/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
@@ -261,7 +259,11 @@
     </div>
 </div>
 <div id="pop">
-    <h2>Popularity by Region</h2>
+
+    <h2>Popularity by Region
+        <a tabindex="0" class="help_button btn btn-sm btn-default" role="button" data-toggle="popover" data-trigger="focus"
+           data-content="The map and line graphs are zoomable using scroll<br/><br/>Click on a country to show its data on the line graph">
+            <i class="material-icons help_icon">help_outline</i></a></h2>
     <h4>
         Search volume normalized between 1-100
         <sup>
@@ -350,11 +352,14 @@
             setWeek(from);
 
         },
-        onFinish: function(data) {
+        onFinish: function (data) {
             setAxisGrid(data.from);
         }
     });
 
+    $(function () {
+        $('[data-toggle="popover"]').popover({html: true});
+    });
     $(function () {
         $.material.init();
     });

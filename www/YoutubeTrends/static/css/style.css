@@ -133,7 +133,7 @@
 }
 
 #line_graph_merged_header {
-    margin-top: 20px
+    margin-top: 0px
 }
 
 #slider_container {
@@ -152,4 +152,24 @@
 
 #merge, #reset {
     margin-top: 0px;
+}
+
+.help_icon {
+    cursor: pointer;
+}
+
+.help_button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+.popover {
+    max-width: 400px;
+}
+
+.popover-content {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    color: white;
 }
