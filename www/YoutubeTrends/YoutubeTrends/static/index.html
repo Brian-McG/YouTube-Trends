@@ -16,13 +16,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Youtube Trends</title>
-    <link rel="icon" href="images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css_dependents/roboto_fonts.min.css">
+    <link rel="stylesheet" type="text/css" href="css_dependents/material_icon.min.css">
     <link rel="stylesheet" href="css_dependents/c3.min.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/ion.rangeSlider.css" type="text/css">
     <link rel="stylesheet" href="css_dependents/ion.rangeSlider.skinHTML5.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css_dependents/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="css_dependents/bootstrap-material-design.min.css">
     <link rel="stylesheet" type="text/css" href="css_dependents/ripples.min.css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -116,7 +116,7 @@
                 </div>
 
                 <div id=middletop>
-                    <img src="images/Youtube.png" alt="Symbol" id="Symbol" style="float:right;width:60px;height:40px;">
+                    <img src="img/Youtube.png" alt="Symbol" id="Symbol" style="float:right;width:60px;height:40px;">
                 </div>
                 <div id="righttop" class="col-xs-5 selectContainer">
                     <select id="trend_type" class="form-control" name="trend_type" onchange="changeVariable('', false)" style="float:right">
@@ -137,7 +137,7 @@
                     </select>
                 </div>
                 <div id=middletop_right>
-                    <img src="images/Youtube.png" alt="Symbol" id="Symbol_right" style="float:right;width:60px;height:40px;">
+                    <img src="img/Youtube.png" alt="Symbol" id="Symbol_right" style="float:right;width:60px;height:40px;">
                 </div>
                 <div id="righttop_right" class="col-xs-5 selectContainer">
                     <select id="trend_type_right" class="form-control" name="trend_type" onchange="changeVariable('_right', false)" style="float:right">
@@ -153,7 +153,7 @@
 
         <div id="box">
             <div id="pic">
-                <!-- <img id="Icon" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
+                <!-- <img id="Icon" src="img/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
                 <iframe id="Icon" alt="Icon" style="float:right;width:270px;height:180px;"
                         src="">
                 </iframe>
@@ -162,27 +162,27 @@
                 <h2 style="margin-top: 0px;"><span id="Name"</span></h2>
 
                 <p>
-                    <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <img src="img/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                     <span class="Wrap"><span class="Label">Artist:</span><span id="Artist"></span></span>
                 </p>
                 <p>
-                    <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <img src="img/like.png" alt="Like" style="float:left;width:20px;height:20px;">
                     <span class="Label">Likes:</span><span id="Likes"></span>
                 </p>
                 <p>
-                    <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <img src="img/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
                     <span class="Label">Dislikes:</span><span id="Dislikes"></span>
                 </p>
                 <p>
-                    <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <img src="img/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
                     <span class="Label">Views:</span><span id="Views"></span>
                 </p>
                 <p>
-                    <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <img src="img/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
                     <span class="Label">Comments:</span><span id="Comments"></span>
                 </p>
                 <p>
-                    <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <img src="img/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
                     <span class="Label">Date Published:</span><span id="Date"></span>
                 </p>
             </div>
@@ -190,15 +190,15 @@
                 <br>
                 <h2 style="margin-top: 0px;"><span id="NameGoogle"></span></h2>
                 <p>
-                    <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <img src="img/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                     <span class="Wrap"><span class="Label">Artist:</span><span id="ArtistGoogle"></span></span>
                 </p>
                 <p>
-                    <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
+                    <img src="img/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
                     <span class="Label">Hits:</span><span id="ViewGoogle"></span>
                 </p>
                 <p>
-                    <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                    <img src="img/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
                     <span class="Label">Released:</span><span id="DatePub"></span>
                 </p>
             </div>
@@ -208,7 +208,7 @@
     <div id="Container_Top_Right" class="well">
         <div id="box_right">
             <div id="pic_right">
-                <!-- <img id="Icon_right" src="images/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
+                <!-- <img id="Icon_right" src="img/icon.png" alt="Icon" style="float:right;width:270px;height:180px;"> -->
                 <iframe id="Icon_right" alt="Icon" style="float:right;width:270px;height:180px;"
                         src="">
                 </iframe>
@@ -216,27 +216,27 @@
                 <div id="WritingYoutube_right">
                     <h2 style="margin-top: 0px;"><span id="Name_right"></span></h2>
                     <p>
-                        <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                        <img src="img/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                         <span class="Wrap"><span class="Label">Artist:</span><span id="Artist_right"></span></span>
                     </p>
                     <p>
-                        <img src="images/like.png" alt="Like" style="float:left;width:20px;height:20px;">
+                        <img src="img/like.png" alt="Like" style="float:left;width:20px;height:20px;">
                         <span class="Label">Likes:</span><span id="Likes_right"></span>
                     </p>
                     <p>
-                        <img src="images/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
+                        <img src="img/dislike.png" alt="Like" style="float:left;width:20px;height:20px;">
                         <span class="Label">Dislikes:</span><span id="Dislikes_right"></span>
                     </p>
                     <p>
-                        <img src="images/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
+                        <img src="img/eye.png" alt="Like" style="float:left;width:20px;height:25px;">
                         <span class="Label">Views:</span><span id="Views_right"></span>
                     </p>
                     <p>
-                        <img src="images/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
+                        <img src="img/comment-icon-black.png" alt="Like" style="float:left;width:20px;height:25px;">
                         <span class="Label">Comments:</span><span id="Comments_right"></span>
                     </p>
                     <p>
-                        <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                        <img src="img/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
                         <span class="Label">Date Published:</span><span id="Date_right"></span>
                     </p>
                 </div>
@@ -244,15 +244,15 @@
                     <br>
                     <h2 style="margin-top: 0px;"><span id="NameGoogle_right"></span></h2>
                     <p>
-                        <img src="images/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
+                        <img src="img/mic.png" alt="Like" style="float:left;width:20px;height:20px;">
                         <span class="Wrap"><span class="Label">Artist:</span><span id="ArtistGoogle_right"></span></span>
                     </p>
                     <p>
-                        <img src="images/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
+                        <img src="img/hits.png" alt="Like" style="float:left;width:20px;height:25px;">
                         <span class="Label">Hits:</span><span id="ViewGoogle_right"></span>
                     </p>
                     <p>
-                        <img src="images/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
+                        <img src="img/calendar.png" alt="Like" style="float:left;width:20px;height:20px;">
                         <span class="Label">Released:</span><span id="DatePub_right"></span>
                     </p>
                 </div>

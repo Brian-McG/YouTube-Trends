@@ -51,14 +51,14 @@ function changeIconRight() {
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
     if(name=="Google"){
-        $('#Symbol_right').attr("src","images/google-icon-2.png");
+        $('#Symbol_right').attr("src","img/google-icon-2.png");
         $('#Symbol_right').height(40);
         $('#Symbol_right').width(40);
         $('#WritingYoutube_right').hide();
         $('#WritingGoogle_right').show();
 
     }else{
-        $('#Symbol_right').attr("src","images/youtubeLegendIcon.png");
+        $('#Symbol_right').attr("src","img/youtubeLegendIcon.png");
         $('#Symbol_right').height(40);
         $('#Symbol_right').width(60);
         $('#WritingGoogle_right').hide();

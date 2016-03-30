@@ -81,14 +81,14 @@ function changeIcon() {
     var selectedItem = selectCtrl.options[selectCtrl.selectedIndex];
     var name = selectedItem.value;
     if (name == "Google") {
-        $('#Symbol' + extension).attr("src", "images/google-icon-2.png");
+        $('#Symbol' + extension).attr("src", "img/google-icon-2.png");
         $('#Symbol' + extension).height(40);
         $('#Symbol' + extension).width(40);
         $('#WritingYoutube' + extension).hide();
         $('#WritingGoogle' + extension).show();
 
     } else {
-        $('#Symbol' + extension).attr("src", "images/youtubeLegendIcon.png");
+        $('#Symbol' + extension).attr("src", "img/youtubeLegendIcon.png");
         $('#Symbol' + extension).height(40);
         $('#Symbol' + extension).width(60);
         $('#WritingGoogle' + extension).hide();

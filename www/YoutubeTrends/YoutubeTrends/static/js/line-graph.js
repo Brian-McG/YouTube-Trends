@@ -128,21 +128,21 @@ function generate_line_graph(index, bindDom, rows) {
                 if (index == 2) {
                     if (id.indexOf(selectedItems[1]) > -1) {
                         if (id.indexOf("Google") > -1) {
-                            return '<img  src="images/google-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            return '<img  src="img/google-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else if (id.indexOf("YoutubeComments") > -1) {
-                            return '<img src="images/comment-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            return '<img src="img/comment-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else if(id.indexOf("Youtube") > -1) {
-                            return '<img src="images/youtubeLegendIcon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            return '<img src="img/youtubeLegendIcon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else {
                             return id;
                         }
                     } else {
                         if (id.indexOf("Google") > -1) {
-                            return '<img  src="images/google-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            return '<img  src="img/google-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else if (id.indexOf("YoutubeComments") > -1) {
-                            return '<img src="images/comment-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            return '<img src="img/comment-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else if(id.indexOf("Youtube") > -1) {
-                            return '<img src="images/youtubeLegendIcon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                            return '<img src="img/youtubeLegendIcon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                         } else {
                             return id;
                         }
@@ -150,11 +150,11 @@ function generate_line_graph(index, bindDom, rows) {
 
                 } else {
                     if (id == 'google') {
-                        return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
+                        return '<img  src="img/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
                     } else if (id == 'youtube') {
-                        return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
+                        return '<img src="img/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
                     } else if (id == 'youtubeComments') {
-                        return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
+                        return '<img src="img/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
                     } else {
                         return id;
                     }
@@ -264,29 +264,29 @@ function generate_line_graph(index, bindDom, rows) {
                     if (index == 2) {
                         if (id.indexOf(selectedItems[1]) > -1) {
                             if (id.indexOf("Google") > -1) {
-                                return '<img  src="images/google-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                                return '<img  src="img/google-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                             } else if (id.indexOf("YoutubeComments") > -1) {
-                                return '<img src="images/comment-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                                return '<img src="img/comment-icon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                             } else {
-                                return '<img src="images/youtubeLegendIcon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                                return '<img src="img/youtubeLegendIcon-left.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                             }
                         } else {
                             if (id.indexOf("Google") > -1) {
-                                return '<img  src="images/google-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                                return '<img  src="img/google-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                             } else if (id.indexOf("YoutubeComments") > -1) {
-                                return '<img src="images/comment-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                                return '<img src="img/comment-icon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                             } else {
-                                return '<img src="images/youtubeLegendIcon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
+                                return '<img src="img/youtubeLegendIcon-right.png" alt="Like" style="width:18px;height:18px;vertical-align: bottom;"> ' + id;
                             }
                         }
 
                     } else {
                         if (id == 'google') {
-                            return '<img  src="images/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
+                            return '<img  src="img/google-icon-2.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Google';
                         } else if (id == 'youtube') {
-                            return '<img src="images/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
+                            return '<img src="img/youtubeLegendIcon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube';
                         } else if (id == 'youtubeComments') {
-                            return '<img src="images/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
+                            return '<img src="img/comment-icon.png" alt="Like" style="width:20px;height:20px;vertical-align: bottom;"> Youtube Comments';
                         } else {
                             return id;
                         }
