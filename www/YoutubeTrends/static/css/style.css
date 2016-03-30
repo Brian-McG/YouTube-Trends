@@ -153,3 +153,17 @@
 #merge, #reset {
     margin-top: 0px;
 }
+
+.help_icon {
+    cursor: pointer;
+}
+
+.help_button {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+.popover {
+    max-width: 400px;
+}
