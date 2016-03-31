@@ -88,11 +88,16 @@
                 how the popularity of the five most watched YouTube videos changed over time, how they spread and how different countries compared to each other. We decided to use data on YouTube searches, comments on the videos and Google searches as
                 a proxy for that popularity.
             </p>
-            <h1> Data </h1>
+            <h3> Data </h3>
             <p>
                 While all the data we used is easily accessible, there is unfortunately no single place where it is bundled. We used a combination of custom code and
                 <a href="https://github.com/GeneralMills/pytrends"> open source libraries </a> to download and get the data in a format we could use. This involved querying Google Trends for each song, country and source combination we needed and then
                 parsing the YouTube comments for every video.
+            </p>
+            <h3>Typical User and Input/Output</h3>
+            <p>
+                The visualization is aimed at the average internet user: it aims to be appealing and interesting, to encourage people to explore the data.
+                <br> A user would input the two videos that they are interested in comparing and the visualization will give that user information about those videos on the maps, line graphs and info boxes.
             </p>
             <div class="related-work">
 
@@ -116,7 +121,7 @@
                     <div style="width: 20%;float:right;padding-left:20px">
                         <div class="well">
 
-                            <a href="img/topgear.png" data-lightbox="image-2" data-title="Google Ripples Overview"><img src="img/topgear.png">click to enlarge</a>
+                            <a href="img/topgear.png" data-lightbox="image-2" data-title="Top Gear Youtube stats Visualization"><img src="img/topgear.png">click to enlarge</a>
                         </div>
                     </div>
                     <div style="width: 80%;float:left">
@@ -132,7 +137,7 @@
                     <div style="width: 20%;float:left;padding-right:20px;padding-left:30px">
                         <div class="well">
 
-                            <a href="img/stats.png" data-lightbox="image-3" data-title="Google Ripples Overview"><img src="img/stats.png">click to enlarge</a>
+                            <a href="img/stats.png" data-lightbox="image-3" data-title="Stat World Visualization"><img src="img/stats.png">click to enlarge</a>
                         </div>
                     </div>
                     <div style="width: 80%;float:right">
@@ -148,7 +153,7 @@
                     <div style="width: 20%;float:right;padding-left:20px">
                         <div class="well">
 
-                            <a href="img/drug.jpg" data-lightbox="drug" data-title="Google Ripples Overview"><img src="img/drug.jpg">click to enlarge</a>
+                            <a href="img/drug.jpg" data-lightbox="drug" data-title="Drug Searches in the US"><img src="img/drug.jpg">click to enlarge</a>
                         </div>
                     </div>
                     <div style="width: 80%;float:left">
@@ -165,7 +170,7 @@
                     <div style="width: 20%;float:left;padding-left:20px;padding-left:30px">
                         <div class="well">
 
-                            <a href="img/trends.png" data-lightbox="drug" data-title="Google Ripples Overview"><img src="img/trends-small.png">click to enlarge</a>
+                            <a href="img/trends.png" data-lightbox="drug" data-title="Google Trends Example"><img src="img/trends-small.png">click to enlarge</a>
                         </div>
                     </div>
                     <div style="width: 80%;float:left">
@@ -224,23 +229,32 @@
             </p>
 
             <h1>Second Iteration</h1>
-            <p>
-                The feedback from the initial design was overall positive, with criticism of the looks rather than the format. Our second iteration was mostly implementing our initial mockup to get a better idea of how the parts would interact and look with real data.
-                <br> The implementation was done with a suite of very awesome open source javascript libraries. [[[[LINK TO THEM!]]]]
-            </p>
-            <h3>The Header</h3>
-            <p>
-                This consists of two main parts: a selection bar that sticks to the top of the page as the user scrolls down and an info section with stats about the video retrieved from YouTube (and the video itself embedded ). The selection bar has two functions: it
-                allows the user to always quickly see what they are comparing and it allows the user to change what they are comparing without returning to the top of the page.
-            </p>
-            <h3>The Maps</h3>
-            <p>
-                The maps display the search volume data accross the globe, normalized to the range 1-100. In practice this means that for each country, the week with the highest search volume is given a score of 100 and every other week is basically a percentage of that
-                highest search volume. We feel this is justified as even if we had access to the raw numbers (which we actually don't) they would not be useful for comparing different countries to each other as we'd need to factor in many other variables
-                (population, percentage with internet access etc).
-                <br> They are zoomable, and the zoom is linked, so they always display the same view allowing for comparisons of smaller areas. The slider beneath the maps allows the user to see how the popularity changes over time, in one week increments
-                from release date (as the videos were released in different years, we are only really interested in the changes relative to when it came out).
-            </p>
+            <div class="secondit" style="display:inline-block">
+                <div style="width: 45%;float:right;padding-left:30px">
+                    <div class="well">
+                        <img src="img/first.png">
+                    </div>
+                </div>
+                <div style="width: 55%;float:left">
+                    <p>
+                        The feedback from the initial design was overall positive, with criticism of the looks rather than the format. Our second iteration was mostly implementing our initial mockup to get a better idea of how the parts would interact and look with real data.
+                        <br> The implementation was done with a suite of very awesome open source javascript libraries. [[[[LINK TO THEM!]]]]
+                    </p>
+                    <h3>The Header</h3>
+                    <p>
+                        This consists of two main parts: a selection bar that sticks to the top of the page as the user scrolls down and an info section with stats about the video retrieved from YouTube (and the video itself embedded ). The selection bar has two functions: it
+                        allows the user to always quickly see what they are comparing and it allows the user to change what they are comparing without returning to the top of the page.
+                    </p>
+                    <h3>The Maps</h3>
+                    <p>
+                        The maps display the search volume data accross the globe, normalized to the range 1-100. In practice this means that for each country, the week with the highest search volume is given a score of 100 and every other week is basically a percentage of that
+                        highest search volume. We feel this is justified as even if we had access to the raw numbers (which we actually don't) they would not be useful for comparing different countries to each other as we'd need to factor in many other
+                        variables (population, percentage with internet access etc).
+                        <br> They are zoomable, and the zoom is linked, so they always display the same view allowing for comparisons of smaller areas. The slider beneath the maps allows the user to see how the popularity changes over time, in one week increments
+                        from release date (as the videos were released in different years, we are only really interested in the changes relative to when it came out).
+                    </p>
+                </div>
+            </div>
             <h3>The Graphs</h3>
             <p>
                 The graphs initially show global trends for the videos for the year after release. Clicking on a specific country on the relative map, however, causes a graph to switch to information about that specific country. The user can also zoom and pan on the
@@ -254,6 +268,7 @@
                 Feedback was again largely positive, with most of the criticism being directed towards making the visualization look better rather than adding features to it. More specifically we were told to make clearer the separation and to generally make it more
                 visually appealing.
             </p>
+
             <h1>Final Polish</h1>
             <p>
                 <a href="index.html">Click here to go to final version</a>
@@ -263,8 +278,8 @@
             </p>
             <p>
                 Not being UI designers ourselves, we decided that the best way to approach the final modifications was to use well-defined guidelines. Being fans of Google's material design (which is also used extensively on YouTube) we turned to their
-                <a
-                    href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank">design spec</a> for inspiration. The use of cards and depth in particular really makes the visualization much more interesting and more fun to interact with along with cleaner fonts.
+                <a href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank">design spec</a> for inspiration. The use of cards and depth in particular really makes the visualization much more interesting and more fun to
+                interact with along with cleaner fonts.
             </p>
             <h1>Strengths and Weaknesses</h1>
             <p>
@@ -280,41 +295,43 @@
             </p>
             <h1>Conclusion</h1>
             <p>
-                From our initial, stark, design we iterated until we settled on an appealing, fun to explore visualization, that allows the user to answer all visual queries with ease. With more direct access to the data this would be an even better visualization, allowing users to compare any two videos instead of a subset prepared in advanced, but even with out limited data it is interesting and encourages people to use it.
+                From our initial, stark, design we iterated until we settled on an appealing, fun to explore visualization, that allows the user to answer all visual queries with ease. With more direct access to the data this would be an even better visualization, allowing
+                users to compare any two videos instead of a subset prepared in advanced, but even with out limited data it is interesting and encourages people to use it.
             </p>
             <h1>Division of Labour </h1>
             <p>
-                    Work was divided in the following way: <br>
-                </p>
-                <div class="tablediv" style="padding-left:30px">
+                Work was divided in the following way:
+                <br>
+            </p>
+            <div class="tablediv" style="padding-left:30px">
 
-                <table class="table table-striped table-hover" >
+                <table class="table table-striped table-hover">
                     <thead>
-                    <tr>
-                        <th data-field="id">Name</th>
-                        <th data-field="name">Work Done</th>
-                    </tr>
+                        <tr>
+                            <th data-field="id">Name</th>
+                            <th data-field="name">Work Done</th>
+                        </tr>
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td>Brian McGeorge</td>
-                        <td>Line Graphs and overall design (helped extensively with coding other areas)</td>
-                    </tr>
-                    <tr>
-                        <td>Bryce Billing</td>
-                        <td>Header, large portions of the report</td>
-                    </tr>
-                    <tr>
-                        <td>Calvin Brizzi</td>
-                        <td>Maps, report formatting</td>
-                    </tr>
+                        <tr>
+                            <td>Brian McGeorge</td>
+                            <td>Line Graphs and overall design (helped extensively with coding other areas)</td>
+                        </tr>
+                        <tr>
+                            <td>Bryce Billing</td>
+                            <td>Header, large portions of the report</td>
+                        </tr>
+                        <tr>
+                            <td>Calvin Brizzi</td>
+                            <td>Maps, report formatting</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-                <p>
-                    This worked well, though certain parts of the design required more coding than others (the line graphs for example). Overall the team worked well, communication was good and people were quick to respond and resolve issues.
-                </p>
+            <p>
+                This worked well, though certain parts of the design required more coding than others (the line graphs for example). Overall the team worked well, communication was good and people were quick to respond and resolve issues.
+            </p>
 
             <script>
                 $(document).ready(function() {
