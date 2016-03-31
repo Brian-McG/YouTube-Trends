@@ -180,6 +180,12 @@ function generate_line_graph(index, bindDom, rows) {
                 }
             });
     } else {
+        var transitionDuration = 1000;
+        // Check if firefox then set transition to 0 due to performance isses
+        if(typeof InstallTrigger !== 'undefined') {
+            transitionDuration = 0;
+        }
+
         chart[index] = c3.generate({
             bindto: bindDom,
             data: {
@@ -194,6 +200,9 @@ function generate_line_graph(index, bindDom, rows) {
                     youtube: 'Youtube',
                     youtubeComments: 'Youtube Comments'
                 }
+            },
+            transition: {
+                duration: transitionDuration
             },
             color: {
                 pattern: ['#7a0177', '#c51b8a', '#ce1256', '#014636', '#02818a', '#3690c0']
