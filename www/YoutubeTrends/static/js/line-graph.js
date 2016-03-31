@@ -218,7 +218,7 @@ function generate_line_graph(index, bindDom, rows) {
                         }
                     },
                     label: {
-                        text: 'Week from release',
+                        text: 'Weeks from release',
                         position: 'outer-center'
                     }
                 },
