@@ -201,12 +201,12 @@
                     </p>
                     <p>
                         At the top of the design was the selector where you select the two videos using the drop downs that you want to compare. Then information such as the title, view count, dislike count, like count, comment count, date published and next to all that an embedded
-                        video for the selected video was displayed for that video. The visualization also incorporated being able to select the type of trend i.e do you want to see the youtube trends for that visualization or the google trends for it?
+                        video for the selected video was displayed. The visualization also incorporated being able to select the type of trend i.e do you want to see the youtube trends for that visualization or the google trends for it?
                         This could also be selected using the drop downs next to the video names.The problem with this part of the visualization was the fact that it was quite boring as there was a lot of text and numbers used and no symbols so it meant
                         that there would be a lot of reading involved making it less appealing.
                     </p>
                     <p>
-                        Below the top section of is the map section. The map section shows depending on the deepness of red the normalised popularity of a video for each country after a specific number of weeks after release of the video. The maps information is linked to a
+                        Below the top section is the map section. The map section shows, based on the deepness of the red, normalised popularity of a video for each country after a specific number of weeks after release of the video. The maps information is linked to a
                         slider below it that allows you to adjust the number of weeks after the video was released allowing you to compare the two different videos over a period of 52 weeks after their initial releases and also allowing you to be able
                         to see the change in popularity for a specific video over a certain amount of time. We chose to do weeks after release rather than the actual time frames due to the fact that some of the videos are released up to 2 years before
                         other ones. This is again in aid of being able to compare between the videos. The map also would allow for zooming to allow for easy selection for smaller countries as well as a tooltip on hover over of the countries giving the
@@ -217,9 +217,9 @@
             </div>
             <p>
                 The last part of our initial design is the graphs that show the popularity of the selected video over time i.e it will display the number of comments, the number of google searches and the number of youtube searches over the 52 week period after the release.
-                The graphs would also allow a you to select the type of data i.e you may want to see only google trends and then the lines representing this data would stay and the rest of the lines would be greyed out,a merge function was also mentioned
+                The graphs would also allow you to select the type of data i.e you may want to see only google trends and then the lines representing this data would stay and the rest of the lines would be greyed out, a merge function was also mentioned
                 that would allow you to compare the two separate videos in one graph. The graphs also had a vertical black line that is linked to the slider that moved to the week selected in the slider, making it easier to relate the data from the map
-                to the graph.The issues that were mentioned with this section wa that the greyed out lines were difficult to see and also we only use one colour in the separate graphs making it hard to pick out what represents what and also the fact that
+                to the graph. The issues that were mentioned with this section was that the greyed out lines were difficult to see and also we only used one colour in the separate graphs making it hard to pick out what represents what and also the fact that
                 no texture was used.
             </p>
 
@@ -235,7 +235,7 @@
             </p>
             <h3>The Maps</h3>
             <p>
-                The maps display the search volume data accross the globe, normalized to the range 1-100. In practice this means that for each country, the week with the highest search volume is given a score of 100 and every other week is basically a percentage of that
+                The maps display the search volume data across the globe, normalized to the range 1-100. In practice this means that for each country, the week with the highest search volume is given a score of 100 and every other week is basically a percentage of that
                 highest search volume. We feel this is justified as even if we had access to the raw numbers (which we actually don't) they would not be useful for comparing different countries to each other as we'd need to factor in many other variables
                 (population, percentage with internet access etc).
                 <br> They are zoomable, and the zoom is linked, so they always display the same view allowing for comparisons of smaller areas. The slider beneath the maps allows the user to see how the popularity changes over time, in one week increments
@@ -243,33 +243,40 @@
             </p>
             <h3>The Graphs</h3>
             <p>
+            <p>
                 The graphs initially show global trends for the videos for the year after release. Clicking on a specific country on the relative map, however, causes a graph to switch to information about that specific country. The user can also zoom and pan on the
-                graphs, plus hover for more information. The graph makes use of texture and colour to differentiate the data and make it easier to query specific lines while allowing the user to hide information that they are not interested in (by toggling
+                graphs, plus hover for more information. The graph makes use of texture, colour and line width to differentiate the data and make it easier to query specific lines while allowing the user to hide information that they are not interested in (by toggling
                 the buttons below the graph).
-                <br> For an easier and more immediate comparison between the global trends, the graphs can be merged, so that all the data is displayed on a single larger graph. This again uses a combination of colour and texture to allow the lines to be
-                rapidly differentiated.
+            </p>
+            <p>
+                Based on feedback from the initial iteration, the color scale was completely reworked, colours were chosen that were commonly associated with the brand: red for YouTube and blue for Google. Green was chosen for comments since it has a strong opposing contrast to red. To account for colour blindness, the biggest difference on the other channels is between the red and green.
+            </p>
+            <p>
+                For an easier and more immediate comparison between the global trends, the graphs can be merged, so that all the data is displayed on a single larger graph. Colour is used to identify what the song is (with each line using a slightly different shade of the colour) and the same texture as used in the individual graphs is used to differentiate Google, YouTube and the comments. This still allows the lines to be
+                rapidly differentiated even on the merged graph. Different colours were chosen for the merge graph since the shade of red and blue on the individual line graph is associated with the Google and YouTube metaphor.
+            </p>
             </p>
             <h3>Feedback</h3>
             <p>
-                Feedback was again largely positive, with most of the criticism being directed towards making the visualization look better rather than adding features to it. More specifically we were told to make clearer the separation and to generally make it more
+                Feedback was again largely positive, with most of the criticism being directed towards making the visualization look better rather than adding features to it. More specifically we were told to make the separation of components clearer and to generally make it more
                 visually appealing.
             </p>
             <h1>Final Polish</h1>
             <p>
                 <a href="index.html">Click here to go to final version</a>
-                <br> Having recieved positive feedback about the overall design of the visualization, we set out to polish it into something more appealing. Some initial small changes were to switch from highlighting the maps a different colour to using depth
+                <br> Having received positive feedback about the overall design of the visualization, we set out to polish it into something more appealing. Some initial small changes were to switch from highlighting the maps in a different colour to using depth
                 through shading to make it pop and switching out the slider to something more pleasant on the eyes and that showed the range more clearly. We also added help pop-ups on hover that hopefully give the user a better idea of what is going
                 on without cluttering the visualization.
             </p>
             <p>
                 Not being UI designers ourselves, we decided that the best way to approach the final modifications was to use well-defined guidelines. Being fans of Google's material design (which is also used extensively on YouTube) we turned to their
                 <a
-                    href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank">design spec</a> for inspiration. The use of cards and depth in particular really makes the visualization much more interesting and more fun to interact with along with cleaner fonts.
+                    href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank">design spec</a> for inspiration. The use of cards and depth in particular really makes the visualization much more interesting and more fun to interact with along with cleaner fonts. The use of depth helps to separate components and make them more prominent, hence more important.
             </p>
             <h1>Strengths and Weaknesses</h1>
             <p>
                 Thanks to the extensive feedback received during the initial iterations, our visualization has come a long way.
-                <br> Our visual queries are easy to answer, and the more appealing design, coupled with interactions most people will be familiar with (scroll to zoom on map, hover for more info etc) makes it fun to explore the data and highlights interesting
+                <br> Our visual queries are easy to answer, and the more appealing design, coupled with interactions most people will be familiar with (scroll to zoom on map, hover for more info etc) makes it fun to explore the data. It highlights interesting
                 events like Gangnam Style peaking again as it hit one billion views (though work could be done on giving better details on what those events are).
 
             </p>
