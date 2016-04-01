@@ -339,7 +339,7 @@ function setAxisGrid(value) {
 
 function mergeClick() {
     if (isMerged) {
-        $("#merge_line_graph_button").text("Merge Graph");
+        $("#merge").text("Merge Graph");
         $("#merge_container").hide();
         $("#left_container").show();
         chart[0].flush();
@@ -353,7 +353,7 @@ function mergeClick() {
         }, 300);
 
     } else {
-        $("#merge_line_graph_button").text("Un-merge Graph");
+        $("#merge").text("Un-merge Graph");
         $("#left_container").hide();
         $("#right_container").hide();
         $("#merge_container").show();
