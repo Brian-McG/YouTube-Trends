@@ -192,3 +192,6 @@ function updateMaps(){
         alldata[current_r_song][current_r_source][current_week]
     );
 }
+
+setWeek(2);
+setWeek(1);
