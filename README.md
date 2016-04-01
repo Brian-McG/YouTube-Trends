@@ -1,4 +1,4 @@
-# Visualisation project
+# YouTube Trends
 ## VIS Module CS Honours
 
 ### Collaborators
@@ -9,11 +9,15 @@
 ### Supported Browsers
   - Google Chrome *(recommended)*
   - Firefox
+
+### Where is the HTML and visualization code located?
+The visualization code is located here: ***www/YoutubeTrends/static*** <br>
+Please see the section below to ensure the visualization is served up correctly.
   
 ### How to run
 The D3 components need to be served up from HTTP, if one just accesses index.html from file, the data cannot be accessed and the page will not render correctly. <br>
-If there are any issues getting the visualisation to run, then please contact us. <br>
-Outlined below are a number of ways to correctly serve up the visualisation:
+If there are any issues getting the visualization to run, then please contact us. <br>
+Outlined below are a number of ways to correctly serve up the visualization:
 
 #### People.cs
 The submitted visualization has been hosted [here](https://people.cs.uct.ac.za/~mcgbri004/vis-project/index.html) and the report [here](https://people.cs.uct.ac.za/~mcgbri004/vis-project/report.html) as a means to avoid having to serve the page via HTTP yourself.
