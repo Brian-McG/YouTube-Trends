@@ -1,4 +1,4 @@
-# Visualisation project
+# YouTube Trends
 ## VIS Module CS Honours
 
 ### Collaborators
@@ -9,6 +9,10 @@
 ### Supported Browsers
   - Google Chrome *(recommended)*
   - Firefox
+
+### Where is the HTML and visulisation code located?
+The visualistaion code is located here: ***www/YoutubeTrends/static*** <br>
+Please see the section below to ensure the visualiztion is served up correctly.
   
 ### How to run
 The D3 components need to be served up from HTTP, if one just accesses index.html from file, the data cannot be accessed and the page will not render correctly. <br>
