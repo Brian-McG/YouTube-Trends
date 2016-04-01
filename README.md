@@ -11,7 +11,7 @@
   - Firefox
   
 ### How to run
-The D3 components need to be served up from HTTP, if one just accesses index.html from file, the data cannot be access and the page will not render correctly. <br>
+The D3 components need to be served up from HTTP, if one just accesses index.html from file, the data cannot be accessed and the page will not render correctly. <br>
 If there are any issues getting the visualisation to run, then please contact us. <br>
 Outlined below are a number of ways to correctly serve up the visualisation:
 
