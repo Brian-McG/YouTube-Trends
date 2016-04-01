@@ -16,7 +16,7 @@ If there are any issues getting the visualisation to run, then please contact us
 Outlined below are a number of ways to correctly serve up the visualisation:
 
 #### People.cs
-The submitted code has been hosted [here](https://people.cs.uct.ac.za/~mcgbri004/vis-project/index.html) as a means to avoid having to serve the page via HTTP yourself.
+The submitted visualization has been hosted [here](https://people.cs.uct.ac.za/~mcgbri004/vis-project/index.html) and the report [here](https://people.cs.uct.ac.za/~mcgbri004/vis-project/report.html) as a means to avoid having to serve the page via HTTP yourself.
 
 #### Web Server
 Host the static html contained in the static folder of www/YoutubeTrends and access via HTTP
